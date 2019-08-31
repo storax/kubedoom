@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: kubedoom
+  name: kubedoom
+  namespace: kubedoom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubedoom
+  template:
+    metadata:
+      labels:
+        app: kubedoom
+    spec:
+      hostNetwork: true
+      serviceAccountName: kubedoom
+      containers:
+      - image: kubedoom:0.1.2
+        name: kubedoom
+        ports:
+        - containerPort: 5900
+          name: vnc
