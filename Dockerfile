@@ -10,23 +10,38 @@ RUN apt-get update
 
 FROM ubuntu AS ubuntu-deps
 # Install dependencies
-RUN apt-get install -y -o APT::Install-Suggests=0 --no-install-recommends git wget ca-certificates
-RUN git clone https://github.com/GideonRed/dockerdoom.git
+RUN apt-get install -y \
+  -o APT::Install-Suggests=0 \
+  --no-install-recommends \
+  wget ca-certificates
 RUN wget http://distro.ibiblio.org/pub/linux/distributions/slitaz/sources/packages/d/doom1.wad
-RUN wget -O /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl && chmod +x /usr/bin/kubectl
+RUN wget -O /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl \
+  && chmod +x /usr/bin/kubectl
 
 FROM ubuntu AS ubuntu-build
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get install -y -o APT::Install-Suggests=0 --no-install-recommends build-essential libsdl-mixer1.2-dev libsdl-net1.2-dev gcc
+RUN apt-get install -y \
+  -o APT::Install-Suggests=0 \
+  --no-install-recommends \
+  build-essential \
+  libsdl-mixer1.2-dev \
+  libsdl-net1.2-dev \
+  gcc
 
 # Setup doom
-COPY --from=ubuntu-deps /dockerdoom /dockerdoom
+ADD /dockerdoom /dockerdoom
 RUN cd /dockerdoom/trunk && ./configure --enable-static && make && make install
 
 FROM ubuntu
-RUN apt-get install -y -o APT::Install-Suggests=0 --no-install-recommends libsdl-mixer1.2 libsdl-net1.2 x11vnc xvfb netcat-openbsd
-
+RUN apt-get install -y \
+  -o APT::Install-Suggests=0 \
+  --no-install-recommends \
+  libsdl-mixer1.2 \
+  libsdl-net1.2 \
+  x11vnc \
+  xvfb \
+  netcat-openbsd
 
 WORKDIR /root/
 

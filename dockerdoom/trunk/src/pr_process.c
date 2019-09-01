@@ -137,8 +137,8 @@ void pr_check(void) {
   while (fgets(buf, 255, f)) {
     int read_fields = sscanf(buf, "%s\n", namebuf);
     if (read_fields == 1 && namebuf) {
-      fprintf(stderr, "Demon: %s\n", namebuf);
       pid = hash(namebuf);
+      fprintf(stderr, "Demon: %s, %d\n", namebuf, pid);
       demon = true;
       add_to_pid_list(pid, namebuf, demon);
     }
