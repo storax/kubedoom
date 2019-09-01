@@ -1,0 +1,173 @@
+Here are a few ideas to improve this process manager:
+  N == not planned
+  ? == possible, but not planned and/or is it necessary?
+  - == not started, but planned
+  O == in progress
+  X == done AFAIK
+
+X-display last 7 characters of process name rather than first 7
+    ie: '/sbin/mingetty' would appear as 'ingetty' rather than '/sbin/m'
+X-make text disappear when entire pid monster sprite is obstructed
+X-make text 'float' with the monster (adjust y-value of print)
+X-pid monsters don't count towards end-level 'kills' percent
+X-pid monsters don't spawn in/on other things
+N-toggle monster inter-fighting (ie. CacoDemon vs Imp on(default)/off )
+N-toggle monster intra-fighting (ie. Human vs Human on(default)/off
+                                   Demon vs Demon on/off(default) )
+X-OR as an alternative to the above 2, have pid monsters only take damage
+    from a player
+  O-command line flag to allow pid monsters to be damaged normally
+      (-nopssafety)
+X-better process management:
+  N-non-blocking process manager so pauses aren't as noticable
+    NOTE: pauses would still be there with the non-blocking
+          process manager - tested by disabling pr_poll() call
+          and running a sh script on a seperate terminal that
+          called 'ps' every 5 seconds: pauses were still noticable
+  X-if a process is killed/removed outside xdoom, remove it from xdoom
+  X-update process names (ie. mingetty --> -bash after login )
+    ?-compare pid monster name to incoming name and copy the name
+        as a result of that comparison
+      NOTE: right now, the name update happens to every pid monster
+            every time the ps list is updated.  would adding a check
+            to see if the name needs to change speed things up?  in other
+            words, how much faster is strncmp() than memcpy()?
+  X-if a process monster is killed in doom, but the actual process doesn't
+      die on the machine, resurrect the monster's body like the archvile
+      does; if we can't raise the monster, remove the body and respawn the
+      monster
+X-gracefully handle save and restore
+X-only re-nice a monster the first time it is damaged
+?-OR with successive damages, get the process' priority, and re-nice
+    to 2(?) more than the current level until it reaches 20 (the maximum)
+  NOTE: must be careful about shotgun and other rapid-file or
+        multiple damage weapons because one could re-nice monsters
+        to +20 really fast
+X-customized level map for managing processes
+  NOTE: *any* level that has 3 1024x1024 areas for monster spawning such
+        that the bottom left coordinates of the squares are at (0,0);
+        (2048,0); and (4096,0), respectively, will work
+  NOTE: current custom level details and decorations may need tweaking
+  X-if the custom level isn't (or can't) be loaded, use stock E1M1 in
+      doom 1 (or MAP01 in doom 2) for process management
+  X-custom level loads automatically, like xdoom.wad.  the custom doom 1
+      map must be named psdoom1.wad and the custom doom 2 map named
+      psdoom2.wad for the automatic loading to happen
+  X-command line flag to disable automatic loading of custom level; manage
+      processes on stock E1M1 or MAP01
+      (-nopslev)
+  ?-custom level for shareware doom (psdooms.wad); must get permission
+      from id software before doing this
+X-game acts like normal xdoom if not playing on E1M1/MAP01 or if playing
+    any 'Plutonia Experiment' or 'TNT - Evilution' level
+X-command line flag to entirely disable 'ps' portion of the program
+    (-nopsmon)
+X-command line flag to disable actual re-nice and kill of processes
+    (-nopsact)
+X-command line flag to make 'no monsters' persistant across new
+    games and warping
+    (-nomonsters.) == no monsters, period :-)
+X-pid monster spawning not affected by '-nomonsters' or '-nomonsters.'
+    command line flags
+X-command line flag to respawn items like in -altdeath games
+    (-respawnitems)
+    X-this flag should have no effect in demo recording or playback; it
+        would mess up the demo timing
+X-command line flags for determining which user processes to spawn
+    X-command line flag to cause every username to be added to the list of
+        users whose processes to display
+        (-psallusers)
+    X-command line flag to cause specified usernames to be added to the
+        list of users whose processes to display -- without any supplied
+        username(s), assume current user
+        (-psuser [username1[ username2...]])
+    X-command line flag to cause specified usernames to be added to the
+        list of users whose processes not to display -- without any
+        supplied username(s), assume current user
+        (-psnotuser [username1[ username2...]])
+    X-if none of the userlist-related command line flags are given, the
+        program defaults to showing only the current user's processes if
+        not running the program as root -- root sees all processes by
+        default -- current username is determined by looking at the
+        environment variables PSDOOMUSER, LOGNAME, USER, and USERNAME in
+        that order
+X-ensure that demo playing and recording do not use the 'ps' portion of
+    the program
+X-the demo that plays immediately after ending a game (options->end game)
+    on a level with pid monsters is messed up; fix it
+?-use c functions like setpriority() and kill() rather than the
+    system() call (would this speed things up significantly?) 
+--put command line options into an in-game menu
+--ability to have multi-admin netgames
+--ability to administer processes on a machine other than the one running
+    psdoom
+--more general format for custom level areas for pid monster spawning
+  --'PSINFO' lump in wads tells engine where to spawn pid monsters and on
+      what level(s)
+  --current behavior is used if no PSINFO lumps are given
+    NOTE: format of this textual lump is sorta in my head: one lump
+          specifies all maps and coordinates -- ExMy or MAPxx lines
+          seperate coordinate grouping lines within the lump
+          {ExMy or MAPxx}, {R, A, or U}     (one of these lines per level)
+            * to denote which map the info is for and the method by which
+              processes are placed in the spawnboxes of that level
+
+            * 'R' tells psdoom to spawn pid monsters in a
+              round-robin-esque manner among the given spawnboxes:
+              pid #'s are mod'ed by the total number of spawnboxes on
+              that level and the pid monster is spawned in the resulting
+              numbered box
+              ie. pid# 1432 is being spawned on a level with 5 boxes:
+              1432%5 = 2; pid monster will be spawned in the third
+              (0, 1, 2) box listed in the lump
+
+            * 'A' tells psdoom to use the relative area of the spawnboxes
+              to determine the chances of spawning a pid monster in each
+
+            * 'U' tells psdoom that there are user-specified percentages
+              for determining chances of pid monster spawning for the
+              spawnboxes
+
+          {x, y, dx, dy, nn}        (one or more of these lines per level)
+            * a point of origin and the length of the sides for a box (in
+              doom map units) on that level for processes to spawn in
+
+            * the final argument is a field that is only used if the 'U'
+              flag is given above: it gives the percent chance of a pid
+              monster spawning in this spawnbox
+              * if the running total of user-specified percentages becomes
+                greater than 100%, the remaining spawnboxes will not have
+                monsters spawn in them
+              * if the nn is not there for a given area, the remaining
+                part up to 100% is assigned to that spawnbox
+--make pid monsters less aggressive towards (afraid of?) player
+--pid text is not placed well when screen is not at largest or second
+    largest size; fix it
+--more info about processes
+  --monster type reflects cpu/mem usage
+  --more text information (space limited)
+    NOTE: perhaps could print more info as the monster gets closer
+          and takes up more of the view
+--shutdown/reboot machine with psdoom*.wad level exit switch(s)
+  NOTE: need to make a custom texture to notify user of this interface
+--type of weapon determines what signal to send with the kill command
+    on monster death (eg. pistol=kill -1, shotgun=kill -2, ...
+                                            plasma & BFG=kill -9 ???)
+  NOTE: rocket launcher probably not a good choice because of collateral
+        damage (maybe protect pid monsters?)
+O-modify xdlaunch (ps-xdlaunch) to run ps-xdoom
+  O-add psdoom-specific command line flags to ps-xdlaunch
+--incorporate the Back Orifice port of psdoom
+  --command line flag to use Back Orifice rather than local admining
+      (-psbo)
+O-support multiple operating systems (the ones xdoom supports)
+  --freebsd
+  X-linux
+  --openserver 5
+  --unixware 2
+  --unixware 7
+  O-solaris
+  --aix
+O-use ~/.psdoom rather than ~/.xdoom for savegames, config files, etc
+O-add references to psdoom in startup header text, X resources, and window
+    title bar

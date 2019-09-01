@@ -1,0 +1,297 @@
+.TH chocolate-doom.cfg 5
+.SH NAME
+chocolate-doom.cfg \- Chocolate Doom configuration file
+.SH DESCRIPTION
+.PP
+\fIchocolate-doom.cfg\fR
+is a configuration file for \fBchocolate-doom\fR(6).  This file acts
+as an auxiliary configuration file; the main configuration options
+are stored in \fBdefault.cfg\fR, which contains the same configuration
+options as Vanilla Doom (for compatibility).  \fIchocolate-doom.cfg\fR
+contains configuration options that are specific to Chocolate Doom
+only.
+.PP
+\fIchocolate-doom.cfg\fR is normally stored in the user's home directory,
+as \fI~/.chocolate-doom/chocolate-doom.cfg\fR.
+.PP
+The \fBchocolate-setup\fR(6) tool provides a simple to use front-end
+for editing \fIchocolate-doom.cfg\fR.
+.SH FILE FORMAT
+.PP
+The file format is the same as that used for \fBdefault.cfg\fR(5).
+.br
+
+.SH CONFIGURATION VARIABLES
+.TP
+\fBautoadjust_video_settings\fR
+If non-zero, video settings will be autoadjusted to a valid configuration when the screen_width and screen_height variables do not match any valid configuration. 
+.TP
+\fBfullscreen\fR
+If non-zero, the game will run in full screen mode.  If zero, the game will run in a window. 
+.TP
+\fBaspect_ratio_correct\fR
+If non-zero, the screen will be stretched vertically to display correctly on a square pixel video mode. 
+.TP
+\fBstartup_delay\fR
+Number of milliseconds to wait on startup after the video mode has been set, before the game will start.  This allows the screen to settle on some monitors that do not display an image for a brief interval after changing video modes. 
+.TP
+\fBscreen_width\fR
+Screen width in pixels.  If running in full screen mode, this is the X dimension of the video mode to use.  If running in windowed mode, this is the width of the window in which the game will run. 
+.TP
+\fBscreen_height\fR
+Screen height in pixels.  If running in full screen mode, this is the Y dimension of the video mode to use.  If running in windowed mode, this is the height of the window in which the game will run. 
+.TP
+\fBscreen_bpp\fR
+Color depth of the screen, in bits. 
+.TP
+\fBgrabmouse\fR
+If this is non-zero, the mouse will be "grabbed" when running in windowed mode so that it can be used as an input device. When running full screen, this has no effect. 
+.TP
+\fBnovert\fR
+If non-zero, all vertical mouse movement is ignored.  This emulates the behavior of the "novert" tool available under DOS that performs the same function. 
+.TP
+\fBmouse_acceleration\fR
+Mouse acceleration factor.  When the speed of mouse movement exceeds the threshold value (mouse_threshold), the speed is multiplied by this value. 
+.TP
+\fBmouse_threshold\fR
+Mouse acceleration threshold.  When the speed of mouse movement exceeds this threshold value, the speed is multiplied by an acceleration factor (mouse_acceleration). 
+.TP
+\fBsnd_samplerate\fR
+Sound output sample rate, in Hz.  Typical values to use are 11025, 22050, 44100 and 48000. 
+.TP
+\fBopl_io_port\fR
+The I/O port to use to access the OPL chip.  Only relevant when using native OPL music playback. 
+.TP
+\fBshow_endoom\fR
+If non-zero, the ENDOOM screen is displayed when exiting the game.  If zero, the ENDOOM screen is not displayed. 
+.TP
+\fBvanilla_savegame_limit\fR
+If non-zero, the Vanilla savegame limit is enforced; if the savegame exceeds 180224 bytes in size, the game will exit with an error.  If this has a value of zero, there is no limit to the size of savegames. 
+.TP
+\fBvanilla_demo_limit\fR
+If non-zero, the Vanilla demo size limit is enforced; the game exits with an error when a demo exceeds the demo size limit (128KiB by default).  If this has a value of zero, there is no limit to the size of demos. 
+.TP
+\fBvanilla_keyboard_mapping\fR
+If non-zero, the game behaves like Vanilla Doom, always assuming an American keyboard mapping.  If this has a value of zero, the native keyboard mapping of the keyboard is used. 
+.TP
+\fBvideo_driver\fR
+Name of the SDL video driver to use.  If this is an empty string, the default video driver is used. 
+.TP
+\fBplayer_name\fR
+Name to use in network games for identification.  This is only used on the "waiting" screen while waiting for the game to start. 
+.TP
+\fBjoystick_index\fR
+Joystick number to use; '0' is the first joystick.  A negative value ('-1') indicates that no joystick is configured. 
+.TP
+\fBjoystick_x_axis\fR
+Joystick axis to use to for horizontal (X) movement. 
+.TP
+\fBjoystick_x_invert\fR
+If non-zero, movement on the horizontal joystick axis is inverted. 
+.TP
+\fBjoystick_y_axis\fR
+Joystick axis to use to for vertical (Y) movement. 
+.TP
+\fBjoystick_y_invert\fR
+If non-zero, movement on the vertical joystick axis is inverted. 
+.TP
+\fBjoyb_strafeleft\fR
+Joystick button to strafe left. 
+.TP
+\fBjoyb_straferight\fR
+Joystick button to strafe right. 
+.TP
+\fBjoyb_prevweapon\fR
+Joystick button to cycle to the previous weapon. 
+.TP
+\fBjoyb_nextweapon\fR
+Joystick button to cycle to the next weapon. 
+.TP
+\fBmouseb_strafeleft\fR
+Mouse button to strafe left. 
+.TP
+\fBmouseb_straferight\fR
+Mouse button to strafe right. 
+.TP
+\fBmouseb_use\fR
+Mouse button to "use" an object, eg. a door or switch. 
+.TP
+\fBmouseb_backward\fR
+Mouse button to move backwards. 
+.TP
+\fBmouseb_prevweapon\fR
+Mouse button to cycle to the previous weapon. 
+.TP
+\fBmouseb_nextweapon\fR
+Mouse button to cycle to the next weapon. 
+.TP
+\fBdclick_use\fR
+If non-zero, double-clicking a mouse button acts like pressing the "use" key to use an object in-game, eg. a door or switch. 
+.TP
+\fBuse_libsamplerate\fR
+Controls whether libsamplerate support is used for performing sample rate conversions of sound effects.  Support for this must be compiled into the program. If zero, libsamplerate support is disabled.  If non-zero, libsamplerate is enabled. Increasing values roughly correspond to higher quality conversion; the higher the quality, the slower the conversion process.  Linear conversion = 1; Zero order hold = 2; Fast Sinc filter = 3; Medium quality Sinc filter = 4; High quality Sinc filter = 5. 
+.TP
+\fBkey_pause\fR
+Key to pause or unpause the game. 
+.TP
+\fBkey_menu_activate\fR
+Key that activates the menu when pressed. 
+.TP
+\fBkey_menu_up\fR
+Key that moves the cursor up on the menu. 
+.TP
+\fBkey_menu_down\fR
+Key that moves the cursor down on the menu. 
+.TP
+\fBkey_menu_left\fR
+Key that moves the currently selected slider on the menu left. 
+.TP
+\fBkey_menu_right\fR
+Key that moves the currently selected slider on the menu right. 
+.TP
+\fBkey_menu_back\fR
+Key to go back to the previous menu. 
+.TP
+\fBkey_menu_forward\fR
+Key to activate the currently selected menu item. 
+.TP
+\fBkey_menu_confirm\fR
+Key to answer 'yes' to a question in the menu. 
+.TP
+\fBkey_menu_abort\fR
+Key to answer 'no' to a question in the menu. 
+.TP
+\fBkey_menu_help\fR
+Keyboard shortcut to bring up the help screen. 
+.TP
+\fBkey_menu_save\fR
+Keyboard shortcut to bring up the save game menu. 
+.TP
+\fBkey_menu_load\fR
+Keyboard shortcut to bring up the load game menu. 
+.TP
+\fBkey_menu_volume\fR
+Keyboard shortcut to bring up the sound volume menu. 
+.TP
+\fBkey_menu_detail\fR
+Keyboard shortcut to toggle the detail level. 
+.TP
+\fBkey_menu_qsave\fR
+Keyboard shortcut to quicksave the current game. 
+.TP
+\fBkey_menu_endgame\fR
+Keyboard shortcut to end the game. 
+.TP
+\fBkey_menu_messages\fR
+Keyboard shortcut to toggle heads-up messages. 
+.TP
+\fBkey_menu_qload\fR
+Keyboard shortcut to load the last quicksave. 
+.TP
+\fBkey_menu_quit\fR
+Keyboard shortcut to quit the game. 
+.TP
+\fBkey_menu_gamma\fR
+Keyboard shortcut to toggle the gamma correction level. 
+.TP
+\fBkey_spy\fR
+Keyboard shortcut to switch view in multiplayer. 
+.TP
+\fBkey_menu_incscreen\fR
+Keyboard shortcut to increase the screen size. 
+.TP
+\fBkey_menu_decscreen\fR
+Keyboard shortcut to decrease the screen size. 
+.TP
+\fBkey_map_toggle\fR
+Key to toggle the map view. 
+.TP
+\fBkey_map_north\fR
+Key to pan north when in the map view. 
+.TP
+\fBkey_map_south\fR
+Key to pan south when in the map view. 
+.TP
+\fBkey_map_east\fR
+Key to pan east when in the map view. 
+.TP
+\fBkey_map_west\fR
+Key to pan west when in the map view. 
+.TP
+\fBkey_map_zoomin\fR
+Key to zoom in when in the map view. 
+.TP
+\fBkey_map_zoomout\fR
+Key to zoom out when in the map view. 
+.TP
+\fBkey_map_maxzoom\fR
+Key to zoom out the maximum amount when in the map view. 
+.TP
+\fBkey_map_follow\fR
+Key to toggle follow mode when in the map view. 
+.TP
+\fBkey_map_grid\fR
+Key to toggle the grid display when in the map view. 
+.TP
+\fBkey_map_mark\fR
+Key to set a mark when in the map view. 
+.TP
+\fBkey_map_clearmark\fR
+Key to clear all marks when in the map view. 
+.TP
+\fBkey_weapon1\fR
+Key to select weapon 1. 
+.TP
+\fBkey_weapon2\fR
+Key to select weapon 2. 
+.TP
+\fBkey_weapon3\fR
+Key to select weapon 3. 
+.TP
+\fBkey_weapon4\fR
+Key to select weapon 4. 
+.TP
+\fBkey_weapon5\fR
+Key to select weapon 5. 
+.TP
+\fBkey_weapon6\fR
+Key to select weapon 6. 
+.TP
+\fBkey_weapon7\fR
+Key to select weapon 7. 
+.TP
+\fBkey_weapon8\fR
+Key to select weapon 8. 
+.TP
+\fBkey_prevweapon\fR
+Key to cycle to the previous weapon. 
+.TP
+\fBkey_nextweapon\fR
+Key to cycle to the next weapon. 
+.TP
+\fBkey_message_refresh\fR
+Key to re-display last message. 
+.TP
+\fBkey_demo_quit\fR
+Key to quit the game when recording a demo. 
+.TP
+\fBkey_multi_msg\fR
+Key to send a message during multiplayer games. 
+.TP
+\fBkey_multi_msgplayer1\fR
+Key to send a message to the green player during multiplayer games. 
+.TP
+\fBkey_multi_msgplayer2\fR
+Key to send a message to the indigo player during multiplayer games. 
+.TP
+\fBkey_multi_msgplayer3\fR
+Key to send a message to the brown player during multiplayer games. 
+.TP
+\fBkey_multi_msgplayer4\fR
+Key to send a message to the red player during multiplayer games.
+
+.SH SEE ALSO
+\fBchocolate-doom\fR(6),
+\fBdefault.cfg\fR(5),
+\fBchocolate-setup\fR(6)
+

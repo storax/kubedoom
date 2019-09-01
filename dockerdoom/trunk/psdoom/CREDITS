@@ -1,0 +1,27 @@
+This list of credits for psDooM is in no particular order, save for id
+Software coming first.  I'll try to keep it more or less cronological.
+
+id Software: http://www.idsoftware.com
+
+  --For writing Doom in the first place.
+  --For giving eager programmers the GPL'd source.
+
+Udo Munk: um@compuserve.com
+
+  --For programming XDoom and maintaining it.
+
+<Everyone listed in Udo's CREDITS file>
+
+  --For helping out with XDoom.
+
+Dennis Chao: dlchao@cs.unm.edu
+
+  --For coming up with the brilliant idea of using Doom for process
+    management and wading through the XDoom code to implement it.
+
+Mark H. Hamilton: mark.h.hamilton@gtemail.net
+
+  --For coming up with the psDooM moniker "DooM for Sys A's".
+
+psDooM is currently maintained by:
+David Koppenhofer (djk@users.sourceforge.net)

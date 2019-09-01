@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=psdoom Setup
+Exec=psd-setup
+Icon=psd-setup
+Type=Application
+Comment=Setup tool for psdoom
+Categories=Settings;ConsoleOnly;

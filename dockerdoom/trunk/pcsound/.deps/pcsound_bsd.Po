@@ -1,0 +1,3 @@
+pcsound_bsd.o: pcsound_bsd.c ../config.h
+
+../config.h:

@@ -1,0 +1,311 @@
+psDooM is a process monitor and manager for *nix systems.
+It could be considered a graphical interface to the 'ps', 'renice', and
+'kill' commands.
+psDooM is based on XDoom, which is based on id Software's 'Doom'.
+
+This project started out as a proof-of-concept program for the web page
+"Doom as a tool for system administration" at
+http://www.cs.unm.edu/~dlchao/flake/doom by Dennis Chao at the University
+of New Mexico.  Dennis took the GPL'd sources of XDoom and added code so
+that processes running on the system would be instantiated as monsters,
+and wounding and killing them corresponds to renicing and killing the
+processes.
+
+I (David Koppenhofer) loved the idea of combining two of my favorite
+computer subjects (Linux and Doom).  Therefore, I began to enhance and
+customize the program.
+
+Goals of this project include:
+1) Add even more functionality to the process manager such as the ability
+   to send various kill signals and a way to shut down the machine
+   _cleanly_ from the program.
+2) Add networking support so multiple admins can work the machine at the
+   same time and/or remotely administer a machine.
+3) Everything else in the TODO file.
+4) Possibly make other interfaces besides one to 'ps', such as a file
+   management module.
+5) Make psDooM the de-facto standard for graphical process manipulation
+   on the *nix platform. :-)
+
+------------------------------------------------------------------------
+Supported Platforms
+------------------------------------------------------------------------
+
+psDooM has been tested on the following platforms:
+
+    Linux x86 2.0.x, X11, and [S]VGA
+    Solaris SPARC 2.6, X11
+
+psDooM can probably be made to work on any version of UNIX which runs
+XDoom.  It uses several system commands in order to do its work: 'ps',
+'renice', and 'kill'.  Formats of the commands _must_ be as follows:
+
+*** LINUX 'ps' ***
+ps h a x u OT  ==  no header, list other user's processes, list processes
+                   without a controlling terminal, in 'user format',
+                   sorted by process start time.  example output follows:
+root         1  0.0  0.9   764   388  ?  S    18:39   0:01 init
+root         2  0.0  0.0     0     0  ?  SW   18:39   0:00 (kflushd)
+root         3  0.0  0.0     0     0  ?  SW<  18:39   0:00 (kswapd)
+root        28  0.0  0.8   736   348  ?  S    18:39   0:00 /sbin/kerneld
+root       143  0.0  1.2   816   472  ?  S    18:39   0:00 syslogd
+root       152  0.0  1.3   896   528  ?  S    18:39   0:00 klogd
+daemon     163  0.0  1.0   784   404  ?  S    18:39   0:00 /usr/sbin/atd
+david      218  0.0  2.1  1280   856   1 S    18:39   0:00 -bash
+root       221  0.0  0.7   724   296   4 S    18:39   0:00 /sbin/mingetty tty4
+david      598  0.0  1.2   844   472   2 R    22:14   0:00 ps h a x u OT
+
+*** SOLARIS 'ps' ***
+/usr/bin/ps -A -o user= -o pid= -o tty= -o comm=
+     list all processes, show username, show process id, show terminal,
+     show user's command, suppress headers.  example output follows:
+root       1  ?  init
+root      28  ?  /sbin/kerneld
+root       2  ?  (kflushd)
+root       3  ?  (kswapd)
+root     152  ?  klogd
+root     143  ?  syslogd
+daemon   163  ?  /usr/sbin/atd
+david    598  2  ps
+david    218  1  -bash
+root     221  4  /sbin/mingetty
+
+renice +5 <pid>  == renices process number <pid> to +5 priority.
+
+kill -9 <pid>  == sends a SIGKILL to process number <pid>.
+
+------------------------------------------------------------------------
+Obtaining the Source
+------------------------------------------------------------------------
+
+The latest version of psDooM can be found on the homepage at:
+
+    http://psdoom.sourceforge.net/
+
+------------------------------------------------------------------------
+Problem Reports
+------------------------------------------------------------------------
+
+If you find a problem with psDooM, you can e-mail me at
+djk@users.sourceforge.net.  You could also go to the psDooM SourceForge
+Project Page at http://sourceforge.net/project/?group_id=3418
+and use the facilities there (like 'bug report', 'support request', etc).
+However, please be sure that it is a psDooM problem rather than an XDoom
+issue.  The easiest way to tell the difference is to run XDoom with the
+same level and options (if at all possible).  If the problem occurs there
+as well, it's XDoom's fault, not psDooM's.  Obviously, if the problem
+involves any of the psDooM-specific command line flags or 'pid monsters',
+it is a psDooM-related issue. :-)  I cannot guarantee that I can solve
+your problem.  I'm doing this in my spare time for the fun of it; this
+software is provided on AS IS basis.
+
+------------------------------------------------------------------------
+Building psDooM from Source
+------------------------------------------------------------------------
+
+If you're reading this file from the binary distribution, you don't need
+to know how to build psDooM from source.  Go on to the next section. :-)
+
+If you're intrested in building psDooM from source and you're reading
+this file, you've either untarred the psDooM sources or have successfully
+applied the psDooM patch to XDoom.
+See Udo's "INSTALL" file in ../xdoomsrc/doc for details on building from
+here on.
+
+Changes to the XDoom code are generally denoted by '*** PID BEGIN ***'
+and '*** PID END ***' in the source files.  The files pr_process.c and
+pr_process.h are new files for psDooM.
+
+------------------------------------------------------------------------
+Executing psDooM
+------------------------------------------------------------------------
+
+NOTE: Throughout the explanation, I'll refer to the program as 'psDooM',
+even though the executable you actually run will likely be called
+something else (like ps-sxdoom).
+
+If you can run XDoom, you're well on your way to running psDooM.
+Be sure to see the XDoom docs (and other Doom-related material) in
+../xdoomsrc/doc/ (or ../xdoomdoc/ if you're using the binary
+distribution), as it applies to psDooM also, with a few cavaets:
+* I have yet to test demo recording compatability with XDoom and other
+  Doom ports.
+* Save games aren't compatable with XDoom (and other ports, I imagine).
+* Netgames won't work on levels that have pid monsters in them, due to
+  consistancy check errors.  Netgames on levels without pid monsters
+  should work, but this is untested as well.
+* psDooM is installed into the directory /usr/local/games/psdoom rather
+  than /usr/local/games/xdoom.  Shell scripts are still installed in
+  /usr/local/bin.
+* psDooM looks for its default configuration files (.doomrc, .xdlaunchrc)
+  and savegame files (doomsav?.dsg) in ~/.psdoom rather than in ~/.xdoom.
+
+Now, with those out of the way, we can get to the good stuff. :-)
+
+psDooM can monitor processes with shareware Doom 1, registered Doom 1,
+Ultimate Doom, or Doom 2.  'Plutonia Experiment' and 'TNT - Evilution'
+will run, but no process monitoring will be done.
+
+The first level (either E1M1 or MAP01), and only the first level, will
+contain monsters that represent processes currently running on the machine
+('pid monsters').  The machine's process list is checked at regular
+intervals.  Processes that are new since the last check are spawned as new
+monsters, while processes no longer running on the machine are removed
+from the level.  Process monitoring is not done if playing on a level
+other than the first one or while recording/playing a demo.
+
+A 'pid monster' is identified by the text 'floating' in front of it.  This
+text denotes its process id number and the last 7 characters of the
+process name.  The text is not shown if the monster is too far away from
+the player or too close to the edge of the screen.
+
+Wounding a 'pid monster' corresponds to executing a 'renice +5' on the
+associated process.  Killing a 'pid monster' sends a 'kill -9' to the
+associated process.  Since the renice and kill actions are done by a
+system call, they are governed by the permissions of the user running
+psDooM.  For example, if a normal user, 'jschmoe', kills a 'pid monster'
+whose real process is owned by 'jdoe', nothing would happen to the
+underlying process on the machine because jschmoe doesn't have the rights
+to alter jdoe's processes.  The 'pid monster' that jschmoe killed will be
+resurrected in psDooM during the next process check.  The resurrection
+denotes that the process on the machine never really went away; its Doom
+representation was only temporarily stopped from moving around.
+
+In the original implementation of the program, 'pid monsters' could be
+killed not only by the program's user, but also by other 'pid monsters'
+and normal Doom monsters on the level.  The reasoning behind this behavior
+was that "on very heavily-loaded machines, it is not uncommon for the
+OS to kill random processes."  Unfortunately, the number of monsters
+in a given area must be depressingly small in order for them to avoid both
+intentional infighting and friendly fire.  Since monsters would tend to
+kill each other off until only a few remained in the area, the user was
+severely hampered in the ability to orderly control processes on the
+machine.  Therefore, the default behavior of psDooM is to ensure the
+player is the only character in the game who can wound and kill 'pid
+monsters'.  This avoids accidental process deaths from monster infighting.
+Unfortunately, it doesn't prevent accidental process deaths from a user's
+poor aim. ;-}  The original behavior of 'pid monsters' being as vunerable
+as other monsters may be enabled with the command line flag:
+
+ -nopssafety
+   Causes the 'pid monsters' to not be protected against damage from each
+   other, normal Doom monsters, and the environment.  Normally, only the
+   player may inflict damage on 'pid monsters'.
+
+Which processes are represented by default depends on whether you're
+running psDooM as the root user or not.  If you are root, then all
+processes are shown.  Normal users see only their own processes by
+default.  The current username is determined by looking at the environment
+variables PSDOOMUSER, LOGNAME, USER, and USERNAME (in that order).
+Changing these variables will _not_ change the permissions of your
+username with regard to process renicing and killing; they're just used to
+determine username for the 'userlist'-related options.  The default
+'userlist' behavior may be nullified by giving some command line arguments
+to psDooM.
+NOTE: specifying _any_ of these options will cause psDooM to ignore the
+default settings for the current username.  The list of users whose
+processes to show will start out empty.
+
+ -psallusers
+   Effectively adds every username to the list of users whose processes
+   to show.
+ -psuser [username [username]...]
+   Adds username(s) to the list of users whose processes to show.  If no
+   username is specified, the current username (as determined by the
+   environment variables listed above) is added to this list.
+ -psnotuser [username [username]...]
+   Adds username(s) to the list of users whose processes NOT to show.  If
+   no username is specified, the current username (as determined by the
+   environment variables listed above) is added to this list.
+
+Examples of 'userlist' command line flags:
+%ps-xdoom -psallusers
+   This command will show every user's processes.
+
+%ps-xdoom -psallusers -psuser jschmoe jdoe
+   The '-psuser jschmoe jdoe' is extraneous here; users jschmoe and jdoe
+   are included in '-psallusers'.
+
+%ps-xdoom -psallusers -psnotuser
+   This will show everybody's processes except your own.  Remember, your
+   username is determined automatically by psDooM according to what
+   PSDOOMUSER, LOGNAME, USER, or USERNAME is set to in the environment.
+
+%ps-xdoom -psnotuser jdoe
+   This will show no processes, even if you're running psDooM as root.
+   Remember, specifying any 'userlist' command line option causes the
+   defaults to not be used; the list of users whose processes to show
+   starts out empty.
+
+The 'pid monster' locations depend on what version of Doom you're using
+and whether you have the custom process management levels (available on
+the psDooM web site).
+
+If you have registered Doom 1, Ultimite Doom, or Doom 2, you can use a
+custom level designed for process management.  There is one level designed
+for Doom 1 (psdoom1.wad) and another designed for Doom 2 (psdoom2.wad).
+If those files are present (or linked to) in the program's directory and
+have the correct name (as given above), the level will automatically load
+as E1M1 or MAP01, unless suppressed with the command line flag:
+
+ -nopslev
+   Suppresses the automatic loading of the custom level psdoom*.wad and
+   makes psDooM assume pid monster coordinates for the stock E1M1 or
+   MAP01.  It has no effect if you don't have the custom level or if
+   you're using shareware Doom 1.
+
+NOTE: The command 'ps-xdoom -nopslev -file psdoom1.wad' will not work for
+process management.  While the custom level will be loaded, psDooM would
+assume E1M1 coordinates for the 'pid monster' placement.  The E1M1
+coordinates do not correlate to anywhere meaningful on the psdoom*.wad
+maps.
+
+Locations of the 'pid monsters' within the levels are as follows:
+
+For shareware Doom 1, and registered Doom 1 or Ultimite Doom without the
+custom level:
+  psDooM spawns the 'pid monsters' in the 'hidden' courtyard on E1M1.
+  To get there, go through the room with the zig-zag floor with poison
+  around it and open the miscolored wall on the right, before the door to
+  leave that room.
+
+For Doom 2 without the custom level:
+  psDooM spawns the 'pid monsters' in the 'hidden' courtyard on MAP01.
+  To get there, activate the switch to (and get on) the lift in the room
+  before the exit.  Then, once the lift raises, activate the rear wall and
+  walk into that secret alcove. When you leave the lift, a door to the
+  courtyard will have opened on the right side of the room, past the
+  window on the right.
+
+For the custom levels:
+  psDooM spawns you in a room with equiptment and weapons.  The switch
+  ahead of you exits the level, and the three doors take you to rooms
+  containing 'pid monsters'.
+
+There are several other command line flags that affect how psDooM runs:
+ -nopsmon
+   Disables process monitoring entirely.  Nice if you want to play an E1M1
+   or MAP01 level that isn't set up for process monitoring.
+ -nopsact
+   Disables the system calls to 'renice' and 'kill' when 'pid monsters'
+   are wounded and killed.  This is good if you only want to monitor
+   processes, not manage them.
+ -nomonsters.
+   Yes, there is a period at the end of this command.  It does the same
+   thing as the '-nomonsters' flag, but is persistant across new games and
+   level warps.
+   NOTE: 'pid monsters' are NOT affected by the '-nomonsters' and
+         '-nomonsters.' flags; use -nopsmon to turn them off instead.
+ -respawnitems
+   Like you think it may work, this flag causes items to respawn as they
+   do in '-altdeath' games (Invun, Invis, and dropped items don't 
+   respawn; everything else does).  This flag has no effect when recording
+   or playing a demo because it messes up timing.
+
+The XDoom distribution includes a graphical front-end to xdoom, called
+xdlaunch.  It allows the user to specify XDoom command line flags by
+clicking option boxes and using dropdown lists.  This utility has been
+renamed to ps-xdlaunch and modified to run psDooM.  Also, a place in the
+front-end was added so a user can manually type additional command line
+flags to pass to ps-xdoom.  psDooM-specific options can be shown by
+pressing a button in ps-xdlaunch.  This utility requires TCL/TK.

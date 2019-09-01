@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=psdoom
+Comment=psdoom-ng source port - psDooM with Chocolate Doom
+TryExec=psdoom
+Exec=psdoom
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver
+

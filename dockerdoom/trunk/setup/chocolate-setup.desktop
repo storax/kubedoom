@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Chocolate Doom Setup
+Exec=chocolate-setup
+Icon=chocolate-setup
+Type=Application
+Comment=Setup tool for Chocolate Doom
+Categories=Settings;ConsoleOnly;

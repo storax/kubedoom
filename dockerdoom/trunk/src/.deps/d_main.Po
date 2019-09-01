@@ -1,0 +1,267 @@
+d_main.o: d_main.c /usr/include/ctype.h /usr/include/features.h \
+ /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
+ /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/include/bits/byteswap.h /usr/include/xlocale.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include/stddef.h \
+ /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include/stdarg.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
+ /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+ /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
+ /usr/include/time.h /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/sigset.h /usr/include/bits/time.h \
+ /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+ /usr/include/alloca.h /usr/include/bits/stdlib.h /usr/include/string.h \
+ /usr/include/bits/string.h /usr/include/bits/string2.h \
+ /usr/include/bits/string3.h ../config.h deh_main.h doomtype.h \
+ /usr/include/inttypes.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/wchar.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+ /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+ /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+ doomfeatures.h md5.h doomdef.h /usr/include/strings.h doomkeys.h \
+ doomstat.h doomdata.h d_net.h d_player.h d_items.h p_pspr.h m_fixed.h \
+ tables.h info.h d_think.h p_mobj.h d_ticcmd.h dstrings.h d_englsh.h \
+ sounds.h d_iwad.h z_zone.h w_wad.h w_file.h w_merge.h s_sound.h \
+ v_video.h r_data.h r_defs.h r_state.h f_finale.h d_event.h f_wipe.h \
+ m_argv.h m_config.h m_misc.h m_menu.h p_saveg.h i_system.h i_timer.h \
+ i_video.h g_game.h hu_stuff.h wi_stuff.h st_stuff.h m_cheat.h am_map.h \
+ net_client.h net_defs.h net_dedicated.h net_query.h p_setup.h r_local.h \
+ r_main.h r_bsp.h r_segs.h r_plane.h r_things.h r_draw.h d_main.h \
+ pr_process.h
+
+/usr/include/ctype.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include/stddef.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/bits/stdio2.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/bits/stdlib.h:
+
+/usr/include/string.h:
+
+/usr/include/bits/string.h:
+
+/usr/include/bits/string2.h:
+
+/usr/include/bits/string3.h:
+
+../config.h:
+
+deh_main.h:
+
+doomtype.h:
+
+/usr/include/inttypes.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include-fixed/limits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/include-fixed/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/include/bits/xopen_lim.h:
+
+doomfeatures.h:
+
+md5.h:
+
+doomdef.h:
+
+/usr/include/strings.h:
+
+doomkeys.h:
+
+doomstat.h:
+
+doomdata.h:
+
+d_net.h:
+
+d_player.h:
+
+d_items.h:
+
+p_pspr.h:
+
+m_fixed.h:
+
+tables.h:
+
+info.h:
+
+d_think.h:
+
+p_mobj.h:
+
+d_ticcmd.h:
+
+dstrings.h:
+
+d_englsh.h:
+
+sounds.h:
+
+d_iwad.h:
+
+z_zone.h:
+
+w_wad.h:
+
+w_file.h:
+
+w_merge.h:
+
+s_sound.h:
+
+v_video.h:
+
+r_data.h:
+
+r_defs.h:
+
+r_state.h:
+
+f_finale.h:
+
+d_event.h:
+
+f_wipe.h:
+
+m_argv.h:
+
+m_config.h:
+
+m_misc.h:
+
+m_menu.h:
+
+p_saveg.h:
+
+i_system.h:
+
+i_timer.h:
+
+i_video.h:
+
+g_game.h:
+
+hu_stuff.h:
+
+wi_stuff.h:
+
+st_stuff.h:
+
+m_cheat.h:
+
+am_map.h:
+
+net_client.h:
+
+net_defs.h:
+
+net_dedicated.h:
+
+net_query.h:
+
+p_setup.h:
+
+r_local.h:
+
+r_main.h:
+
+r_bsp.h:
+
+r_segs.h:
+
+r_plane.h:
+
+r_things.h:
+
+r_draw.h:
+
+d_main.h:
+
+pr_process.h:

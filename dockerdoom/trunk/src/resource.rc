@@ -1,0 +1,22 @@
+1 ICON "../data/doom.ico"
+
+1 VERSIONINFO
+PRODUCTVERSION 2012, 02, 05-1, 6, 0, 0
+FILEVERSION 2012, 02, 05-1, 6, 0, 0
+FILETYPE 1
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "FileVersion", "2012.02.05-1.6.0"
+   VALUE "FileDescription", "psdoom 2012.02.05-1.6.0"
+   VALUE "InternalName", "psdoom"
+   VALUE "CompanyName", "orsonteodoro@yahoo.com"
+   VALUE "LegalCopyright", "Copyright (C) 1993-2012.  Licensed under GNU General Public License, version 2"
+   VALUE "ProductName", "psdoom"
+   VALUE "ProductVersion", "2012.02.05-1.6.0"
+  }
+ }
+}
+

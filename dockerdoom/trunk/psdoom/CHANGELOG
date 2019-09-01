@@ -1,0 +1,194 @@
+Changelog for psDooM:
+
+Release 2012.02.05 - Migrate psDooM into Chocoloate Doom
+  -Merge 2000.05.03-2000.05.03b psDooM patches into Chocolate Doom 1.6.0 
+   but reject branding, save file changes, xd-launch, versioning 
+   from psDooM.
+  -Rebrand Chocolate Doom to psdoom
+  -Fix linux detection broken by 2000.05.03a.  Solaris needs testing.
+
+Release 2000.05.03.b - Changes since 2000.05.03.a
+  -Changed shell scripts in 'contrib' dir to shorten command length when
+    displayed with 'ps'.
+  -Use ~/.psdoom rather than ~/.xdoom for savegames, config files, etc.
+    Users need to copy current .doomrc and .xdlaunchrc files to ~/.psdoom.
+  -Added references to psDooM in startup header text, X resources, and
+    window title bar.
+  -Modified xdlaunch (ps-xdlaunch) to run ps-xdoom.
+  -Added ability to pass psDooM-specific command line flags to ps-xdoom
+    through ps-xdlaunch.
+
+Release 2000.05.03.a - Changes since 2000.05.03
+  -Support for Solaris' version of 'ps'.
+  -Added command line flag that allows pid monsters to be damaged by
+    things other than the player.  This is the original behavior of the
+    program. (-nopssafety)
+    
+Release 2000.05.03 - Changes since 2000.02.21
+  -Moved project to SourceForge. (http://psdoom.sourceforge.net/)
+  -Changed distribution format and file name:
+    psdoom-YYYY.MM.DD-patch.tar.gz == patch to apply to latest XDoom.
+    psdoom-YYYY.MM.DD-src.tar.gz == source of the entire psDooM tree.
+    psdoom-YYYY.MM.DD-bin.tar.gz == linux-x86 psDooM binaries.
+    psdoom-YYYY.MM.DD-data.tar.gz == custom ps-management levels for use
+     with registered Doom, Ultimate Doom, or Doom ][.
+  -Executibles are now called ps-*doom (ie. ps-sxdoom) rather than
+    *doom.ps (ie. sxdoom.ps).
+  -'make install-<platform>' now installs psDooM.
+  -Installs into /usr/local/games/psdoom/ rather than into XDoom's
+    /usr/local/games/xdoom/
+  -Created install script for binary distribution.
+  -Created some psDooM documentation and a directory for it (psdoomdoc).
+  -Based on the 20000305 release of XDoom.
+  -Added command line flag to entirely disable 'ps' portion of the
+    program. (-nopsmon)
+  -Added command line flag to disable actual re-nice and kill of processes
+    for program interface demonstration purposes. (-nopsact)
+  -Added command line flag to make 'no monsters' persistant across new
+    games and level warping. (-nomonsters.) == no monsters, period :-)
+  -Pid monster spawning is not affected by the '-nomonsters' or 
+    '-nomonsters.' command line flags.
+  -Added command line flag to respawn items like in -altdeath games.
+    (-respawnitems)  It has no effect when recording or playing a demo.
+  -Added command line flag to cause every username to be added to
+    the list of users whose processes to display. (-psallusers)
+  -Added command line flag to cause specified usernames to be added to the
+    list of users whose processes to display.  Without any supplied
+    username(s), assume current user. (-psuser [username1[ username2...]])
+  -Added command line flag to cause specified usernames to be added to the
+    list of users whose processes not to display.  Without any supplied
+    username(s), assume current user.
+    (-psnotuser [username1[ username2...]])
+  -If none of the userlist-related command line flags are given, the
+    program defaults to showing only the current user's processes if not
+    running the program as root.  The root user sees all processes by
+    default.  The current username is determined by looking at the
+    environment variables PSDOOMUSER, LOGNAME, USER, and USERNAME in that
+    order.
+  -Demo playing and recording on E1M1 or MAP01 bypass the 'ps' portion
+    of the program.
+  -Fixed a bug that caused trouble with the first automatic demo after
+    ending a game from the menu (Options -> End Game).
+
+Release 2000.02.21 - Changes since 2000.02.01
+  -Save and restore is handled better now.  Pid monsters are not saved
+    to file and are properly respawned upon level load.
+  -Moved more code around.  Un-hid the call to cleanup_pid_list() within
+    the pr_check() routine.  Now, all calls to pr_check() are immediately
+    followed by a call to cleanup_pid_list().  Also, pr_check() is not
+    called if leveltime == 0.  That caused it to be called twice upon
+    level start: once for the level initialization and once for the first
+    gametick.
+  -Made custom levels for registered Doom 1, Ultimate Doom, and Doom 2.
+    *Any* level that has 3 1024x1024 areas for monster spawning such that
+    the bottom left coordinates of the squares are at (0,0); (2048,0); and
+    (4096,0), respectively, will work.
+  -The level loads automatically as the first map (either E1M1 or MAP01).
+    The custom Doom 1 map must be named psdoom1.wad and the custom Doom 2
+    map named psdoom2.wad for the automatic load to happen.
+  -Command line switch to suppress automatic loading of a custom process
+    management level.  Manage processes on default E1M1 or MAP01.
+    (-nopslev)
+  -If you're playing Doom 1, Ultimate Doom, or Doom 2, but DON'T have the
+    custom level loaded, pid monsters are spawned in the courtyard on the
+    first level (either E1M1 or MAP01).
+  -If you're not playing on the first map, and/or you're using add-on
+    maps 'Plutonia Experiment' or 'TNT - Evilution', the 'ps' portion of
+    the program is not used.
+  -Pid monsters spawn at least one radius inside the edge of their 
+    1024x1024 box on custom levels.  This prevents them from spawning
+    in the 'void space' outside the custom level map.
+
+Release 2000.02.01 - Changes since 2000.01.26
+  -Finished implementation of resurrecting pid monsters that died in
+    XDoom, but not on the machine.  It does an archvile-type respawn on
+    the monster if possible, or removes the body and does a respawn
+    otherwise.  This does NOT require the Doom ][ wad since we just use
+    the archvile's code; not its sprites.
+  -Fixed a bug that caused Doom to sometimes crash when it started a level
+    after pid monsters had been spawned.  cleanup_pid_list() tried
+    operating on memory that may have changed during the load.
+  -Began handling save and restore gracefully.  It's highly recommended
+    that you do *not* use save/restore yet.
+
+Release 2000.01.26 - Changes since 2000.01.18
+  -Made the 'ps' call include the 'a' and 'x' flags to doublecheck
+    for *all* machine processes (all users/no terminal). 
+  -Allowed the process manager itself to be spawned as a pid monster.
+  -Fixed pid monster kill % calculation.  I broke it when I moved
+    pid-specific code from P_SpawnMapThing() to add_new_process().
+  -Advanced process management implemented:
+    If a process is killed/removed outside XDoom, it is removed from
+     XDoom.
+    Update process names on exec() call (same pid, different name).
+     (ie. mingetty --> -bash after login)
+    Framework is there for implementing resurrection of a pid monster
+     who's represented process didn't die on the machine (it trapped the
+     kill signal or user doesn't have permission to kill it).
+  -Pid monsters don't spawn in/on other things.  Period.  If a newly
+    spawned monster would collide with something else after all the
+    repositioning (below), it is not spawned.  The next update of the
+    process list will try spawning again after whatever was blocking it
+    moved (hopefully).
+
+Release 2000.01.18 - Changes since 2000.01.14
+  -Only call pr_renice() on the monster's first damage.  Since subsequent
+    calls re-niced from +5 to +5, CPU cycles were being wasted.
+  -Pid monsters can only be damaged and killed by a player.  They
+    still act as if they were damaged by targeting whatever hit them.
+  -Put back the pid monster variety now that they can't kill each
+    other off. (daemons spawn as demons, others spawn as sargents)
+
+Release 2000.01.14 - Changes since 2000.01.04
+  -Moved pid-specific mobj initialization from P_SpawnMapThing() to
+    add_new_process().  This allows us to get rid of the pid-specific
+    enhancements to the mapthing_ext_t type, also.
+  -Better replacement code for mobj collisions in add_new_process().
+    Now, the monster is placed by altering its x,y by its radius and twice
+    its radius until it does not collide.  Spawn at original location if
+    the alternate placements don't work out.  Stupid ASCII art
+    representation:
+     y   y   y
+       x x x
+     y x X x y
+       x x x
+     y   y   y
+    (X is original location, x are tested first, then y are tested)
+
+Release 2000.01.04 - Changes since 1999.12.29
+  -Do not draw the monster's pid info if the whole monster is blocked
+    (by anything: wall, floor, and/or ceiling).
+  -Draw the monster's pid info at the top of the monster's sprite rather
+    than in the center of the screen.
+  -Don't consider the pid monsters in the end-of-level total kill %.
+  -Pass the mobj back to add_new_process() for further operations on it.
+  -In add_new_process(), check the newly created mobj for collisions.
+    If it is colliding, try re-positioning it to the north, east,
+    west, and south by the mobj's radius, respectively, until no
+    collisions are found.  Spawn at original location if the alternate 
+    placements don't work out.  Stupid ASCII art representation:
+       x
+     x X x
+       x
+    (X is original location, x are the tested locations)
+
+Release 1999.12.29 - Changes since 0.01d
+  -Fixed a compiler warning about modifying a const variable.
+  -Fixed a bug in pr_poll() which prevented new processes from
+    being spawned.
+  -Temporarily made all pid monsters spawn as demons to prevent them
+    from killing each other off while trying to develop code.
+  -Moved the call to pr_renice() after the check to see if pr_kill()
+    should be called.  After all, what's the point of re-nicing the
+    process if we're going to kill it anyway?
+  -Display the last 7 characters of the process name rather than the
+    first 7.  ie: '/sbin/mingetty' would appear as 'ingetty' rather
+    than '/sbin/m' 
+  -Do not draw the monster's pid info if the whole monster is blocked
+    by a wall or column that extends from floor to ceiling.
+
+Release 0.01d - Changes since 0.01c (???)
+  -Added process names in addition to the pid numbers.
+  -Don't draw the monster's pid info if the monster is too far away.
+  -Don't draw the monster's pid info if the monster is too close to
+    the edge of the screen.

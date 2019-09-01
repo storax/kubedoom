@@ -1,0 +1,182 @@
+.TH default.cfg 5
+.SH NAME
+default.cfg \- Chocolate Doom configuration file
+.SH DESCRIPTION
+.PP
+\fIdefault.cfg\fR
+is the configuration file for \fBchocolate-doom\fR(6).  The configuration
+options stored in the file are the same as those stored in the
+original DOS Vanilla Doom.
+Extra Chocolate Doom-specific options are stored in a separate
+configuration file, \fBchocolate-doom.cfg\fR.
+.PP
+\fIdefault.cfg\fR is normally stored in the user's home directory,
+in \fI~/.chocolate-doom/default.cfg\fR.
+.PP
+The \fBchocolate-setup\fR(6) tool provides a simple to use front-end
+for editing \fIdefault.cfg\fR.
+.br
+.SH FILE FORMAT
+The file is a plain-text file, consisting of a list of configuration
+options and their values, separated by whitespace.  Each option is stored
+on a separate line.  Options have different types; an option may have
+either an integer, floating point or string value.  If the option is
+of a string type, the value is surrounded by quotes (").
+.PP
+For example:
+.RS
+.PP
+integer_value                1
+.br
+integer_value2               1
+.br
+floating_point_value         4.2
+.br
+string_value                 "hello world"
+.RE
+.PP
+Invalid lines or comments in the file will be ignored, but it is advisable
+not to put them in the file; the file is rewritten from scratch every time
+the game exits, so any invalid lines or comments will be lost.
+.PP
+Some options are used for keyboard key bindings; these are stored as
+integer values containing the keyboard scan code of the key to be bound to.
+Boolean values are also stored as integers, with a value of zero usually
+indicating "false" and a non-zero value indicating "true".
+
+.SH CONFIGURATION VARIABLES
+.TP
+\fBmouse_sensitivity\fR
+Mouse sensitivity.  This value is used to multiply input mouse movement to control the effect of moving the mouse. The "normal" maximum value available for this through the in-game options menu is 9. A value of 31 or greater will cause the game to crash when entering the options menu. 
+.TP
+\fBsfx_volume\fR
+Volume of sound effects, range 0-15. 
+.TP
+\fBmusic_volume\fR
+Volume of in-game music, range 0-15. 
+.TP
+\fBshow_messages\fR
+If non-zero, messages are displayed on the heads-up display in the game ("picked up a clip", etc).  If zero, these messages are not displayed. 
+.TP
+\fBkey_right\fR
+Keyboard key to turn right. 
+.TP
+\fBkey_left\fR
+Keyboard key to turn left. 
+.TP
+\fBkey_up\fR
+Keyboard key to move forward. 
+.TP
+\fBkey_down\fR
+Keyboard key to move backward. 
+.TP
+\fBkey_strafeleft\fR
+Keyboard key to strafe left. 
+.TP
+\fBkey_straferight\fR
+Keyboard key to strafe right. 
+.TP
+\fBkey_fire\fR
+Keyboard key to fire the currently selected weapon. 
+.TP
+\fBkey_use\fR
+Keyboard key to "use" an object, eg. a door or switch. 
+.TP
+\fBkey_strafe\fR
+Keyboard key to turn on strafing.  When held down, pressing the key to turn left or right causes the player to strafe left or right instead. 
+.TP
+\fBkey_speed\fR
+Keyboard key to make the player run. 
+.TP
+\fBuse_mouse\fR
+If non-zero, mouse input is enabled.  If zero, mouse input is disabled. 
+.TP
+\fBmouseb_fire\fR
+Mouse button to fire the currently selected weapon. 
+.TP
+\fBmouseb_strafe\fR
+Mouse button to turn on strafing.  When held down, the player will strafe left and right instead of turning left and right. 
+.TP
+\fBmouseb_forward\fR
+Mouse button to move forward. 
+.TP
+\fBuse_joystick\fR
+If non-zero, joystick input is enabled. 
+.TP
+\fBjoyb_fire\fR
+Joystick button to fire the current weapon. 
+.TP
+\fBjoyb_strafe\fR
+Joystick button to fire the current weapon. 
+.TP
+\fBjoyb_use\fR
+Joystick button to "use" an object, eg. a door or switch. 
+.TP
+\fBjoyb_speed\fR
+Joystick button to make the player run. If this has a value of 20 or greater, the player will always run. 
+.TP
+\fBscreenblocks\fR
+Screen size, range 3-11. A value of 11 gives a full-screen view with the status bar not displayed.  A value of 10 gives a full-screen view with the status bar displayed. 
+.TP
+\fBdetaillevel\fR
+Screen detail.  Zero gives normal "high detail" mode, while a non-zero value gives "low detail" mode. 
+.TP
+\fBsnd_channels\fR
+Number of sounds that will be played simultaneously. 
+.TP
+\fBsnd_musicdevice\fR
+Music output device.  A non-zero value gives MIDI sound output, while a value of zero disables music. 
+.TP
+\fBsnd_sfxdevice\fR
+Sound effects device.  A value of zero disables in-game sound effects, a value of 1 enables PC speaker sound effects, while a value in the range 2-9 enables the "normal" digital sound effects. 
+.TP
+\fBsnd_sbport\fR
+SoundBlaster I/O port. Unused. 
+.TP
+\fBsnd_sbirq\fR
+SoundBlaster IRQ.  Unused. 
+.TP
+\fBsnd_sbdma\fR
+SoundBlaster DMA channel.  Unused. 
+.TP
+\fBsnd_mport\fR
+Output port to use for OPL MIDI playback.  Unused. 
+.TP
+\fBusegamma\fR
+Gamma correction level.  A value of zero disables gamma correction, while a value in the range 1-4 gives increasing levels of gamma correction. 
+.TP
+\fBchatmacro0\fR
+Multiplayer chat macro: message to send when alt+0 is pressed. 
+.TP
+\fBchatmacro1\fR
+Multiplayer chat macro: message to send when alt+1 is pressed. 
+.TP
+\fBchatmacro2\fR
+Multiplayer chat macro: message to send when alt+2 is pressed. 
+.TP
+\fBchatmacro3\fR
+Multiplayer chat macro: message to send when alt+3 is pressed. 
+.TP
+\fBchatmacro4\fR
+Multiplayer chat macro: message to send when alt+4 is pressed. 
+.TP
+\fBchatmacro5\fR
+Multiplayer chat macro: message to send when alt+5 is pressed. 
+.TP
+\fBchatmacro6\fR
+Multiplayer chat macro: message to send when alt+6 is pressed. 
+.TP
+\fBchatmacro7\fR
+Multiplayer chat macro: message to send when alt+7 is pressed. 
+.TP
+\fBchatmacro8\fR
+Multiplayer chat macro: message to send when alt+8 is pressed. 
+.TP
+\fBchatmacro9\fR
+Multiplayer chat macro: message to send when alt+9 is pressed.
+
+.SH SEE ALSO
+\fBchocolate-doom\fR(6),
+\fBchocolate-doom.cfg\fR(5),
+\fBchocolate-setup\fR(6)
+

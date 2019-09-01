@@ -1,0 +1,98 @@
+
+psdoom-ng is based on Chocolate Doom and psDooM code bases.  psDooM
+was based on xdoom.  Chocolate Doom's engine was chosen for several 
+reasons.  psdoom-ng was ment to be a lightweight process killer 
+comparable to 2D versions of process management.  Chocolate Doom uses 
+SDL which makes it compatible with Windows, MacOS.  We hope to port 
+psdoom-ng to popular platforms such as MacOS and Windows.
+
+psdoom-ng is a Doom source port which aims to behave as closely
+as possible to the original DOS Doom executables.
+
+psdoom-ng aims to:
+
+ * Be lightweight and simple process manager
+ * Crossplatform 3D Process Manager
+ * Allow system administrators actually kill programs
+ * Expose or visualize hidden and zombies processes
+ * Expose current users or ttys as avatars.
+
+== Setting up gameplay ==
+
+For instructions on how to set up psdoom-ng for play, see the
+INSTALL file.
+
+== Configuration File ==
+
+psdoom-ng is compatible with the DOS Doom configuration file
+(normally named 'default.cfg').  Existing configuration files for DOS
+Doom should therefore simply work out of the box.  However, Chocolate
+Doom also provides some extra settings.  These are stored in a
+separate file named 'chocolate-doom.cfg'.
+
+The configuration can be edited using the chocolate-setup tool.
+
+== Command-line options ==
+
+For a complete list of command-line options, see the CMDLINE file.
+
+== Playing TCs ==
+
+With Vanilla Doom there is no way to include sprites in PWAD files.
+psdoom-ng's '-file' command line option behaves exactly the same
+as Vanilla Doom, and trying to play TCs by adding the WAD files using
+'-file' will not work.
+
+Many Total Conversions (TCs) are distributed as a PWAD file which must
+be merged into the main IWAD.  Typically a copy of DEUSF.EXE is
+included which performs this merge.  psdoom-ng includes a new
+option, '-merge', which will simulate this merge.  Essentially, the
+WAD directory is merged in memory, removing the need to modify the
+IWAD on disk.
+
+To play TCs using psdoom-ng, run like this:
+
+  psdoom -merge thetc.wad
+
+Here are some examples:
+
+  psdoom -merge batman.wad -deh batman.deh vbatman.deh  (Batman Doom)
+  psdoom -merge aoddoom1.wad -deh aoddoom1.deh  (Army of Darkness Doom)
+
+== Other information ==
+
+ * More information, including information about how to play various
+   classic TCs, is available on the psdoom-ng website:
+
+     http://www.chocolate-doom.org/
+
+   You are encouraged to sign up and contribute any useful information
+   you may have regarding the port!
+
+ * psdoom-ng is not perfect.  Although it aims to accurately
+   emulate Vanilla Doom, some of the behavior of Vanilla Doom can be
+   very difficult to reproduce. Because of the nature of the project,
+   you may also encounter Vanilla Doom bugs; these are intentionally
+   present; see the NOT-BUGS file for more information.
+
+   New bug reports can be submitted to the psdoom-ng bug tracker
+   on Github.  See:
+
+     https://github.com/orsonteodoro/psdoom-ng
+
+ * Source code patches are welcome, but please follow the style
+   guidelines - see the file named HACKING included with the source
+   distribution.
+
+ * psdoom-ng is distributed under the GNU GPL.  See the COPYING
+   file for more information.
+
+ * Please send any feedback, questions or suggestions to
+   fraggle@gmail.com for questions about the Chocolate doom game engine.  
+   Or send messages to orsonteodoro@yahoo.com about psdoom-ng Thanks!
+
+ For detailed information about original intent of psDooM see 
+ psdoom/README.
+
+# vim: tw=70
+

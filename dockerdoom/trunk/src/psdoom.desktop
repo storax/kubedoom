@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=psdoom
+Exec=psdoom
+Icon=psdoom
+Type=Application
+Comment=psdoom-ng source port - psDooM with Chocolate Doom
+Categories=Game;ActionGame;

@@ -1,0 +1,219 @@
+== Command line parameters ==
+
+This is a list of the command line parameters supported by Chocolate Doom.
+A number of additional parameters are supported in addition to those
+present in Vanilla Doom.
+
+=== General options ===
+
+  -cdrom                  Save configuration data and savegames in 
+                          c:\doomdata, allowing play from CD. (windows 
+                          only) 
+
+  -config <file>          Load configuration from the specified file, 
+                          instead of default.cfg.  
+
+  -devparm                Developer mode. F1 saves a screenshot in the 
+                          current working directory.  
+
+  -episode <n>            Start playing on episode n (1-4)  
+
+  -extraconfig <file>     Load extra configuration from the specified 
+                          file, instead of chocolate-doom.cfg.  
+
+  -fast                   Monsters move faster.  
+
+  -file <files>           Load the specified PWAD files.  
+
+  -iwad <file>            Specify an IWAD file to use.  
+
+  -loadgame <s>           Load the game in slot s.  
+
+  -mb <mb>                Specify the heap size, in MiB (default 16).  
+
+  -mmap                   Use the OS's virtual memory subsystem to map WAD 
+                          files directly into memory.  
+
+  -noblit                 Disable blitting the screen.  
+
+  -nodraw                 Disable rendering the screen entirely.  
+
+  -nomonsters             Disable monsters.  
+
+  -nomusic                Disable music.  
+
+  -nosfx                  Disable sound effects.  
+
+  -nosound                Disable all sound output.  
+
+  -respawn                Monsters respawn after being killed.  
+
+  -servername <name>      When starting a network server, specify a name 
+                          for the server.  
+
+  -skill <skill>          Set the game skill, 1-5 (1: easiest, 5: 
+                          hardest). A skill of 0 disables all monsters.  
+
+  -turbo <x>              Turbo mode. The player's speed is multiplied by 
+                          x%. If unspecified, x defaults to 200. Values 
+                          are rounded up to 10 and down to 400.  
+
+  -warp [<x> <y> | <xy>]  Start a game immediately, warping to ExMy (Doom 
+                          1) or MAPxy (Doom 2)
+
+=== Compatibility ===
+
+  -donut <x> <y>          Use the specified magic values when emulating 
+                          behavior caused by memory overruns from 
+                          improperly constructed donuts. In Vanilla Doom 
+                          this can differ depending on the operating 
+                          system. The default (if this option is not 
+                          specified) is to emulate the behavior when 
+                          running under Windows 98.  
+
+  -gameversion <version>  Emulate a specific version of Doom. Valid values 
+                          are "1.9", "ultimate", "final", "final2", "hacx" 
+                          and "chex".  
+
+  -setmem <version>       Specify DOS version to emulate for NULL pointer 
+                          dereference emulation. Supported versions are: 
+                          dos622, dos71, dosbox. The default is to emulate 
+                          DOS 7.1 (Windows 98).  
+
+  -spechit <n>            Use the specified magic value when emulating 
+                          spechit overruns.
+
+=== Demo options ===
+
+  -longtics         Record a high resolution "Doom 1.91" demo.  
+
+  -maxdemo <size>   Specify the demo buffer size (KiB)  
+
+  -playdemo <demo>  Play back the demo named demo.lmp.  
+
+  -record <x>       Record a demo named x.lmp.  
+
+  -timedemo <demo>  Play back the demo named demo.lmp, determining the 
+                    framerate of the screen.
+
+=== Display options ===
+
+  -1               Don't scale up the screen.  
+
+  -2               Double up the screen to 2x its normal size.  
+
+  -3               Double up the screen to 3x its normal size.  
+
+  -8in32           Set the color depth of the screen to 32 bits per pixel. 
+                    
+
+  -bpp <bpp>       Specify the color depth of the screen, in bits per 
+                   pixel.  
+
+  -fullscreen      Run in fullscreen mode.  
+
+  -gdi             Use the Windows GDI driver instead of DirectX. (windows 
+                   only) 
+
+  -geometry <WxY>  Specify the screen mode (when running fullscreen) or 
+                   the window dimensions (when running in windowed mode).  
+
+  -grabmouse       Grab the mouse when running in windowed mode.  
+
+  -height <y>      Specify the screen height, in pixels.  
+
+  -nograbmouse     Don't grab the mouse when running in windowed mode.  
+
+  -nomouse         Disable the mouse.  
+
+  -nonovert        Enable vertical mouse movement.  
+
+  -novert          Disable vertical mouse movement.  
+
+  -width <x>       Specify the screen width, in pixels.  
+
+  -window          Run in a window.
+
+=== Networking options ===
+
+  -altdeath           Start a deathmatch 2.0 game. Weapons do not stay in 
+                      place and all items respawn after 30 seconds.  
+
+  -autojoin           Automatically search the local LAN for a multiplayer 
+                      server and join it.  
+
+  -avg                Austin Virtual Gaming: end levels after 20 minutes.  
+
+  -connect <address>  Connect to a multiplayer server running on the given 
+                      address.  
+
+  -deathmatch         Start a deathmatch game.  
+
+  -dedicated          Start a dedicated server, routing packets but not 
+                      participating in the game itself.  
+
+  -dup <n>            Reduce the resolution of the game by a factor of n, 
+                      reducing the amount of network bandwidth needed.  
+
+  -extratics <n>      Send n extra tics in every packet as insurance 
+                      against dropped packets.  
+
+  -ignoreversion      When running a netgame server, ignore version 
+                      mismatches between the server and the client. Using 
+                      this option may cause game desyncs to occur, or 
+                      differences in protocol may mean the netgame will 
+                      simply not function at all.  
+
+  -left               Run as the left screen in three screen mode.  
+
+  -localsearch        Search the local LAN for running servers.  
+
+  -oldsync            Use original game sync code.  
+
+  -port <n>           Use the specified UDP port for communications, 
+                      instead of the default (2342).  
+
+  -privateserver      When running a server, don't register with the 
+                      global master server. Implies -server.  
+
+  -query <address>    Query the status of the server running on the given 
+                      IP address.  
+
+  -right              Run as the right screen in three screen mode.  
+
+  -search             Query the Internet master server for a global list 
+                      of active servers.  
+
+  -server             Start a multiplayer server, listening for 
+                      connections.  
+
+  -solo-net           Start the game playing as though in a netgame with a 
+                      single player. This can also be used to play back 
+                      single player netgame demos.  
+
+  -timer <n>          For multiplayer games: exit each level after n 
+                      minutes.
+
+=== Dehacked and WAD merging ===
+
+  -aa <files>        Equivalent to "-af <files> -as <files>".  
+
+  -af <files>        Simulates the behavior of NWT's -af option, merging 
+                     flats into the main IWAD directory. Multiple files 
+                     may be specified.  
+
+  -as <files>        Simulates the behavior of NWT's -as option, merging 
+                     sprites into the main IWAD directory. Multiple files 
+                     may be specified.  
+
+  -deh <files>       Load the given dehacked patch(es)  
+
+  -merge <files>     Simulates the behavior of deutex's -merge option, 
+                     merging a PWAD into the main IWAD. Multiple files may 
+                     be specified.  
+
+  -nocheats          Ignore cheats in dehacked files.  
+
+  -nwtmerge <files>  Simulates the behavior of NWT's -merge option. 
+                     Multiple files may be specified.
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>psdoom</string>
+	<key>CFBundleExecutable</key>
+	<string>launcher</string>
+	<key>CFBundleGetInfoString</key>
+	<string>psdoom 2012.02.05-1.6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>app.icns</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>psdoom</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2012.02.05-1.6.0</string>
+	<key>CFBundleVersion</key>
+	<string>2012.02.05-1.6.0</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSMainNibFile</key>
+	<string>launcher</string>
+
+        <!-- file associations: -->
+
+        <key>CFBundleDocumentTypes</key>
+        <array>
+                <dict>
+                        <key>CFBundleTypeName</key>
+                        <string>Doom WAD file</string>
+                        <key>CFBundleTypeIconFile</key>
+                        <string>wadfile.icns</string>
+                        <key>CFBundleTypeRole</key>
+                        <string>Viewer</string>
+                        <key>CFBundleTypeExtensions</key>
+                        <array>
+                                <string>wad</string>
+                        </array>
+                </dict>
+                <dict>
+                        <key>CFBundleTypeName</key>
+                        <string>Dehacked patch</string>
+                        <key>CFBundleTypeIconFile</key>
+                        <string>wadfile.icns</string>
+                        <key>CFBundleTypeRole</key>
+                        <string>Viewer</string>
+                        <key>CFBundleTypeExtensions</key>
+                        <array>
+                                <string>deh</string>
+                        </array>
+                </dict>
+        </array>
+</dict>
+</plist>
