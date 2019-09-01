@@ -50,8 +50,11 @@ Now start a VNC viewer and connect to `localhost:5900`. The password is `1234`:
 ```console
 $ vncviewer viewer localhost
 ```
+You should now see DOOM!
 
-You should now see DOOM! Now if you want to get the job done quickly enter the
+![DOOM](assets/doom.jpg)
+
+Now if you want to get the job done quickly enter the
 cheat `idspispopd` and walk through the wall on your right. You should be
 greeted by your pods as little pink monsters. Press `CTRL` to fire. If the
 pistol is not your thing, cheat with `idkfa` and press `5` for a nice surprise.
