@@ -31,7 +31,7 @@ RUN apt-get install -y \
 
 # Setup doom
 ADD /dockerdoom /dockerdoom
-RUN cd /dockerdoom/trunk && ./configure --enable-static && make && make install
+RUN cd /dockerdoom/trunk && ./configure && make && make install
 
 FROM ubuntu
 RUN apt-get install -y \
