@@ -13,11 +13,30 @@ which was forked from psdoom.
 
 ## Usage
 
-Run the `storaxdev/kubedoom:0.1.0` docker image inside your cluster and expose
-port 5900. Then connect with a VNC viewer to it.
+Run `storaxdev/kubedoom:0.1.0` locally:
 
-You can quickly test it using [kind](https://github.com/kubernetes-sigs/kind).
-Create a cluster with the example config from this repository:
+```console
+$ docker run -p5900:5900 \
+  -v ~/.kube:/root/.kube \
+  --rm -it --name kubedoom \
+  storaxdev/kubedoom:0.1.0
+```
+
+Now start a VNC viewer and connect to `localhost:5900`. The password is `1234`:
+```console
+$ vncviewer viewer localhost
+```
+You should now see DOOM! Now if you want to get the job done quickly enter the
+cheat `idspispopd` and walk through the wall on your right. You should be
+greeted by your pods as little pink monsters. Press `CTRL` to fire. If the
+pistol is not your thing, cheat with `idkfa` and press `5` for a nice surprise.
+Pause the game with `ESC`.
+
+### Running Kubedoom inside Kubernetes
+
+See the example in the `/manifest` directory. You can quickly test it using
+[kind](https://github.com/kubernetes-sigs/kind). Create a cluster with the
+example config from this repository:
 
 ```console
 $ kind create cluster --config kind-config.yaml
@@ -47,16 +66,5 @@ deployment.apps/kubedoom created
 serviceaccount/kubedoom created
 clusterrolebinding.rbac.authorization.k8s.io/kubedoom created
 ```
-
-Now start a VNC viewer and connect to `localhost:5900`. The password is `1234`:
-```console
-$ vncviewer viewer localhost
-```
-You should now see DOOM! Now if you want to get the job done quickly enter the
-cheat `idspispopd` and walk through the wall on your right. You should be
-greeted by your pods as little pink monsters. Press `CTRL` to fire. If the
-pistol is not your thing, cheat with `idkfa` and press `5` for a nice surprise.
-Pause the game with `ESC`.
-
 Kubedoom requires a service account with permissions to list all pods and delete
 them and uses kubectl 1.15.3.
