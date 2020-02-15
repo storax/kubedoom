@@ -1,4 +1,4 @@
-FROM golang:1.12-alpine AS gobuild
+FROM golang:1.13-alpine AS gobuild
 
 WORKDIR /go/src/kubedoom
 ADD kubedoom.go .
@@ -15,7 +15,7 @@ RUN apt-get install -y \
   --no-install-recommends \
   wget ca-certificates
 RUN wget http://distro.ibiblio.org/pub/linux/distributions/slitaz/sources/packages/d/doom1.wad
-RUN wget -O /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl \
+RUN wget -O /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(wget -O- https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
   && chmod +x /usr/bin/kubectl
 
 FROM ubuntu AS ubuntu-build

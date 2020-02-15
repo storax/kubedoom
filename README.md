@@ -13,13 +13,13 @@ which was forked from psdoom.
 
 ## Usage
 
-Run `storaxdev/kubedoom:0.1.0` locally:
+Run `storaxdev/kubedoom:0.2.0` locally:
 
 ```console
 $ docker run -p5900:5900 \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.1.0
+  storaxdev/kubedoom:0.2.0
 ```
 
 Now start a VNC viewer and connect to `localhost:5900`. The password is `1234`:
@@ -41,17 +41,19 @@ example config from this repository:
 ```console
 $ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
- ✓ Ensuring node image (kindest/node:v1.15.0) 🖼
- ✓ Preparing nodes 📦📦
- ✓ Creating kubeadm config 📜
+ ✓ Ensuring node image (kindest/node:v1.17.0) 🖼
+ ✓ Preparing nodes 📦 📦
+ ✓ Writing configuration 📜
  ✓ Starting control-plane 🕹️
  ✓ Installing CNI 🔌
  ✓ Installing StorageClass 💾
  ✓ Joining worker nodes 🚜
-Cluster creation complete. You can now use the cluster with:
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
 
-export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
-kubectl cluster-info
+kubectl cluster-info --context kind-kind
+
+Not sure what to do next? 😅 Check out https://kind.sigs.k8s.io/docs/user/quick-start/
 ```
 
 This will spin up a 2 node cluster inside docker, with port 5900 exposed from
@@ -67,4 +69,4 @@ serviceaccount/kubedoom created
 clusterrolebinding.rbac.authorization.k8s.io/kubedoom created
 ```
 Kubedoom requires a service account with permissions to list all pods and delete
-them and uses kubectl 1.15.3.
+them and uses kubectl 1.17.3.
