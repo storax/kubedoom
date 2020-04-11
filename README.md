@@ -13,13 +13,13 @@ which was forked from psdoom.
 
 ## Usage
 
-Run `storaxdev/kubedoom:0.2.0` locally:
+Run `storaxdev/kubedoom:0.3.0` locally:
 
 ```console
 $ docker run -p5900:5900 \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.2.0
+  storaxdev/kubedoom:0.3.0
 ```
 
 Now start a VNC viewer and connect to `localhost:5900`. The password is `1234`:
@@ -41,7 +41,7 @@ example config from this repository:
 ```console
 $ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
- ✓ Ensuring node image (kindest/node:v1.17.0) 🖼
+ ✓ Ensuring node image (kindest/node:v1.18.0) 🖼
  ✓ Preparing nodes 📦 📦
  ✓ Writing configuration 📜
  ✓ Starting control-plane 🕹️
@@ -69,4 +69,4 @@ serviceaccount/kubedoom created
 clusterrolebinding.rbac.authorization.k8s.io/kubedoom created
 ```
 Kubedoom requires a service account with permissions to list all pods and delete
-them and uses kubectl 1.17.3.
+them and uses kubectl 1.18.1.
