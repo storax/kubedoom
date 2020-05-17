@@ -13,24 +13,40 @@ which was forked from psdoom.
 
 ## Usage
 
-Run `storaxdev/kubedoom:0.3.0` locally:
+Run `storaxdev/kubedoom:0.4.0` locally:
 
 ```console
-$ docker run -p5900:5900 \
+$ docker run -p5901:5900 \
+  --net=host \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.3.0
+  storaxdev/kubedoom:0.4.0
 ```
 
-Now start a VNC viewer and connect to `localhost:5900`. The password is `1234`:
+Now start a VNC viewer and connect to `localhost:5901`. The password is `1234`:
 ```console
-$ vncviewer viewer localhost
+$ vncviewer viewer localhost:5901
 ```
 You should now see DOOM! Now if you want to get the job done quickly enter the
 cheat `idspispopd` and walk through the wall on your right. You should be
 greeted by your pods as little pink monsters. Press `CTRL` to fire. If the
 pistol is not your thing, cheat with `idkfa` and press `5` for a nice surprise.
 Pause the game with `ESC`.
+
+### Killing namespaces
+
+Kubedoom now also supports killing namespaces [in case you have too many of
+them](https://github.com/storax/kubedoom/issues/5). Simply set the `-mode` flag
+to `namespaces`:
+
+```console
+$ docker run -p5901:5900 \
+  --net=host \
+  -v ~/.kube:/root/.kube \
+  --rm -it --name kubedoom \
+  storaxdev/kubedoom:0.4.0 \
+  -mode namespaces
+```
 
 ### Running Kubedoom inside Kubernetes
 
@@ -41,7 +57,7 @@ example config from this repository:
 ```console
 $ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
- ✓ Ensuring node image (kindest/node:v1.18.0) 🖼
+ ✓ Ensuring node image (kindest/node:v1.18.2) 🖼
  ✓ Preparing nodes 📦 📦
  ✓ Writing configuration 📜
  ✓ Starting control-plane 🕹️
@@ -68,5 +84,11 @@ deployment.apps/kubedoom created
 serviceaccount/kubedoom created
 clusterrolebinding.rbac.authorization.k8s.io/kubedoom created
 ```
+
+To connect run:
+```console
+$ vncviewer viewer localhost:5900
+```
+
 Kubedoom requires a service account with permissions to list all pods and delete
-them and uses kubectl 1.18.1.
+them and uses kubectl 1.18.2.

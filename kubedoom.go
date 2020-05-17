@@ -1,13 +1,14 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 	"time"
-	"strconv"
 )
 
 func hash(input string) int32 {
@@ -16,7 +17,7 @@ func hash(input string) int32 {
 	for _, char := range input {
 		hash = ((hash << 5) + hash + int32(char))
 	}
-	if (hash < 0) {
+	if hash < 0 {
 		hash = 0 - hash
 	}
 	return hash
@@ -55,7 +56,15 @@ func startCmd(cmdstring string) {
 	}
 }
 
-func getPods() []string {
+type Mode interface {
+	getEntities() []string
+	deleteEntity(string)
+}
+
+type podmode struct {
+}
+
+func (m podmode) getEntities() []string {
 	args := []string{"kubectl", "get", "pods", "-A", "-o", "go-template", "--template={{range .items}}{{.metadata.namespace}}/{{.metadata.name}} {{end}}"}
 	output := outputCmd(args)
 	outputstr := strings.TrimSpace(output)
@@ -63,7 +72,31 @@ func getPods() []string {
 	return pods
 }
 
-func socketLoop(listener net.Listener) {
+func (m podmode) deleteEntity(entity string) {
+	log.Printf("Pod to kill: %v", entity)
+	podparts := strings.Split(entity, "/")
+	cmd := exec.Command("/usr/bin/kubectl", "delete", "pod", "-n", podparts[0], podparts[1])
+	go cmd.Run()
+}
+
+type nsmode struct {
+}
+
+func (m nsmode) getEntities() []string {
+	args := []string{"kubectl", "get", "namespaces", "-o", "go-template", "--template={{range .items}}{{.metadata.name}} {{end}}"}
+	output := outputCmd(args)
+	outputstr := strings.TrimSpace(output)
+	namespaces := strings.Split(outputstr, " ")
+	return namespaces
+}
+
+func (m nsmode) deleteEntity(entity string) {
+	log.Printf("Namespace to kill: %v", entity)
+	cmd := exec.Command("/usr/bin/kubectl", "delete", "namespace", entity)
+	go cmd.Run()
+}
+
+func socketLoop(listener net.Listener, mode Mode) {
 	for true {
 		conn, err := listener.Accept()
 		if err != nil {
@@ -78,11 +111,11 @@ func socketLoop(listener net.Listener) {
 			}
 			bytes = bytes[0:n]
 			strbytes := strings.TrimSpace(string(bytes))
-			pods := getPods()
+			entities := mode.getEntities()
 			if strbytes == "list" {
-				for _, pod := range pods {
-					padding := strings.Repeat("\n", 255 - len(pod))
-					_, err = conn.Write([]byte(pod + padding))
+				for _, entity := range entities {
+					padding := strings.Repeat("\n", 255-len(entity))
+					_, err = conn.Write([]byte(entity + padding))
 					if err != nil {
 						log.Fatal("Could not write to socker file")
 					}
@@ -95,12 +128,9 @@ func socketLoop(listener net.Listener) {
 				if err != nil {
 					log.Fatal("Could not parse kill hash")
 				}
-				for _, pod := range pods {
-					if (hash(pod) == int32(killhash)) {
-						log.Printf("Pod to kill: %v", pod)
-						podparts := strings.Split(pod, "/")
-						cmd := exec.Command("/usr/bin/kubectl", "delete", "pod", "-n", podparts[0], podparts[1])
-						go cmd.Run()
+				for _, entity := range entities {
+					if hash(entity) == int32(killhash) {
+						mode.deleteEntity(entity)
 						break
 					}
 				}
@@ -112,6 +142,21 @@ func socketLoop(listener net.Listener) {
 }
 
 func main() {
+	var modeFlag string
+	flag.StringVar(&modeFlag, "mode", "pods", "What to kill pods|namespaces")
+
+	flag.Parse()
+
+	var mode Mode
+	switch modeFlag {
+	case "pods":
+		mode = podmode{}
+	case "namespaces":
+		mode = nsmode{}
+	default:
+		log.Fatalf("Mode should be pods or namespaces")
+	}
+
 	listener, err := net.Listen("unix", "/dockerdoom.socket")
 	if err != nil {
 		log.Fatalf("Could not create socket file")
@@ -125,5 +170,5 @@ func main() {
 
 	log.Print("Trying to start DOOM ...")
 	startCmd("/usr/bin/env DISPLAY=:99 /usr/local/games/psdoom -warp -E1M1")
-	socketLoop(listener)
+	socketLoop(listener, mode)
 }
