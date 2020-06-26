@@ -512,7 +512,7 @@ static void LoadDefaultCollection(default_collection_t *collection)
     
     while (!feof(f))
     {
-        if (fscanf (f, "%79s %[^\n]\n", defname, strparm) != 2)
+        if (fscanf (f, "%79s %99[^\n]\n", defname, strparm) != 2)
         {
             // This line doesn't match
           
