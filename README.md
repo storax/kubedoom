@@ -13,37 +13,37 @@ which was forked from psdoom.
 
 ## Running Locally
 
-In order to run locally you will need to 
+In order to run locally you will need to
 
-1. Run the kubedoom container 
+1. Run the kubedoom container
 2. Attach a VNC client to the appropriate port (5901)
 
 ### With Docker
 
-Run `storaxdev/kubedoom:0.4.0` with docker locally:
+Run `storaxdev/kubedoom:0.5.0` with docker locally:
 
 ```console
 $ docker run -p5901:5900 \
   --net=host \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.4.0
+  storaxdev/kubedoom:0.5.0
 ```
 
 ### With Podman
 
-Run `storaxdev/kubedoom:0.4.0` with podman locally:
+Run `storaxdev/kubedoom:0.5.0` with podman locally:
 
 ```console
 $ podman run -it -p5901:5900/tcp \
   -v ~/.kube:/tmp/.kube --security-opt label=disable \
-  --env "KUBECONFIG=/tmp/.kube/config" --name kubedoom 
-  storaxdev/kubedoom:0.4.0 
+  --env "KUBECONFIG=/tmp/.kube/config" --name kubedoom
+  storaxdev/kubedoom:0.5.0
 ```
 
 ### Attaching a VNC Client
 
-Now start a VNC viewer and connect to `localhost:5901`. The password is `1234`:
+Now start a VNC viewer and connect to `localhost:5901`. The password is `idbehold`:
 ```console
 $ vncviewer viewer localhost:5901
 ```
@@ -64,7 +64,7 @@ $ docker run -p5901:5900 \
   --net=host \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.4.0 \
+  storaxdev/kubedoom:0.5.0 \
   -mode namespaces
 ```
 
@@ -77,7 +77,7 @@ example config from this repository:
 ```console
 $ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
- ✓ Ensuring node image (kindest/node:v1.18.2) 🖼
+ ✓ Ensuring node image (kindest/node:v1.19.1) 🖼
  ✓ Preparing nodes 📦 📦
  ✓ Writing configuration 📜
  ✓ Starting control-plane 🕹️
@@ -89,7 +89,7 @@ You can now use your cluster with:
 
 kubectl cluster-info --context kind-kind
 
-Not sure what to do next? 😅 Check out https://kind.sigs.k8s.io/docs/user/quick-start/
+Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/
 ```
 
 This will spin up a 2 node cluster inside docker, with port 5900 exposed from
@@ -97,7 +97,6 @@ the worker node. Then run kubedoom inside the cluster by applying the manifest
 provided in this repository:
 
 ```console
-$ export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
 $ kubectl apply -f manifest/
 namespace/kubedoom created
 deployment.apps/kubedoom created
@@ -111,4 +110,4 @@ $ vncviewer viewer localhost:5900
 ```
 
 Kubedoom requires a service account with permissions to list all pods and delete
-them and uses kubectl 1.18.2.
+them and uses kubectl 1.19.2.

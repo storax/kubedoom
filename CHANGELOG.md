@@ -1,3 +1,10 @@
+# 0.5.0
+
+* New image storaxdev/kubedoom:1.0.0
+* New default VNC password is `idbehold`. 
+* Update kubernetes to 1.19.1
+* Update to Ubuntu 20.10
+
 # 0.4.0
 
 * New image storadev/kubedoom:0.4.0

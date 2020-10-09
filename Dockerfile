@@ -4,7 +4,7 @@ WORKDIR /go/src/kubedoom
 ADD kubedoom.go .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o kubedoom .
 
-FROM ubuntu:19.10 AS ubuntu
+FROM ubuntu:20.10 AS ubuntu
 # make sure the package repository is up to date
 RUN apt-get update
 
@@ -46,7 +46,7 @@ RUN apt-get install -y \
 WORKDIR /root/
 
 # Setup a password
-RUN mkdir ~/.vnc && x11vnc -storepasswd 1234 ~/.vnc/passwd
+RUN mkdir ~/.vnc && x11vnc -storepasswd idbehold ~/.vnc/passwd
 
 COPY --from=ubuntu-deps /doom1.wad .
 COPY --from=ubuntu-deps /usr/bin/kubectl /usr/bin/
