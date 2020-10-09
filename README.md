@@ -11,9 +11,16 @@ which was forked from psdoom.
 
 ![DOOM](assets/doom.jpg)
 
-## Usage
+## Running Locally
 
-Run `storaxdev/kubedoom:0.4.0` locally:
+In order to run locally you will need to 
+
+1. Run the kubedoom container 
+2. Attach a VNC client to the appropriate port (5901)
+
+### With Docker
+
+Run `storaxdev/kubedoom:0.4.0` with docker locally:
 
 ```console
 $ docker run -p5901:5900 \
@@ -22,6 +29,19 @@ $ docker run -p5901:5900 \
   --rm -it --name kubedoom \
   storaxdev/kubedoom:0.4.0
 ```
+
+### With Podman
+
+Run `storaxdev/kubedoom:0.4.0` with podman locally:
+
+```console
+$ podman run -it -p5901:5900/tcp \
+  -v ~/.kube:/tmp/.kube --security-opt label=disable \
+  --env "KUBECONFIG=/tmp/.kube/config" --name kubedoom 
+  storaxdev/kubedoom:0.4.0 
+```
+
+### Attaching a VNC Client
 
 Now start a VNC viewer and connect to `localhost:5901`. The password is `1234`:
 ```console
