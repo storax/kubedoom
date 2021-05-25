@@ -104,6 +104,15 @@ serviceaccount/kubedoom created
 clusterrolebinding.rbac.authorization.k8s.io/kubedoom created
 ```
 
+or
+
+```
+kubectl apply \
+ -f https://raw.githubusercontent.com/storax/kubedoom/master/manifest/00namespace.yaml \
+ -f https://raw.githubusercontent.com/storax/kubedoom/master/manifest/rbac.yaml \
+ -f https://raw.githubusercontent.com/storax/kubedoom/master/manifest/deployment.yaml
+```
+
 To connect run:
 ```console
 $ vncviewer viewer localhost:5900
