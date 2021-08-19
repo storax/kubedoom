@@ -174,6 +174,6 @@ func main() {
 	log.Print("You can now connect to it with a VNC viewer at port 5900")
 
 	log.Print("Trying to start DOOM ...")
-	startCmd("/usr/bin/env DISPLAY=:99 /usr/local/games/psdoom -warp -E1M1")
+	startCmd("/usr/bin/env DISPLAY=:99 /usr/local/games/psdoom -warp -E1M1 -skill 1 -nomouse")
 	socketLoop(listener, mode)
 }
