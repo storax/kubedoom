@@ -25,7 +25,7 @@ func hash(input string) int32 {
 
 func runCmd(cmdstring string) {
 	parts := strings.Split(cmdstring, " ")
-	cmd := exec.Command(parts[0], parts[1:len(parts)]...)
+	cmd := exec.Command(parts[0], parts[1:]...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err := cmd.Run()
@@ -35,7 +35,7 @@ func runCmd(cmdstring string) {
 }
 
 func outputCmd(argv []string) string {
-	cmd := exec.Command(argv[0], argv[1:len(argv)]...)
+	cmd := exec.Command(argv[0], argv[1:]...)
 	cmd.Stderr = os.Stderr
 	output, err := cmd.Output()
 	if err != nil {
@@ -46,7 +46,7 @@ func outputCmd(argv []string) string {
 
 func startCmd(cmdstring string) {
 	parts := strings.Split(cmdstring, " ")
-	cmd := exec.Command(parts[0], parts[1:len(parts)]...)
+	cmd := exec.Command(parts[0], parts[1:]...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
@@ -65,7 +65,12 @@ type podmode struct {
 }
 
 func (m podmode) getEntities() []string {
-	args := []string{"kubectl", "get", "pods", "-A", "-o", "go-template", "--template={{range .items}}{{.metadata.namespace}}/{{.metadata.name}} {{end}}"}
+	var args []string
+	if namespace, exists := os.LookupEnv("NAMESPACE"); exists {
+		args = []string{"kubectl", "get", "pods", "--namespace", namespace, "-o", "go-template", "--template={{range .items}}{{.metadata.namespace}}/{{.metadata.name}} {{end}}"}
+	} else {
+		args = []string{"kubectl", "get", "pods", "-A", "-o", "go-template", "--template={{range .items}}{{.metadata.namespace}}/{{.metadata.name}} {{end}}"}
+	}
 	output := outputCmd(args)
 	outputstr := strings.TrimSpace(output)
 	pods := strings.Split(outputstr, " ")
@@ -97,7 +102,7 @@ func (m nsmode) deleteEntity(entity string) {
 }
 
 func socketLoop(listener net.Listener, mode Mode) {
-	for true {
+	for {
 		conn, err := listener.Accept()
 		if err != nil {
 			panic(err)
@@ -169,6 +174,6 @@ func main() {
 	log.Print("You can now connect to it with a VNC viewer at port 5900")
 
 	log.Print("Trying to start DOOM ...")
-	startCmd("/usr/bin/env DISPLAY=:99 /usr/local/games/psdoom -warp -E1M1")
+	startCmd("/usr/bin/env DISPLAY=:99 /usr/local/games/psdoom -warp -E1M1 -skill 1 -nomouse")
 	socketLoop(listener, mode)
 }

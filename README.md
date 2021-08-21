@@ -30,6 +30,8 @@ $ docker run -p5901:5900 \
   storaxdev/kubedoom:0.5.0
 ```
 
+Optionally, if you set `-e NAMESPACE={your namespace}` you can limit Kubedoom to deleting pods in a single namespace
+
 ### With Podman
 
 Run `storaxdev/kubedoom:0.5.0` with podman locally:
@@ -97,7 +99,7 @@ the worker node. Then run kubedoom inside the cluster by applying the manifest
 provided in this repository:
 
 ```console
-$ kubectl apply -f manifest/
+$ kubectl apply -k manifest/
 namespace/kubedoom created
 deployment.apps/kubedoom created
 serviceaccount/kubedoom created
