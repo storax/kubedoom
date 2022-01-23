@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,8 +19,11 @@ spec:
       hostNetwork: true
       serviceAccountName: kubedoom
       containers:
-      - image: storaxdev/kubedoom:0.5.0
-        name: kubedoom
-        ports:
-        - containerPort: 5900
-          name: vnc
+        - image: ghcr.io/storax/kubedoom:latest
+          env:
+            - name: NAMESPACE
+              value: default
+          name: kubedoom
+          ports:
+            - containerPort: 5900
+              name: vnc
