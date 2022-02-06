@@ -20,27 +20,27 @@ In order to run locally you will need to
 
 ### With Docker
 
-Run `storaxdev/kubedoom:0.5.0` with docker locally:
+Run `ghcr.io/storax/kubedoom:latest` with docker locally:
 
 ```console
 $ docker run -p5901:5900 \
   --net=host \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.5.0
+  ghcr.io/storax/kubedoom:latest
 ```
 
 Optionally, if you set `-e NAMESPACE={your namespace}` you can limit Kubedoom to deleting pods in a single namespace
 
 ### With Podman
 
-Run `storaxdev/kubedoom:0.5.0` with podman locally:
+Run `ghcr.io/storax/kubedoom:latest` with podman locally:
 
 ```console
 $ podman run -it -p5901:5900/tcp \
   -v ~/.kube:/tmp/.kube --security-opt label=disable \
   --env "KUBECONFIG=/tmp/.kube/config" --name kubedoom
-  storaxdev/kubedoom:0.5.0
+  ghcr.io/storax/kubedoom:latest
 ```
 
 ### Attaching a VNC Client
@@ -66,7 +66,7 @@ $ docker run -p5901:5900 \
   --net=host \
   -v ~/.kube:/root/.kube \
   --rm -it --name kubedoom \
-  storaxdev/kubedoom:0.5.0 \
+  ghcr.io/storax/kubedoom:latest \
   -mode namespaces
 ```
 
@@ -79,7 +79,7 @@ example config from this repository:
 ```console
 $ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
- ✓ Ensuring node image (kindest/node:v1.19.1) 🖼
+ ✓ Ensuring node image (kindest/node:v1.23.0) 🖼
  ✓ Preparing nodes 📦 📦
  ✓ Writing configuration 📜
  ✓ Starting control-plane 🕹️
@@ -112,4 +112,16 @@ $ vncviewer viewer localhost:5900
 ```
 
 Kubedoom requires a service account with permissions to list all pods and delete
-them and uses kubectl 1.19.2.
+them and uses kubectl 1.23.2.
+
+## Building Kubedoom
+
+The repository contains a Dockerfile to build the kubedoom image. You have to
+specify your systems architecture as the `TARGETARCH` build argument. For
+example `amd64` or `arm64`.
+
+```console
+$ docker build --build-arg=TARGETARCH=amd64 -t kubedoom .
+```
+
+To change the default VNC password, use `--build-arg=VNCPASSWORD=differentpw`.

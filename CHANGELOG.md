@@ -1,3 +1,12 @@
+# 0.6.0
+* New image ghcr.io/storax/kubedoom:0.6.0
+* Latest image available as ghcr.io/storax/kubedoom:latest.
+* Add support for building on different architectures.
+* Update kubernetes to 1.23.2
+* Update to Ubuntu 21.10
+* Github Actions for building the image.
+* VNC password can be configured during build via the `VNCPASSWORD` build argument.
+
 # 0.5.0
 
 * New image storaxdev/kubedoom:1.0.0
