@@ -42,6 +42,7 @@ COPY --from=build-kubedoom /go/src/kubedoom/kubedoom /build/usr/bin
 COPY --from=build-doom /usr/local/games/psdoom /build/usr/local/games
 
 FROM ubuntu:21.10
+ARG VNCPASSWORD=idbehold
 RUN apt-get update && apt-get install -y \
   -o APT::Install-Suggests=0 \
   --no-install-recommends \
@@ -51,7 +52,7 @@ RUN apt-get update && apt-get install -y \
   xvfb \
   netcat-openbsd \
   && rm -rf /var/lib/apt/lists/*
-RUN mkdir /root/.vnc && x11vnc -storepasswd idbehold /root/.vnc/passwd
+RUN mkdir /root/.vnc && x11vnc -storepasswd "${VNCPASSWORD}" /root/.vnc/passwd
 COPY --from=build-converge /build /
 WORKDIR /root
 ENTRYPOINT ["/usr/bin/kubedoom"]
