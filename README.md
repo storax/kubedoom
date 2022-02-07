@@ -70,7 +70,7 @@ $ docker run -p5901:5900 \
   -mode namespaces
 ```
 
-### Running Kubedoom inside Kubernetes
+### Running Kubedoom inside Kubernetes with Kind
 
 See the example in the `/manifest` directory. You can quickly test it using
 [kind](https://github.com/kubernetes-sigs/kind). Create a cluster with the
@@ -110,6 +110,38 @@ To connect run:
 ```console
 $ vncviewer viewer localhost:5900
 ```
+
+
+### Running Kubedoom inside Kubernetes with minikube and helm(3)
+
+To run in minikube run the commands below
+```
+$kubectl create ns kubedoom
+
+$helm install kubedoom helm/kubedoom -n kubedoom
+```
+Once everything is up and running inside your cluster, you will need to port forward by getting the pod and running kubectl port-forward.
+
+```
+$ kubectl get pods -n kubedoom
+NAME                                       READY   STATUS    RESTARTS   AGE
+kubedoom-kubedoom-chart-676bcc5c9c-xkwpp   1/1     Running   0          2m29s
+
+
+$kubectl port-forward  kubedoom-kubedoom-chart-676bcc5c9c-xkwpp 5900:5900 -n kubedoom
+Forwarding from 127.0.0.1:5900 -> 5900
+Forwarding from [::1]:5900 -> 5900
+```
+
+Finally you can run
+`sh
+vncviewer viewer localhost:5900
+`
+_Note: Due to clusteradmin role and none filtering, kube-system pods will be shown as enemies.
+Be careful what you kill in game._
+
+
+
 
 Kubedoom requires a service account with permissions to list all pods and delete
 them and uses kubectl 1.23.2.
