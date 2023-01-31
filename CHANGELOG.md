@@ -1,3 +1,6 @@
+# 0.6.1
+* Update to Ubuntu 22.10
+
 # 0.6.0
 * New image ghcr.io/storax/kubedoom:0.6.0
 * Latest image available as ghcr.io/storax/kubedoom:latest.
