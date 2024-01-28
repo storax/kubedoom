@@ -1,12 +1,13 @@
 # Kube DOOM
-## Kill Kubernetes pods using Id's Doom!
+
+## Kill Kubernetes pods using Id's Doom
 
 The next level of chaos engineering is here! Kill pods inside your Kubernetes
 cluster by shooting them in Doom!
 
 This is a fork of the excellent
 [gideonred/dockerdoomd](https://github.com/gideonred/dockerdoomd) using a
-slightly modified Doom, forked from https://github.com/gideonred/dockerdoom,
+slightly modified Doom, forked from <https://github.com/gideonred/dockerdoom>,
 which was forked from psdoom.
 
 ![DOOM](assets/doom.jpg)
@@ -46,9 +47,11 @@ $ podman run -it -p5901:5900/tcp \
 ### Attaching a VNC Client
 
 Now start a VNC viewer and connect to `localhost:5901`. The password is `idbehold`:
+
 ```console
-$ vncviewer viewer localhost:5901
+vncviewer viewer localhost:5901
 ```
+
 You should now see DOOM! Now if you want to get the job done quickly enter the
 cheat `idspispopd` and walk through the wall on your right. You should be
 greeted by your pods as little pink monsters. Press `CTRL` to fire. If the
@@ -107,8 +110,9 @@ clusterrolebinding.rbac.authorization.k8s.io/kubedoom created
 ```
 
 To connect run:
+
 ```console
-$ vncviewer viewer localhost:5900
+vncviewer viewer localhost:5900
 ```
 
 Kubedoom requires a service account with permissions to list all pods and delete
@@ -121,7 +125,7 @@ specify your systems architecture as the `TARGETARCH` build argument. For
 example `amd64` or `arm64`.
 
 ```console
-$ docker build --build-arg=TARGETARCH=amd64 -t kubedoom .
+docker build --build-arg=TARGETARCH=amd64 -t kubedoom .
 ```
 
 To change the default VNC password, use `--build-arg=VNCPASSWORD=differentpw`.
