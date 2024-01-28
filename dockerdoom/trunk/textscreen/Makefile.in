@@ -279,7 +279,7 @@ $(am__aclocal_m4_deps):
 
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
-libtextscreen.a: $(libtextscreen_a_OBJECTS) $(libtextscreen_a_DEPENDENCIES) 
+libtextscreen.a: $(libtextscreen_a_OBJECTS) $(libtextscreen_a_DEPENDENCIES)
 	-rm -f libtextscreen.a
 	$(libtextscreen_a_AR) libtextscreen.a $(libtextscreen_a_OBJECTS) $(libtextscreen_a_LIBADD)
 	$(RANLIB) libtextscreen.a

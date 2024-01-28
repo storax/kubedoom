@@ -215,7 +215,7 @@ $(am__aclocal_m4_deps):
 
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
-libpcsound.a: $(libpcsound_a_OBJECTS) $(libpcsound_a_DEPENDENCIES) 
+libpcsound.a: $(libpcsound_a_OBJECTS) $(libpcsound_a_DEPENDENCIES)
 	-rm -f libpcsound.a
 	$(libpcsound_a_AR) libpcsound.a $(libpcsound_a_OBJECTS) $(libpcsound_a_LIBADD)
 	$(RANLIB) libpcsound.a

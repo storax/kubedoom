@@ -228,4 +228,3 @@ void OpenDocumentation(const char *filename)
 
     [[NSWorkspace sharedWorkspace] openFile: path];
 }
-

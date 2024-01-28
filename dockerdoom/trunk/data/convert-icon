@@ -20,15 +20,18 @@
 # Converts images into C structures to be inserted in programs
 #
 
-import sys
 import os
 import re
+import sys
 
 try:
-        import Image
+    import Image
 except ImportError:
-        print("WARNING: Could not update %s.  Please install the Python Imaging library." % sys.argv[2])
-        sys.exit(0)
+    print(
+        "WARNING: Could not update %s.  Please install the Python Imaging library."
+        % sys.argv[2]
+    )
+    sys.exit(0)
 
 
 def convert_image(filename, output_filename):
@@ -67,5 +70,5 @@ def convert_image(filename, output_filename):
     outfile.write("\n")
     outfile.write("};\n")
 
-convert_image(sys.argv[1], sys.argv[2])
 
+convert_image(sys.argv[1], sys.argv[2])

@@ -19,7 +19,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Win32 Resources
+//  Win32 Resources
 //
 //-----------------------------------------------------------------------------
 
@@ -36,19 +36,19 @@ PRODUCTVERSION 1,6,0,0
 FILEVERSION 1,6,0,0
 FILETYPE 1
 BEGIN
-	BLOCK "StringFileInfo"
-	BEGIN
-		BLOCK "040904E4"
-		BEGIN
-			VALUE "FileVersion", "1.6.0"
-			VALUE "FileDescription", "Chocolate Doom 1.6.0"
-			VALUE "InternalName", "chocolate-doom"
-			VALUE "CompanyName", "fraggle@gmail.com"
-			VALUE "LegalCopyright", "GNU General Public License"
-			VALUE "ProductName", "Chocolate Doom"
-			VALUE "ProductVersion", "1.6.0"
-		END
-	END
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "FileVersion", "1.6.0"
+            VALUE "FileDescription", "Chocolate Doom 1.6.0"
+            VALUE "InternalName", "chocolate-doom"
+            VALUE "CompanyName", "fraggle@gmail.com"
+            VALUE "LegalCopyright", "GNU General Public License"
+            VALUE "ProductName", "Chocolate Doom"
+            VALUE "ProductVersion", "1.6.0"
+        END
+    END
 END
 
 // GhostlyDeath - Preferebly for codeblocks (if it even uses this RC!)

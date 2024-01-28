@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# 
+#
 # Chocolate Doom self-documentation tool.  This works similar to javadoc
 # or doxygen, but documents command line parameters and configuration
 # file values, generating documentation in Unix manpage, wikitext and
@@ -28,13 +28,14 @@
 #   CONFIG_VARIABLE_INT(my_variable,       c_variable),
 #
 
-import sys
+import getopt
+import glob
 import os
 import re
-import glob
-import getopt
+import sys
 
 # Find the maximum width of a list of parameters (for plain text output)
+
 
 def parameter_list_width(params):
     w = 0
@@ -49,6 +50,7 @@ def parameter_list_width(params):
             w = pw
 
     return w
+
 
 class ConfigFile:
     def __init__(self, filename):
@@ -78,6 +80,7 @@ class ConfigFile:
         result = result.rstrip() + "\n"
 
         return result
+
 
 class Category:
     def __init__(self, description):
@@ -133,13 +136,14 @@ class Category:
 
         return result
 
+
 categories = {
-    None:      Category("General options"),
-    "video":   Category("Display options"),
-    "demo":    Category("Demo options"),
-    "net":     Category("Networking options"),
-    "mod":     Category("Dehacked and WAD merging"),
-    "compat":  Category("Compatibility"),
+    None: Category("General options"),
+    "video": Category("Display options"),
+    "demo": Category("Demo options"),
+    "net": Category("Networking options"),
+    "mod": Category("Dehacked and WAD merging"),
+    "compat": Category("Compatibility"),
 }
 
 wikipages = []
@@ -148,6 +152,7 @@ config_files = {}
 # Show options that are in Vanilla Doom? Or only new options?
 
 show_vanilla_options = True
+
 
 class Parameter:
     def __lt__(self, other):
@@ -168,14 +173,14 @@ class Parameter:
         if len(text) <= 0:
             pass
         elif text[0] == "@":
-            match = re.match('@(\S+)\s*(.*)', text)
+            match = re.match("@(\S+)\s*(.*)", text)
 
             if not match:
                 raise "Malformed option line: %s" % text
 
             option_type = match.group(1)
             data = match.group(2)
-            
+
             if option_type == "arg":
                 self.args = data
             elif option_type == "platform":
@@ -196,14 +201,14 @@ class Parameter:
         if self.args:
             result += " " + self.args
 
-        result = '\\fB' + result + '\\fR'
+        result = "\\fB" + result + "\\fR"
 
         result += "\n"
 
         if self.platform:
             result += "[%s only] " % self.platform
 
-        escaped = re.sub('\\\\', '\\\\\\\\', self.text)
+        escaped = re.sub("\\\\", "\\\\\\\\", self.text)
 
         result += escaped + "\n"
 
@@ -247,7 +252,7 @@ class Parameter:
         # Split the description into words and add a word at a time
 
         result = ""
-        for word in re.split('\s+', description):
+        for word in re.split("\s+", description):
 
             # Break onto the next line?
 
@@ -263,7 +268,9 @@ class Parameter:
 
         return result
 
+
 # Read list of wiki pages
+
 
 def read_wikipages():
     f = open("wikipages")
@@ -272,22 +279,25 @@ def read_wikipages():
         for line in f:
             line = line.rstrip()
 
-            line = re.sub('\#.*$', '', line)
+            line = re.sub("\#.*$", "", line)
 
-            if not re.match('^\s*$', line):
+            if not re.match("^\s*$", line):
                 wikipages.append(line)
     finally:
         f.close()
 
+
 # Add wiki page links
+
 
 def add_wiki_links(text):
     for pagename in wikipages:
-        page_re = re.compile('(%s)' % pagename, re.IGNORECASE)
-    #   text = page_re.sub("SHOES", text)
-        text = page_re.sub('[[\\1]]', text)
+        page_re = re.compile("(%s)" % pagename, re.IGNORECASE)
+        #   text = page_re.sub("SHOES", text)
+        text = page_re.sub("[[\\1]]", text)
 
     return text
+
 
 def add_parameter(param, line, config_file):
 
@@ -302,7 +312,7 @@ def add_parameter(param, line, config_file):
 
     # Documenting a configuration file variable?
 
-    match = re.search('CONFIG_VARIABLE_\S+\s*\(\s*(\S+?),', line)
+    match = re.search("CONFIG_VARIABLE_\S+\s*\(\s*(\S+?),", line)
 
     if match:
         param.name = match.group(1)
@@ -310,6 +320,7 @@ def add_parameter(param, line, config_file):
         return
 
     raise Exception(param.text)
+
 
 def process_file(file):
 
@@ -326,7 +337,7 @@ def process_file(file):
 
             # Ignore empty lines
 
-            if re.match('\s*$', line):
+            if re.match("\s*$", line):
                 continue
 
             # Currently reading a doc comment?
@@ -334,7 +345,7 @@ def process_file(file):
             if param:
                 # End of doc comment
 
-                if not re.match('\s*//', line):
+                if not re.match("\s*//", line):
                     waiting_for_checkparm = True
 
                 # The first non-empty line after the documentation comment
@@ -346,8 +357,8 @@ def process_file(file):
                 else:
                     # More documentation text
 
-                    munged_line = re.sub('\s*\/\/\s*', '', line, 1)
-                    munged_line = re.sub('\s*$', '', munged_line)
+                    munged_line = re.sub("\s*\/\/\s*", "", line, 1)
+                    munged_line = re.sub("\s*$", "", munged_line)
                     param.add_text(munged_line)
 
             # Check for start of a doc comment
@@ -367,6 +378,7 @@ def process_file(file):
     finally:
         f.close()
 
+
 def process_files(dir):
     # Process all C source files.
 
@@ -380,6 +392,7 @@ def process_files(dir):
 
         process_file(dir)
 
+
 def print_template(template_file, content):
     f = open(template_file)
 
@@ -391,8 +404,9 @@ def print_template(template_file, content):
     finally:
         f.close()
 
-def manpage_output(targets, template_file): 
-    
+
+def manpage_output(targets, template_file):
+
     content = ""
 
     for t in targets:
@@ -400,11 +414,13 @@ def manpage_output(targets, template_file):
 
     print_template(template_file, content)
 
+
 def wiki_output(targets, template):
     read_wikipages()
 
     for t in targets:
         print(t.wiki_output())
+
 
 def plaintext_output(targets, template_file):
 
@@ -415,15 +431,16 @@ def plaintext_output(targets, template_file):
 
     print_template(template_file, content)
 
+
 def usage():
-    print("Usage: %s [-V] [-c filename ]( -m | -w | -p ) <directory>" \
-            % sys.argv[0])
+    print("Usage: %s [-V] [-c filename ]( -m | -w | -p ) <directory>" % sys.argv[0])
     print("   -c :  Provide documentation for the specified configuration file")
     print("   -m :  Manpage output")
     print("   -w :  Wikitext output")
     print("   -p :  Plaintext output")
     print("   -V :  Don't show Vanilla Doom options")
     sys.exit(0)
+
 
 # Parse command line
 
@@ -471,4 +488,3 @@ else:
     # Generate the output
 
     output_function(documentation_targets, template)
-

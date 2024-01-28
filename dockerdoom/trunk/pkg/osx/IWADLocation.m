@@ -53,7 +53,7 @@ static id WAD_TYPES[] =
     if (result == NSOKButton)
     {
         filenames = [openPanel filenames];
-	[self setLocation: [filenames lastObject]];
+    [self setLocation: [filenames lastObject]];
 
         [self->iwadController saveConfig];
         [self->iwadController setDropdownList];
@@ -71,4 +71,3 @@ static id WAD_TYPES[] =
 }
 
 @end
-

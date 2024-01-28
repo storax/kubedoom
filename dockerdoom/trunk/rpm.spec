@@ -25,19 +25,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %build
 ./configure \
- 	--prefix=/usr \
-	--exec-prefix=/usr \
-	--bindir=/usr/bin \
-	--sbindir=/usr/sbin \
-	--sysconfdir=/etc \
-	--datadir=/usr/share \
-	--includedir=/usr/include \
-	--libdir=/usr/lib \
-	--libexecdir=/usr/lib \
-	--localstatedir=/var/lib \
-	--sharedstatedir=/usr/com \
-	--mandir=/usr/share/man \
-	--infodir=/usr/share/info
+    --prefix=/usr \
+    --exec-prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/sbin \
+    --sysconfdir=/etc \
+    --datadir=/usr/share \
+    --includedir=/usr/include \
+    --libdir=/usr/lib \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var/lib \
+    --sharedstatedir=/usr/com \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info
 make
 
 %install
@@ -53,4 +53,3 @@ rm -rf $RPM_BUILD_ROOT
 /usr/games/*
 /usr/share/icons/*
 /usr/share/applications/*
-

@@ -174,4 +174,3 @@ When compiling from source, be sure to compile and install timidity
 before installing SDL_mixer.
 
 # vim: tw=70
-

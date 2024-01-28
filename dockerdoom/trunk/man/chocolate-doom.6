@@ -13,233 +13,233 @@ as similar to the original doom game as is possible.
 .SH GENERAL OPTIONS
 .TP
 \fB-cdrom\fR
-[windows only] Save configuration data and savegames in c:\\doomdata, allowing play from CD. 
+[windows only] Save configuration data and savegames in c:\\doomdata, allowing play from CD.
 .TP
 \fB-config <file>\fR
-Load configuration from the specified file, instead of default.cfg. 
+Load configuration from the specified file, instead of default.cfg.
 .TP
 \fB-devparm\fR
-Developer mode.  F1 saves a screenshot in the current working directory. 
+Developer mode.  F1 saves a screenshot in the current working directory.
 .TP
 \fB-episode <n>\fR
-Start playing on episode n (1-4) 
+Start playing on episode n (1-4)
 .TP
 \fB-extraconfig <file>\fR
-Load extra configuration from the specified file, instead of chocolate-doom.cfg. 
+Load extra configuration from the specified file, instead of chocolate-doom.cfg.
 .TP
 \fB-fast\fR
-Monsters move faster. 
+Monsters move faster.
 .TP
 \fB-file <files>\fR
-Load the specified PWAD files. 
+Load the specified PWAD files.
 .TP
 \fB-iwad <file>\fR
-Specify an IWAD file to use. 
+Specify an IWAD file to use.
 .TP
 \fB-loadgame <s>\fR
-Load the game in slot s. 
+Load the game in slot s.
 .TP
 \fB-mb <mb>\fR
-Specify the heap size, in MiB (default 16). 
+Specify the heap size, in MiB (default 16).
 .TP
 \fB-mmap\fR
-Use the OS's virtual memory subsystem to map WAD files directly into memory. 
+Use the OS's virtual memory subsystem to map WAD files directly into memory.
 .TP
 \fB-noblit\fR
-Disable blitting the screen. 
+Disable blitting the screen.
 .TP
 \fB-nodraw\fR
-Disable rendering the screen entirely. 
+Disable rendering the screen entirely.
 .TP
 \fB-nomonsters\fR
-Disable monsters. 
+Disable monsters.
 .TP
 \fB-nomusic\fR
-Disable music. 
+Disable music.
 .TP
 \fB-nosfx\fR
-Disable sound effects. 
+Disable sound effects.
 .TP
 \fB-nosound\fR
-Disable all sound output. 
+Disable all sound output.
 .TP
 \fB-respawn\fR
-Monsters respawn after being killed. 
+Monsters respawn after being killed.
 .TP
 \fB-servername <name>\fR
-When starting a network server, specify a name for the server. 
+When starting a network server, specify a name for the server.
 .TP
 \fB-skill <skill>\fR
-Set the game skill, 1-5 (1: easiest, 5: hardest).  A skill of 0 disables all monsters. 
+Set the game skill, 1-5 (1: easiest, 5: hardest).  A skill of 0 disables all monsters.
 .TP
 \fB-turbo <x>\fR
-Turbo mode.  The player's speed is multiplied by x%.  If unspecified, x defaults to 200.  Values are rounded up to 10 and down to 400. 
+Turbo mode.  The player's speed is multiplied by x%.  If unspecified, x defaults to 200.  Values are rounded up to 10 and down to 400.
 .TP
 \fB-warp [<x> <y> | <xy>]\fR
-Start a game immediately, warping to ExMy (Doom 1) or MAPxy (Doom 2) 
+Start a game immediately, warping to ExMy (Doom 1) or MAPxy (Doom 2)
 
 .SH COMPATIBILITY
 .TP
 \fB-donut <x> <y>\fR
-Use the specified magic values when emulating behavior caused by memory overruns from improperly constructed donuts. In Vanilla Doom this can differ depending on the operating system.  The default (if this option is not specified) is to emulate the behavior when running under Windows 98. 
+Use the specified magic values when emulating behavior caused by memory overruns from improperly constructed donuts. In Vanilla Doom this can differ depending on the operating system.  The default (if this option is not specified) is to emulate the behavior when running under Windows 98.
 .TP
 \fB-gameversion <version>\fR
-Emulate a specific version of Doom.  Valid values are "1.9", "ultimate", "final", "final2", "hacx" and "chex". 
+Emulate a specific version of Doom.  Valid values are "1.9", "ultimate", "final", "final2", "hacx" and "chex".
 .TP
 \fB-setmem <version>\fR
-Specify DOS version to emulate for NULL pointer dereference emulation.  Supported versions are: dos622, dos71, dosbox. The default is to emulate DOS 7.1 (Windows 98). 
+Specify DOS version to emulate for NULL pointer dereference emulation.  Supported versions are: dos622, dos71, dosbox. The default is to emulate DOS 7.1 (Windows 98).
 .TP
 \fB-spechit <n>\fR
-Use the specified magic value when emulating spechit overruns. 
+Use the specified magic value when emulating spechit overruns.
 
 .SH DEMO OPTIONS
 .TP
 \fB-longtics\fR
-Record a high resolution "Doom 1.91" demo. 
+Record a high resolution "Doom 1.91" demo.
 .TP
 \fB-maxdemo <size>\fR
-Specify the demo buffer size (KiB) 
+Specify the demo buffer size (KiB)
 .TP
 \fB-playdemo <demo>\fR
-Play back the demo named demo.lmp. 
+Play back the demo named demo.lmp.
 .TP
 \fB-record <x>\fR
-Record a demo named x.lmp. 
+Record a demo named x.lmp.
 .TP
 \fB-timedemo <demo>\fR
-Play back the demo named demo.lmp, determining the framerate of the screen. 
+Play back the demo named demo.lmp, determining the framerate of the screen.
 
 .SH DISPLAY OPTIONS
 .TP
 \fB-1\fR
-Don't scale up the screen. 
+Don't scale up the screen.
 .TP
 \fB-2\fR
-Double up the screen to 2x its normal size. 
+Double up the screen to 2x its normal size.
 .TP
 \fB-3\fR
-Double up the screen to 3x its normal size. 
+Double up the screen to 3x its normal size.
 .TP
 \fB-8in32\fR
-Set the color depth of the screen to 32 bits per pixel. 
+Set the color depth of the screen to 32 bits per pixel.
 .TP
 \fB-bpp <bpp>\fR
-Specify the color depth of the screen, in bits per pixel. 
+Specify the color depth of the screen, in bits per pixel.
 .TP
 \fB-fullscreen\fR
-Run in fullscreen mode. 
+Run in fullscreen mode.
 .TP
 \fB-gdi\fR
-[windows only] Use the Windows GDI driver instead of DirectX. 
+[windows only] Use the Windows GDI driver instead of DirectX.
 .TP
 \fB-geometry <WxY>\fR
-Specify the screen mode (when running fullscreen) or the window dimensions (when running in windowed mode). 
+Specify the screen mode (when running fullscreen) or the window dimensions (when running in windowed mode).
 .TP
 \fB-grabmouse\fR
-Grab the mouse when running in windowed mode. 
+Grab the mouse when running in windowed mode.
 .TP
 \fB-height <y>\fR
-Specify the screen height, in pixels. 
+Specify the screen height, in pixels.
 .TP
 \fB-nograbmouse\fR
-Don't grab the mouse when running in windowed mode. 
+Don't grab the mouse when running in windowed mode.
 .TP
 \fB-nomouse\fR
-Disable the mouse. 
+Disable the mouse.
 .TP
 \fB-nonovert\fR
-Enable vertical mouse movement. 
+Enable vertical mouse movement.
 .TP
 \fB-novert\fR
-Disable vertical mouse movement. 
+Disable vertical mouse movement.
 .TP
 \fB-width <x>\fR
-Specify the screen width, in pixels. 
+Specify the screen width, in pixels.
 .TP
 \fB-window\fR
-Run in a window. 
+Run in a window.
 
 .SH NETWORKING OPTIONS
 .TP
 \fB-altdeath\fR
-Start a deathmatch 2.0 game.  Weapons do not stay in place and all items respawn after 30 seconds. 
+Start a deathmatch 2.0 game.  Weapons do not stay in place and all items respawn after 30 seconds.
 .TP
 \fB-autojoin\fR
-Automatically search the local LAN for a multiplayer server and join it. 
+Automatically search the local LAN for a multiplayer server and join it.
 .TP
 \fB-avg\fR
-Austin Virtual Gaming: end levels after 20 minutes. 
+Austin Virtual Gaming: end levels after 20 minutes.
 .TP
 \fB-connect <address>\fR
-Connect to a multiplayer server running on the given address. 
+Connect to a multiplayer server running on the given address.
 .TP
 \fB-deathmatch\fR
-Start a deathmatch game. 
+Start a deathmatch game.
 .TP
 \fB-dedicated\fR
-Start a dedicated server, routing packets but not participating in the game itself. 
+Start a dedicated server, routing packets but not participating in the game itself.
 .TP
 \fB-dup <n>\fR
-Reduce the resolution of the game by a factor of n, reducing the amount of network bandwidth needed. 
+Reduce the resolution of the game by a factor of n, reducing the amount of network bandwidth needed.
 .TP
 \fB-extratics <n>\fR
-Send n extra tics in every packet as insurance against dropped packets. 
+Send n extra tics in every packet as insurance against dropped packets.
 .TP
 \fB-ignoreversion\fR
-When running a netgame server, ignore version mismatches between the server and the client. Using this option may cause game desyncs to occur, or differences in protocol may mean the netgame will simply not function at all. 
+When running a netgame server, ignore version mismatches between the server and the client. Using this option may cause game desyncs to occur, or differences in protocol may mean the netgame will simply not function at all.
 .TP
 \fB-left\fR
-Run as the left screen in three screen mode. 
+Run as the left screen in three screen mode.
 .TP
 \fB-localsearch\fR
-Search the local LAN for running servers. 
+Search the local LAN for running servers.
 .TP
 \fB-oldsync\fR
-Use original game sync code. 
+Use original game sync code.
 .TP
 \fB-port <n>\fR
-Use the specified UDP port for communications, instead of the default (2342). 
+Use the specified UDP port for communications, instead of the default (2342).
 .TP
 \fB-privateserver\fR
-When running a server, don't register with the global master server. Implies -server. 
+When running a server, don't register with the global master server. Implies -server.
 .TP
 \fB-query <address>\fR
-Query the status of the server running on the given IP address. 
+Query the status of the server running on the given IP address.
 .TP
 \fB-right\fR
-Run as the right screen in three screen mode. 
+Run as the right screen in three screen mode.
 .TP
 \fB-search\fR
-Query the Internet master server for a global list of active servers. 
+Query the Internet master server for a global list of active servers.
 .TP
 \fB-server\fR
-Start a multiplayer server, listening for connections. 
+Start a multiplayer server, listening for connections.
 .TP
 \fB-solo-net\fR
-Start the game playing as though in a netgame with a single player.  This can also be used to play back single player netgame demos. 
+Start the game playing as though in a netgame with a single player.  This can also be used to play back single player netgame demos.
 .TP
 \fB-timer <n>\fR
-For multiplayer games: exit each level after n minutes. 
+For multiplayer games: exit each level after n minutes.
 
 .SH DEHACKED AND WAD MERGING
 .TP
 \fB-aa <files>\fR
-Equivalent to "-af <files> -as <files>". 
+Equivalent to "-af <files> -as <files>".
 .TP
 \fB-af <files>\fR
-Simulates the behavior of NWT's -af option, merging flats into the main IWAD directory.  Multiple files may be specified. 
+Simulates the behavior of NWT's -af option, merging flats into the main IWAD directory.  Multiple files may be specified.
 .TP
 \fB-as <files>\fR
-Simulates the behavior of NWT's -as option, merging sprites into the main IWAD directory.  Multiple files may be specified. 
+Simulates the behavior of NWT's -as option, merging sprites into the main IWAD directory.  Multiple files may be specified.
 .TP
 \fB-deh <files>\fR
-Load the given dehacked patch(es) 
+Load the given dehacked patch(es)
 .TP
 \fB-merge <files>\fR
-Simulates the behavior of deutex's -merge option, merging a PWAD into the main IWAD.  Multiple files may be specified. 
+Simulates the behavior of deutex's -merge option, merging a PWAD into the main IWAD.  Multiple files may be specified.
 .TP
 \fB-nocheats\fR
-Ignore cheats in dehacked files. 
+Ignore cheats in dehacked files.
 .TP
 \fB-nwtmerge <files>\fR
 Simulates the behavior of NWT's -merge option.  Multiple files may be specified.
@@ -292,4 +292,3 @@ Copyright \(co 2005-8 Simon Howard.
 This is free software.  You may redistribute copies of it under the terms of
 the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
 There is NO WARRANTY, to the extent permitted by law.
-

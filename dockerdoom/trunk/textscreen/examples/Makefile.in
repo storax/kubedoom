@@ -209,10 +209,10 @@ $(am__aclocal_m4_deps):
 
 clean-noinstPROGRAMS:
 	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
-calculator$(EXEEXT): $(calculator_OBJECTS) $(calculator_DEPENDENCIES) 
+calculator$(EXEEXT): $(calculator_OBJECTS) $(calculator_DEPENDENCIES)
 	@rm -f calculator$(EXEEXT)
 	$(LINK) $(calculator_OBJECTS) $(calculator_LDADD) $(LIBS)
-guitest$(EXEEXT): $(guitest_OBJECTS) $(guitest_DEPENDENCIES) 
+guitest$(EXEEXT): $(guitest_OBJECTS) $(guitest_DEPENDENCIES)
 	@rm -f guitest$(EXEEXT)
 	$(LINK) $(guitest_OBJECTS) $(guitest_LDADD) $(LIBS)
 

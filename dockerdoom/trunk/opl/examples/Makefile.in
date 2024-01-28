@@ -204,7 +204,7 @@ $(am__aclocal_m4_deps):
 
 clean-noinstPROGRAMS:
 	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
-droplay$(EXEEXT): $(droplay_OBJECTS) $(droplay_DEPENDENCIES) 
+droplay$(EXEEXT): $(droplay_OBJECTS) $(droplay_DEPENDENCIES)
 	@rm -f droplay$(EXEEXT)
 	$(LINK) $(droplay_OBJECTS) $(droplay_LDADD) $(LIBS)
 

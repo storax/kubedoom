@@ -56,156 +56,168 @@
 #
 # include the contents of a file
 
-import sys
 import re
+import sys
 
 debug = False
 defines = {}
 
 command_re = re.compile("\#(\w+)(\s+(.*))?")
-include_re = re.compile("\s*\"(.*)\"\s*")
+include_re = re.compile('\s*"(.*)"\s*')
+
 
 def debug_msg(message):
-	if debug:
-		sys.stderr.write(message)
+    if debug:
+        sys.stderr.write(message)
+
 
 # Parse command line options
 
+
 def parse_cmdline():
-	for arg in sys.argv[1:]:
-		if arg.startswith("-D"):
-			name = arg[2:]
-			defines[name] = True
+    for arg in sys.argv[1:]:
+        if arg.startswith("-D"):
+            name = arg[2:]
+            defines[name] = True
+
 
 def parse_stream(stream):
-	result = read_block(stream, False)
+    result = read_block(stream, False)
 
-	if result is not None:
-		raise Exception("Mismatched #if in '%s'" % stream.name)
+    if result is not None:
+        raise Exception("Mismatched #if in '%s'" % stream.name)
+
 
 def parse_file(filename):
-	f = open(filename)
+    f = open(filename)
 
-	try:
-		parse_stream(f)
-	finally:
-		f.close()
+    try:
+        parse_stream(f)
+    finally:
+        f.close()
+
 
 # #include
 
+
 def cmd_include(arg):
-	# Extract the filename
+    # Extract the filename
 
-	match = include_re.match(arg)
+    match = include_re.match(arg)
 
-	if not match:
-		raise Exception("Invalid 'include' command")
+    if not match:
+        raise Exception("Invalid 'include' command")
 
-	filename = match.group(1)
+    filename = match.group(1)
 
-	# Open the file and process it
+    # Open the file and process it
 
-	parse_file(filename)
+    parse_file(filename)
+
 
 # #define
 
+
 def cmd_define(arg):
-	defines[arg] = True
+    defines[arg] = True
+
 
 # #undef
 
+
 def cmd_undef(arg):
-	if arg in defines:
-		del defines[arg]
+    if arg in defines:
+        del defines[arg]
+
 
 # #ifdef/#ifndef
 
+
 def cmd_ifdef(arg, command, stream, ignore):
 
-	# Get the define name
-	name = arg.strip()
+    # Get the define name
+    name = arg.strip()
 
-	debug_msg("%s %s >\n" % (command, arg))
+    debug_msg("%s %s >\n" % (command, arg))
 
-	# Should we ignore the contents of this block?
+    # Should we ignore the contents of this block?
 
-	sub_ignore = (name not in defines)
+    sub_ignore = name not in defines
 
-	if "n" in command:
-		sub_ignore = not sub_ignore
+    if "n" in command:
+        sub_ignore = not sub_ignore
 
-	# Parse the block
+    # Parse the block
 
-	result = read_block(stream, ignore or sub_ignore)
+    result = read_block(stream, ignore or sub_ignore)
 
-	debug_msg("%s %s < (%s)\n" % (command, arg, result))
+    debug_msg("%s %s < (%s)\n" % (command, arg, result))
 
-	# There may be a second "else" block to parse:
+    # There may be a second "else" block to parse:
 
-	if result == "else":
-		debug_msg("%s %s else >\n" % (command, arg))
-		result = read_block(stream, ignore or (not sub_ignore))
-		debug_msg("%s %s else < (%s)\n" % (command, arg, result))
+    if result == "else":
+        debug_msg("%s %s else >\n" % (command, arg))
+        result = read_block(stream, ignore or (not sub_ignore))
+        debug_msg("%s %s else < (%s)\n" % (command, arg, result))
 
-	# Should end in an endif:
+    # Should end in an endif:
 
-	if result != "endif":
-		raise Exception("'if' block did not end in an 'endif'")
+    if result != "endif":
+        raise Exception("'if' block did not end in an 'endif'")
+
 
 commands = {
-	"include" : cmd_include,
-	"define"  : cmd_define,
-	"undef"   : cmd_undef,
-	"if"      : cmd_ifdef,
-	"ifdef"   : cmd_ifdef,
-	"ifn"     : cmd_ifdef,
-	"ifndef"  : cmd_ifdef,
+    "include": cmd_include,
+    "define": cmd_define,
+    "undef": cmd_undef,
+    "if": cmd_ifdef,
+    "ifdef": cmd_ifdef,
+    "ifn": cmd_ifdef,
+    "ifndef": cmd_ifdef,
 }
 
 # Recursive block reading function
 # if 'ignore' argument is 1, contents are ignored
 
+
 def read_block(stream, ignore):
 
-	for line in stream:
+    for line in stream:
 
-		# Remove newline
+        # Remove newline
 
-		line = line[0:-1]
+        line = line[0:-1]
 
-		# Check if this line has a command
+        # Check if this line has a command
 
-		match = command_re.match(line)
+        match = command_re.match(line)
 
-		if match:
-			command = match.group(1)
-			arg = match.group(3)
+        if match:
+            command = match.group(1)
+            arg = match.group(3)
 
-			if command == "else" or command == "endif":
-				return command
-			elif command not in commands:
-				raise Exception("Unknown command: '%s'" % \
-						command)
+            if command == "else" or command == "endif":
+                return command
+            elif command not in commands:
+                raise Exception("Unknown command: '%s'" % command)
 
-			# Get the callback function.
+            # Get the callback function.
 
-			func = commands[command]
+            func = commands[command]
 
-			# Invoke the callback function. #ifdef commands
-			# are a special case and need extra arguments.
-			# Other commands are only executed if we are not
-			# ignoring this block.
+            # Invoke the callback function. #ifdef commands
+            # are a special case and need extra arguments.
+            # Other commands are only executed if we are not
+            # ignoring this block.
 
-			if func == cmd_ifdef:
-				cmd_ifdef(arg, command=command,
-					       stream=stream,
-					       ignore=ignore)
-			elif not ignore:
-				func(arg)
-		else:
-			if not ignore:
-				print(line)
+            if func == cmd_ifdef:
+                cmd_ifdef(arg, command=command, stream=stream, ignore=ignore)
+            elif not ignore:
+                func(arg)
+        else:
+            if not ignore:
+                print(line)
+
 
 parse_cmdline()
 parse_stream(sys.stdin)
-

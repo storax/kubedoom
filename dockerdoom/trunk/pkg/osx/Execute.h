@@ -29,4 +29,3 @@ void OpenTerminalWindow(const char *doomwadpath);
 void OpenDocumentation(const char *filename);
 
 #endif /* #ifndef LAUNCHER_EXECUTE_H */
-

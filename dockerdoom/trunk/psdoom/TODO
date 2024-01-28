@@ -96,7 +96,7 @@ X-ensure that demo playing and recording do not use the 'ps' portion of
 X-the demo that plays immediately after ending a game (options->end game)
     on a level with pid monsters is messed up; fix it
 ?-use c functions like setpriority() and kill() rather than the
-    system() call (would this speed things up significantly?) 
+    system() call (would this speed things up significantly?)
 --put command line options into an in-game menu
 --ability to have multi-admin netgames
 --ability to administer processes on a machine other than the one running

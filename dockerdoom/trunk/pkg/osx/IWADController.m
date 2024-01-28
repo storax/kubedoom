@@ -98,7 +98,7 @@ static NSString *IWADFilenames[NUM_IWAD_TYPES + 1] =
     {
         [self getIWADList: iwadList];
 
-	return [iwadList[selectedIWAD] getLocation];
+    return [iwadList[selectedIWAD] getLocation];
     }
 }
 
@@ -383,4 +383,3 @@ static NSString *IWADFilenames[NUM_IWAD_TYPES + 1] =
 }
 
 @end
-

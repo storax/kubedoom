@@ -215,7 +215,7 @@ $(am__aclocal_m4_deps):
 
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
-libc_wince.a: $(libc_wince_a_OBJECTS) $(libc_wince_a_DEPENDENCIES) 
+libc_wince.a: $(libc_wince_a_OBJECTS) $(libc_wince_a_DEPENDENCIES)
 	-rm -f libc_wince.a
 	$(libc_wince_a_AR) libc_wince.a $(libc_wince_a_OBJECTS) $(libc_wince_a_LIBADD)
 	$(RANLIB) libc_wince.a

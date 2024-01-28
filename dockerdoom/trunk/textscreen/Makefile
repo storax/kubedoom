@@ -118,15 +118,15 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -O2 -g -Wall  -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT
 CPP = gcc -E
-CPPFLAGS = 
+CPPFLAGS =
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-ECHO_C = 
+ECHO_C =
 ECHO_N = -n
-ECHO_T = 
+ECHO_T =
 EGREP = /bin/grep -E
-EXEEXT = 
+EXEEXT =
 GREP = /bin/grep
 HAVE_PYTHON = true
 INSTALL = /usr/bin/install -c
@@ -135,9 +135,9 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS =  -lSDL -lpthread
-LIBOBJS = 
-LIBS = -lm 
-LTLIBOBJS = 
+LIBOBJS =
+LIBS = -lm
+LTLIBOBJS =
 MAKEINFO = ${SHELL} /home/orson/Downloads/chocolate-doom-1.6.0/autotools/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
@@ -155,19 +155,19 @@ PACKAGE_VERSION = 2012.02.05-1.6.0
 PATH_SEPARATOR = :
 PROGRAM_PREFIX = ps
 RANLIB = ranlib
-SDLMIXER_CFLAGS = 
+SDLMIXER_CFLAGS =
 SDLMIXER_LIBS =  -lSDL_mixer
-SDLNET_CFLAGS = 
+SDLNET_CFLAGS =
 SDLNET_LIBS =  -lSDL_net
 SDL_CFLAGS = -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT
 SDL_CONFIG = /usr/bin/sdl-config
 SDL_LIBS = -lSDL -lpthread
-SET_MAKE = 
+SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 2012.02.05-1.6.0
 WINDOWS_RC_VERSION = 2012, 02, 05-1, 6, 0, 0
-WINDRES = 
+WINDRES =
 abs_builddir = /home/orson/Downloads/chocolate-doom-1.6.0/textscreen
 abs_srcdir = /home/orson/Downloads/chocolate-doom-1.6.0/textscreen
 abs_top_builddir = /home/orson/Downloads/chocolate-doom-1.6.0
@@ -176,18 +176,18 @@ ac_aux_dir = autotools
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
-am__quote = 
+am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
-build_alias = 
+build_alias =
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host_alias = 
+host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
@@ -207,7 +207,7 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target_alias = 
+target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
@@ -279,7 +279,7 @@ $(am__aclocal_m4_deps):
 
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
-libtextscreen.a: $(libtextscreen_a_OBJECTS) $(libtextscreen_a_DEPENDENCIES) 
+libtextscreen.a: $(libtextscreen_a_OBJECTS) $(libtextscreen_a_DEPENDENCIES)
 	-rm -f libtextscreen.a
 	$(libtextscreen_a_AR) libtextscreen.a $(libtextscreen_a_OBJECTS) $(libtextscreen_a_LIBADD)
 	$(RANLIB) libtextscreen.a

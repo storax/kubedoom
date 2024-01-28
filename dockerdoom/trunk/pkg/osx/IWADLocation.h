@@ -41,4 +41,3 @@
 @end
 
 #endif /* #ifndef LAUNCHER_IWADLOCATION_H */
-

@@ -71,8 +71,8 @@ m4trace:configure.in:1: -1- AC_SUBST([oldincludedir], ['/usr/include'])
 m4trace:configure.in:1: -1- AC_SUBST_TRACE([oldincludedir])
 m4trace:configure.in:1: -1- m4_pattern_allow([^oldincludedir$])
 m4trace:configure.in:1: -1- AC_SUBST([docdir], [m4_ifset([AC_PACKAGE_TARNAME],
-				     ['${datarootdir}/doc/${PACKAGE_TARNAME}'],
-				     ['${datarootdir}/doc/${PACKAGE}'])])
+                     ['${datarootdir}/doc/${PACKAGE_TARNAME}'],
+                     ['${datarootdir}/doc/${PACKAGE}'])])
 m4trace:configure.in:1: -1- AC_SUBST_TRACE([docdir])
 m4trace:configure.in:1: -1- m4_pattern_allow([^docdir$])
 m4trace:configure.in:1: -1- AC_SUBST([infodir], ['${datarootdir}/info'])

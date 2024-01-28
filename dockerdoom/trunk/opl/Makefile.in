@@ -259,7 +259,7 @@ $(am__aclocal_m4_deps):
 
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
-libopl.a: $(libopl_a_OBJECTS) $(libopl_a_DEPENDENCIES) 
+libopl.a: $(libopl_a_OBJECTS) $(libopl_a_DEPENDENCIES)
 	-rm -f libopl.a
 	$(libopl_a_AR) libopl.a $(libopl_a_OBJECTS) $(libopl_a_LIBADD)
 	$(RANLIB) libopl.a

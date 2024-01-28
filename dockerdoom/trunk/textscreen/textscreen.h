@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -42,4 +42,3 @@
 #include "txt_window.h"
 
 #endif /* #ifndef TEXTSCREEN_H */
-

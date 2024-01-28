@@ -10,66 +10,70 @@ import tempfile
 CAB_HEADER = "MSCE".encode("ascii")
 
 ARCHITECTURES = {
-    "shx-sh3":        103,
-    "shx-sh4":        104,
-    "i386":           386,
-    "i486":           486,
-    "i586":           586,
-    "powerpc-601":    601,
-    "powerpc-603":    603,
-    "powerpc-604":    604,
-    "powerpc-620":    620,
+    "shx-sh3": 103,
+    "shx-sh4": 104,
+    "i386": 386,
+    "i486": 486,
+    "i586": 586,
+    "powerpc-601": 601,
+    "powerpc-603": 603,
+    "powerpc-604": 604,
+    "powerpc-620": 620,
     "powerpc-mpc821": 821,
-    "arm720":         1824,
-    "arm820":         2080,
-    "arm920":         2336,
-    "strongarm":      2577,
-    "mips-r4000":     4000,
-    "sh3":            10003,
-    "sh3e":           10004,
-    "sh4":            10005,
-    "alpha-21064":    21064,
-    "arm7tdmi":       70001,
+    "arm720": 1824,
+    "arm820": 2080,
+    "arm920": 2336,
+    "strongarm": 2577,
+    "mips-r4000": 4000,
+    "sh3": 10003,
+    "sh3e": 10004,
+    "sh4": 10005,
+    "alpha-21064": 21064,
+    "arm7tdmi": 70001,
 }
 
 DIR_VARIABLES = {
-    "PROGRAMS": "%CE1%",                # \Program Files
-    "WINDOWS": "%CE2%",                 # \Windows
-    "DESKTOP": "%CE3%",                 # \Windows\Desktop
-    "STARTUP": "%CE4%",                 # \Windows\StartUp
-    "DOCUMENTS": "%CE5%",               # \My Documents
-    "PROGRAMS_ACCESSORIES": "%CE6%",    # \Program Files\Accessories
-    "PROGRAMS_COMMUNICATIONS": "%CE7%", # \Program Files\Communications
-    "PROGRAMS_GAMES": "%CE8%",          # \Program Files\Games
-    "PROGRAMS_OUTLOOK": "%CE9%",        # \Program Files\Pocket Outlook
-    "PROGRAMS_OFFICE": "%CE10%",        # \Program Files\Office
-    "WINDOWS_PROGRAMS": "%CE11%",       # \Windows\Programs
-    "WINDOWS_ACCESSORIES": "%CE12%",    # \Windows\Programs\Accessories
-    "WINDOWS_COMMUNICATIONS": "%CE13%", # \Windows\Programs\Communications
-    "WINDOWS_GAMES": "%CE14%",          # \Windows\Programs\Games
-    "FONTS": "%CE15%",                  # \Windows\Fonts
-    "RECENT": "%CE16%",                 # \Windows\Recent
-    "FAVORITES": "%CE17%",              # \Windows\Favorites
-
-    "START_PROGRAMS": "%CE11%",         # \Windows\Start Menu\Programs
-    "START_ACCESSORIES": "%CE12%",      # \Windows\Start Menu\Accessories
-    "START_COMMUNICATIONS": "%CE13%",   # \Windows\Start Menu\Communications
-    "START_GAMES": "%CE14%",            # \Windows\Start Menu\Games
-    "START": "%CE17%",                  # \Windows\Start Menu
+    "PROGRAMS": "%CE1%",  # \Program Files
+    "WINDOWS": "%CE2%",  # \Windows
+    "DESKTOP": "%CE3%",  # \Windows\Desktop
+    "STARTUP": "%CE4%",  # \Windows\StartUp
+    "DOCUMENTS": "%CE5%",  # \My Documents
+    "PROGRAMS_ACCESSORIES": "%CE6%",  # \Program Files\Accessories
+    "PROGRAMS_COMMUNICATIONS": "%CE7%",  # \Program Files\Communications
+    "PROGRAMS_GAMES": "%CE8%",  # \Program Files\Games
+    "PROGRAMS_OUTLOOK": "%CE9%",  # \Program Files\Pocket Outlook
+    "PROGRAMS_OFFICE": "%CE10%",  # \Program Files\Office
+    "WINDOWS_PROGRAMS": "%CE11%",  # \Windows\Programs
+    "WINDOWS_ACCESSORIES": "%CE12%",  # \Windows\Programs\Accessories
+    "WINDOWS_COMMUNICATIONS": "%CE13%",  # \Windows\Programs\Communications
+    "WINDOWS_GAMES": "%CE14%",  # \Windows\Programs\Games
+    "FONTS": "%CE15%",  # \Windows\Fonts
+    "RECENT": "%CE16%",  # \Windows\Recent
+    "FAVORITES": "%CE17%",  # \Windows\Favorites
+    "START_PROGRAMS": "%CE11%",  # \Windows\Start Menu\Programs
+    "START_ACCESSORIES": "%CE12%",  # \Windows\Start Menu\Accessories
+    "START_COMMUNICATIONS": "%CE13%",  # \Windows\Start Menu\Communications
+    "START_GAMES": "%CE14%",  # \Windows\Start Menu\Games
+    "START": "%CE17%",  # \Windows\Start Menu
 }
+
 
 def write_int16(f, value):
     f.write(struct.pack("<H", value))
 
+
 def write_int32(f, value):
     f.write(struct.pack("<I", value))
 
-# Pad a string with NUL characters so that it has a length that is 
+
+# Pad a string with NUL characters so that it has a length that is
 # a multiple of 4.  At least one NUL is always added.
+
 
 def pad_string(s):
     pad_len = 4 - (len(s) % 4)
     return s + (pad_len * "\x00")
+
 
 class HeaderSection:
 
@@ -81,7 +85,7 @@ class HeaderSection:
         self.unsupported = None
 
     def __len__(self):
-        return 100       # header has fixed size
+        return 100  # header has fixed size
 
     def set_meta(self, arch, app_name, provider, unsupported):
 
@@ -137,11 +141,7 @@ class HeaderSection:
 
         # Special strings:
 
-        special_strings = (
-            self.app_name,
-            self.provider,
-            self.unsupported
-        )
+        special_strings = (self.app_name, self.provider, self.unsupported)
 
         dictionary_offset = self.cab_header.get_section_offset(dictionary)
 
@@ -154,6 +154,7 @@ class HeaderSection:
 
         write_int16(stream, 0)
         write_int16(stream, 0)
+
 
 class StringDictionary:
     def __init__(self, cab_header):
@@ -205,6 +206,7 @@ class StringDictionary:
             write_int16(stream, len(s))
             stream.write(s.encode("ascii"))
 
+
 class DirectoryList:
     def __init__(self, cab_header):
         self.cab_header = cab_header
@@ -242,10 +244,10 @@ class DirectoryList:
 
             # Separate into individual directories, and map to strings:
 
-            #dir_path = dir.split("\\")
-            #if dir_path[0] == "":
+            # dir_path = dir.split("\\")
+            # if dir_path[0] == "":
             #    dir_path = dir_path[1:]
-            dir_path = [ dir ]
+            dir_path = [dir]
 
             dir_path = list(map(lambda x: dictionary.get(x), dir_path))
 
@@ -267,6 +269,7 @@ class DirectoryList:
                 write_int16(stream, subdir)
 
             write_int16(stream, 0)
+
 
 class FileList:
     def __init__(self, cab_header):
@@ -331,7 +334,9 @@ class FileList:
             write_int16(stream, len(filename))
             stream.write(filename.encode("ascii"))
 
+
 # TODO?
+
 
 class RegHiveList:
     def __len__(self):
@@ -343,7 +348,8 @@ class RegHiveList:
     def write(self, stream):
         pass
 
-class RegKeyList():
+
+class RegKeyList:
     def __len__(self):
         return 0
 
@@ -352,6 +358,7 @@ class RegKeyList():
 
     def write(self, stream):
         pass
+
 
 class LinkList:
     def __init__(self, cab_header):
@@ -365,7 +372,7 @@ class LinkList:
 
     def num_entries(self):
         return len(self.links)
-    
+
     # Determine the target type (dir/file) and ID:
 
     def __find_target(self, target):
@@ -409,8 +416,7 @@ class LinkList:
         dictionary = self.cab_header.dictionary
         dest_path = list(map(lambda x: dictionary.get(x), dest_path))
 
-        self.links.append((self.index, target_type, target_id,
-                           base_dir, dest_path))
+        self.links.append((self.index, target_type, target_id, base_dir, dest_path))
         self.index += 1
         self.length += 14 + 2 * len(dest_path)
 
@@ -430,6 +436,7 @@ class LinkList:
 
             write_int16(stream, 0)
 
+
 class CabHeaderFile:
     def __init__(self):
         self.dictionary = StringDictionary(self)
@@ -443,7 +450,7 @@ class CabHeaderFile:
             self.file_list,
             RegHiveList(),
             RegKeyList(),
-            LinkList(self)
+            LinkList(self),
         ]
 
     def set_meta(self, *args):
@@ -488,9 +495,12 @@ class CabHeaderFile:
             pos = stream.tell()
             if pos != old_pos + len(section):
                 print(section)
-                raise Exception("Section is %i bytes long, but %i written" % \
-                                (len(section), pos - old_pos))
+                raise Exception(
+                    "Section is %i bytes long, but %i written"
+                    % (len(section), pos - old_pos)
+                )
             old_pos = pos
+
 
 class CabFile:
     def __init__(self, config):
@@ -547,7 +557,7 @@ class CabFile:
     # Process the list of files to install:
 
     def __process_files(self, files):
-        self.files = [ self.app_name ]
+        self.files = [self.app_name]
 
         for filename, source_file in files.items():
             file_no = len(self.files)
@@ -574,7 +584,7 @@ class CabFile:
         self.cab_header.write(stream)
         stream.close()
 
-        return [ filename ]
+        return [filename]
 
     # Write the files:
 
@@ -602,7 +612,7 @@ class CabFile:
         files = self.__write_files(temp_dir)
         files.reverse()
 
-        args = [ "lcab", "-n" ] + header + files + [ filename ]
+        args = ["lcab", "-n"] + header + files + [filename]
 
         os.spawnlp(os.P_WAIT, "lcab", *args)
 
@@ -611,6 +621,7 @@ class CabFile:
         for tmpfile in header + files:
             os.remove(tmpfile)
         os.rmdir(temp_dir)
+
 
 def expand_path(filename):
 
@@ -630,6 +641,7 @@ def expand_path(filename):
 
     return re.sub(r"\$\((.*?)\)", replace_var, filename)
 
+
 def read_config_file(filename):
     f = open(filename)
 
@@ -644,7 +656,9 @@ def read_config_file(filename):
 
     return result
 
+
 # List the files that the output CAB depends on.
+
 
 def print_dependencies(filename):
     config = read_config_file(filename)
@@ -653,6 +667,7 @@ def print_dependencies(filename):
 
     for dest, source_file in files_list.items():
         print(source_file)
+
 
 if len(sys.argv) < 3:
     print("Usage: %s <config file> <output file>" % sys.argv[0])
@@ -665,4 +680,3 @@ else:
 
     cab_file = CabFile(config)
     cab_file.write(sys.argv[2])
-

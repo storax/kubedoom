@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -73,7 +73,7 @@ static void AdjustedSleep(unsigned int ms)
     start_time = SDL_GetTicks();
 
     SDL_Delay(ms);
-    
+
     end_time = SDL_GetTicks();
 
     if (end_time > start_time)
@@ -100,12 +100,12 @@ static int SoundThread(void *unused)
     int frequency;
     int duration;
     int cycles;
-    
+
     while (sound_thread_running)
     {
         callback(&duration, &frequency);
 
-        if (frequency != 0) 
+        if (frequency != 0)
         {
             cycles = PCSOUND_8253_FREQUENCY / frequency;
         }
@@ -132,8 +132,8 @@ static int PCSound_Linux_Init(pcsound_callback_func callback_func)
     {
         // Don't have permissions for the console device?
 
-	fprintf(stderr, "PCSound_Linux_Init: Failed to open '%s': %s\n",
-			CONSOLE_DEVICE, strerror(errno));
+    fprintf(stderr, "PCSound_Linux_Init: Failed to open '%s': %s\n",
+            CONSOLE_DEVICE, strerror(errno));
         return 0;
     }
 
@@ -146,12 +146,12 @@ static int PCSound_Linux_Init(pcsound_callback_func callback_func)
     }
 
     // Start a thread up to generate PC speaker output
-    
+
     callback = callback_func;
     sound_thread_running = 1;
 
     sound_thread_handle = SDL_CreateThread(SoundThread, NULL);
-    
+
     return 1;
 }
 
@@ -170,4 +170,3 @@ pcsound_driver_t pcsound_linux_driver =
 };
 
 #endif /* #ifdef HAVE_LINUX_KD_H */
-

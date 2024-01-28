@@ -1,8 +1,8 @@
 Changelog for psDooM:
 
 Release 2012.02.05 - Migrate psDooM into Chocoloate Doom
-  -Merge 2000.05.03-2000.05.03b psDooM patches into Chocolate Doom 1.6.0 
-   but reject branding, save file changes, xd-launch, versioning 
+  -Merge 2000.05.03-2000.05.03b psDooM patches into Chocolate Doom 1.6.0
+   but reject branding, save file changes, xd-launch, versioning
    from psDooM.
   -Rebrand Chocolate Doom to psdoom
   -Fix linux detection broken by 2000.05.03a.  Solaris needs testing.
@@ -23,7 +23,7 @@ Release 2000.05.03.a - Changes since 2000.05.03
   -Added command line flag that allows pid monsters to be damaged by
     things other than the player.  This is the original behavior of the
     program. (-nopssafety)
-    
+
 Release 2000.05.03 - Changes since 2000.02.21
   -Moved project to SourceForge. (http://psdoom.sourceforge.net/)
   -Changed distribution format and file name:
@@ -46,7 +46,7 @@ Release 2000.05.03 - Changes since 2000.02.21
     for program interface demonstration purposes. (-nopsact)
   -Added command line flag to make 'no monsters' persistant across new
     games and level warping. (-nomonsters.) == no monsters, period :-)
-  -Pid monster spawning is not affected by the '-nomonsters' or 
+  -Pid monster spawning is not affected by the '-nomonsters' or
     '-nomonsters.' command line flags.
   -Added command line flag to respawn items like in -altdeath games.
     (-respawnitems)  It has no effect when recording or playing a demo.
@@ -95,7 +95,7 @@ Release 2000.02.21 - Changes since 2000.02.01
   -If you're not playing on the first map, and/or you're using add-on
     maps 'Plutonia Experiment' or 'TNT - Evilution', the 'ps' portion of
     the program is not used.
-  -Pid monsters spawn at least one radius inside the edge of their 
+  -Pid monsters spawn at least one radius inside the edge of their
     1024x1024 box on custom levels.  This prevents them from spawning
     in the 'void space' outside the custom level map.
 
@@ -113,7 +113,7 @@ Release 2000.02.01 - Changes since 2000.01.26
 
 Release 2000.01.26 - Changes since 2000.01.18
   -Made the 'ps' call include the 'a' and 'x' flags to doublecheck
-    for *all* machine processes (all users/no terminal). 
+    for *all* machine processes (all users/no terminal).
   -Allowed the process manager itself to be spawned as a pid monster.
   -Fixed pid monster kill % calculation.  I broke it when I moved
     pid-specific code from P_SpawnMapThing() to add_new_process().
@@ -165,7 +165,7 @@ Release 2000.01.04 - Changes since 1999.12.29
   -In add_new_process(), check the newly created mobj for collisions.
     If it is colliding, try re-positioning it to the north, east,
     west, and south by the mobj's radius, respectively, until no
-    collisions are found.  Spawn at original location if the alternate 
+    collisions are found.  Spawn at original location if the alternate
     placements don't work out.  Stupid ASCII art representation:
        x
      x X x
@@ -183,7 +183,7 @@ Release 1999.12.29 - Changes since 0.01d
     process if we're going to kill it anyway?
   -Display the last 7 characters of the process name rather than the
     first 7.  ie: '/sbin/mingetty' would appear as 'ingetty' rather
-    than '/sbin/m' 
+    than '/sbin/m'
   -Do not draw the monster's pid info if the whole monster is blocked
     by a wall or column that extends from floor to ceiling.
 

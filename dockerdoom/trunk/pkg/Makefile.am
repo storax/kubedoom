@@ -31,4 +31,3 @@ win32/GNUmakefile                                                       \
 win32/README
 
 EXTRA_DIST=$(OSX_FILES) $(WINCE_FILES) $(WIN32_FILES)
-

@@ -12,16 +12,16 @@ MSVC_FILES=                             \
         msvc/ChocolateDoom.vcproj
 
 CODEBLOCKS_FILES=                              \
-	codeblocks/config.h                    \
-	codeblocks/game.cbp                    \
-	codeblocks/game-res.rc                 \
-	codeblocks/libpcsound.cbp              \
-	codeblocks/main.workspace              \
-	codeblocks/README                      \
-	codeblocks/server.cbp                  \
-	codeblocks/setup.cbp                   \
-	codeblocks/setup-res.rc                \
-	codeblocks/textscreen.cbp
+    codeblocks/config.h                    \
+    codeblocks/game.cbp                    \
+    codeblocks/game-res.rc                 \
+    codeblocks/libpcsound.cbp              \
+    codeblocks/main.workspace              \
+    codeblocks/README                      \
+    codeblocks/server.cbp                  \
+    codeblocks/setup.cbp                   \
+    codeblocks/setup-res.rc                \
+    codeblocks/textscreen.cbp
 
 DOC_FILES=                              \
         CMDLINE                         \
@@ -54,10 +54,9 @@ if HAVE_PYTHON
 noinst_DATA=CMDLINE
 
 CMDLINE : src/
-	./man/docgen -p man/CMDLINE.template src/ > $@
+    ./man/docgen -p man/CMDLINE.template src/ > $@
 
 INSTALL : man/INSTALL.template man/simplecpp
-	./man/simplecpp < man/INSTALL.template > $@
+    ./man/simplecpp < man/INSTALL.template > $@
 
 endif
-

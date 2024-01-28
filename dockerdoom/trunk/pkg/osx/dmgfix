@@ -61,4 +61,3 @@ on run argv
         eject theDisk
     end tell
 end run
-

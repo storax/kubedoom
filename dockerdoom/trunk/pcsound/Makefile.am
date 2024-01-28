@@ -10,4 +10,3 @@ libpcsound_a_SOURCES =                            \
         pcsound_linux.c                           \
         pcsound_win32.c                           \
                             pcsound_internal.h
-

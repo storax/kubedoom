@@ -55,4 +55,3 @@
 @end
 
 #endif /* #ifndef LAUNCHER_LAUNCHERMANAGER_H */
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -44,4 +44,3 @@ struct pcsound_driver_s
 extern int pcsound_sample_rate;
 
 #endif /* #ifndef PCSOUND_INTERNAL_H */
-

@@ -21,16 +21,16 @@ ifndef GNUSTEP_MAKEFILES
 # DMG file containing package:
 
 $(DMG) : tmp.dmg
-	rm -f $@
-	./dmgfix "$(realpath tmp.dmg)" "$(PACKAGE_STRING)" "$(PACKAGE_NAME).app"
-	hdiutil convert -format UDZO -o $@ tmp.dmg
-	rm -f tmp.dmg
+    rm -f $@
+    ./dmgfix "$(realpath tmp.dmg)" "$(PACKAGE_STRING)" "$(PACKAGE_NAME).app"
+    hdiutil convert -format UDZO -o $@ tmp.dmg
+    rm -f tmp.dmg
 
 tmp.dmg : $(STAGING_DIR)
-	rm -f $@
-	hdiutil makehybrid -hfs -hfs-volume-name "$(PACKAGE_STRING)"     \
-	                   -hfs-openfolder $(STAGING_DIR) $(STAGING_DIR) \
-			   -o tmp.dmg
+    rm -f $@
+    hdiutil makehybrid -hfs -hfs-volume-name "$(PACKAGE_STRING)"     \
+                       -hfs-openfolder $(STAGING_DIR) $(STAGING_DIR) \
+               -o tmp.dmg
 
 endif
 
@@ -58,46 +58,46 @@ APP_DOC_DIR=$(APP_BIN_DIR)/Documentation
 APP_DOC_RELDIR=$(patsubst $(STAGING_DIR)/%,%,$(APP_DOC_DIR))
 
 $(STAGING_DIR): launcher $(TOPLEVEL_DOCS)
-	rm -rf $(STAGING_DIR)
-	mkdir $(STAGING_DIR)
+    rm -rf $(STAGING_DIR)
+    mkdir $(STAGING_DIR)
 
-	mkdir -p "$(APP_TOP_DIR)"
-	cp -R Resources "$(APP_TOP_DIR)"
-	cp PkgInfo "$(APP_TOP_DIR)"
-	cp $(SRC_INFO_PLIST) "$(APP_TOP_DIR)"
+    mkdir -p "$(APP_TOP_DIR)"
+    cp -R Resources "$(APP_TOP_DIR)"
+    cp PkgInfo "$(APP_TOP_DIR)"
+    cp $(SRC_INFO_PLIST) "$(APP_TOP_DIR)"
 
-	mkdir -p "$(APP_BIN_DIR)"
+    mkdir -p "$(APP_BIN_DIR)"
 
-	mkdir -p "$(APP_DOC_DIR)"
-	cp $(TOPLEVEL_DOCS) "$(APP_DOC_DIR)"
+    mkdir -p "$(APP_DOC_DIR)"
+    cp $(TOPLEVEL_DOCS) "$(APP_DOC_DIR)"
 
-	ln -s "$(APP_DOC_RELDIR)/COPYING" "$(STAGING_DIR)/Software License"
-	ln -s "$(APP_DOC_RELDIR)/README" "$(STAGING_DIR)/README"
-	ln -s /Applications "$(STAGING_DIR)"
+    ln -s "$(APP_DOC_RELDIR)/COPYING" "$(STAGING_DIR)/Software License"
+    ln -s "$(APP_DOC_RELDIR)/README" "$(STAGING_DIR)/README"
+    ln -s /Applications "$(STAGING_DIR)"
 
-	cp launcher "$(APP_BIN_DIR)"
-	$(STRIP) "$(APP_BIN_DIR)/launcher"
+    cp launcher "$(APP_BIN_DIR)"
+    $(STRIP) "$(APP_BIN_DIR)/launcher"
 
-	./cp-with-libs $(TOPLEVEL)/src/$(PROGRAM_PREFIX)doom "$(APP_BIN_DIR)"
-	$(STRIP) "$(APP_BIN_DIR)/$(PROGRAM_PREFIX)doom"
-	./cp-with-libs $(TOPLEVEL)/setup/$(PROGRAM_PREFIX)setup "$(APP_BIN_DIR)"
-	$(STRIP) "$(APP_BIN_DIR)/$(PROGRAM_PREFIX)setup"
+    ./cp-with-libs $(TOPLEVEL)/src/$(PROGRAM_PREFIX)doom "$(APP_BIN_DIR)"
+    $(STRIP) "$(APP_BIN_DIR)/$(PROGRAM_PREFIX)doom"
+    ./cp-with-libs $(TOPLEVEL)/setup/$(PROGRAM_PREFIX)setup "$(APP_BIN_DIR)"
+    $(STRIP) "$(APP_BIN_DIR)/$(PROGRAM_PREFIX)setup"
 
-	$(TOPLEVEL)/man/simplecpp -DPRECOMPILED -D__MACOSX__  \
-	             < $(TOPLEVEL)/man/INSTALL.template       \
-	             > "$(APP_DOC_DIR)/INSTALL"
+    $(TOPLEVEL)/man/simplecpp -DPRECOMPILED -D__MACOSX__  \
+                 < $(TOPLEVEL)/man/INSTALL.template       \
+                 > "$(APP_DOC_DIR)/INSTALL"
 
-	find $(STAGING_DIR) -name .svn -delete -exec rm -rf {} \; || true
+    find $(STAGING_DIR) -name .svn -delete -exec rm -rf {} \; || true
 
-	mkdir -p "$(APP_BIN_DIR)/man/man5" "$(APP_BIN_DIR)/man/man6"
-	cp $(TOPLEVEL)/man/*.5 "$(APP_BIN_DIR)/man/man5"
-	cp $(TOPLEVEL)/man/*.6 "$(APP_BIN_DIR)/man/man6"
-	cp disk/dir.DS_Store $(STAGING_DIR)/.DS_Store
-	cp disk/background.png $(STAGING_DIR)/background.png
+    mkdir -p "$(APP_BIN_DIR)/man/man5" "$(APP_BIN_DIR)/man/man6"
+    cp $(TOPLEVEL)/man/*.5 "$(APP_BIN_DIR)/man/man5"
+    cp $(TOPLEVEL)/man/*.6 "$(APP_BIN_DIR)/man/man6"
+    cp disk/dir.DS_Store $(STAGING_DIR)/.DS_Store
+    cp disk/background.png $(STAGING_DIR)/background.png
 
 clean : launcher_clean
-	rm -f $(DMG)
-	rm -rf $(STAGING_DIR)
+    rm -f $(DMG)
+    rm -rf $(STAGING_DIR)
 
 # Launcher build:
 
@@ -121,11 +121,10 @@ LAUNCHER_OBJS= \
         main.o
 
 launcher : $(LAUNCHER_OBJS)
-	$(CC) $(LDFLAGS) $(LAUNCHER_OBJS) -o $@
+    $(CC) $(LDFLAGS) $(LAUNCHER_OBJS) -o $@
 
 %.o : %.m
-	$(CC) -c $(CFLAGS) $^ -o $@
+    $(CC) -c $(CFLAGS) $^ -o $@
 
 launcher_clean :
-	rm -f $(LAUNCHER_OBJS) launcher
-
+    rm -f $(LAUNCHER_OBJS) launcher
