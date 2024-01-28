@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	System interface for music.
+//  System interface for music.
 //
 //-----------------------------------------------------------------------------
 
@@ -44,7 +44,7 @@
 
 static boolean music_initialized = false;
 
-// If this is true, this module initialized SDL sound and has the 
+// If this is true, this module initialized SDL sound and has the
 // responsibility to shut it down
 
 static boolean sdl_was_initialized = false;
@@ -55,7 +55,7 @@ static int current_music_volume;
 // Shutdown music
 
 static void I_SDL_ShutdownMusic(void)
-{    
+{
     if (music_initialized)
     {
         Mix_HaltMusic();
@@ -242,7 +242,7 @@ static void I_SDL_UnRegisterSong(void *handle)
     Mix_FreeMusic(music);
 }
 
-// Determine whether memory block is a .mid file 
+// Determine whether memory block is a .mid file
 
 static boolean IsMid(byte *mem, int len)
 {
@@ -284,19 +284,19 @@ static void *I_SDL_RegisterSong(void *data, int len)
     {
         return NULL;
     }
-    
+
     // MUS files begin with "MUS"
     // Reject anything which doesnt have this signature
-    
+
     filename = M_TempFile("doom.mid");
 
     if (IsMid(data, len) && len < MAXMIDLENGTH)
     {
         M_WriteFile(filename, data, len);
     }
-    else 
+    else
     {
-	// Assume a MUS file and try to convert
+    // Assume a MUS file and try to convert
 
         ConvertMus(data, len, filename);
     }
@@ -304,7 +304,7 @@ static void *I_SDL_RegisterSong(void *data, int len)
     // Load the MIDI
 
     music = Mix_LoadMUS(filename);
-    
+
     if (music == NULL)
     {
         // Failed to load
@@ -357,5 +357,3 @@ music_module_t music_sdl_module =
     I_SDL_StopSong,
     I_SDL_MusicIsPlaying,
 };
-
-

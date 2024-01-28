@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,8 +20,8 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Globally defined strings.
-// 
+//  Globally defined strings.
+//
 //-----------------------------------------------------------------------------
 
 
@@ -75,7 +75,5 @@ char* endmsg[] =
 };
 
 #endif
-
-  
 
 

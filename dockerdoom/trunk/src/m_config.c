@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -73,27 +73,27 @@
 // DEFAULTS
 //
 
-// Location where all configuration data is stored - 
+// Location where all configuration data is stored -
 // default.cfg, savegames, etc.
 
 char *          configdir;
 
 
-int		usemouse = 1;
-int		usejoystick = 0;
+int     usemouse = 1;
+int     usejoystick = 0;
 
-extern int	key_right;
-extern int	key_left;
-extern int	key_up;
-extern int	key_down;
+extern int  key_right;
+extern int  key_left;
+extern int  key_up;
+extern int  key_down;
 
-extern int	key_strafeleft;
-extern int	key_straferight;
+extern int  key_strafeleft;
+extern int  key_straferight;
 
-extern int	key_fire;
-extern int	key_use;
-extern int	key_strafe;
-extern int	key_speed;
+extern int  key_fire;
+extern int  key_use;
+extern int  key_strafe;
+extern int  key_speed;
 
 extern int key_pause;
 
@@ -157,9 +157,9 @@ extern int key_demo_quit;
 extern int key_multi_msg;
 extern int key_multi_msgplayer[];
 
-extern int	mousebfire;
-extern int	mousebstrafe;
-extern int	mousebforward;
+extern int  mousebfire;
+extern int  mousebstrafe;
+extern int  mousebforward;
 
 extern int      mousebstrafeleft;
 extern int      mousebstraferight;
@@ -171,27 +171,27 @@ extern int      mousebnextweapon;
 
 extern int      dclick_use;
 
-extern int	joybfire;
-extern int	joybstrafe;
-extern int	joybuse;
-extern int	joybspeed;
+extern int  joybfire;
+extern int  joybstrafe;
+extern int  joybuse;
+extern int  joybspeed;
 extern int      joybstrafeleft;
 extern int      joybstraferight;
 
 extern int      joybprevweapon;
 extern int      joybnextweapon;
 
-extern int	viewwidth;
-extern int	viewheight;
+extern int  viewwidth;
+extern int  viewheight;
 
-extern int	mouseSensitivity;
-extern int	showMessages;
+extern int  mouseSensitivity;
+extern int  showMessages;
 
 // machine-independent sound params
-extern	int	numChannels;
+extern  int numChannels;
 
 
-extern char*	chat_macros[];
+extern char*    chat_macros[];
 
 extern int      show_endoom;
 extern int      vanilla_savegame_limit;
@@ -215,7 +215,7 @@ static int snd_sbirq = 0;
 static int snd_sbdma = 0;
 static int snd_mport = 0;
 
-typedef enum 
+typedef enum
 {
     DEFAULT_INT,
     DEFAULT_INT_HEX,
@@ -240,7 +240,7 @@ typedef struct
     // If zero, we didn't read this value from a config file.
     int            untranslated;
 
-    // The value we translated the scancode into when we read the 
+    // The value we translated the scancode into when we read the
     // config file on startup.  If the variable value is different from
     // this, it has been changed and needs to be converted; otherwise,
     // use the 'untranslated' value.
@@ -270,13 +270,13 @@ typedef struct
 
 //! @begin_config_file default.cfg
 
-static default_t	doom_defaults_list[] =
+static default_t    doom_defaults_list[] =
 {
-    //! 
+    //!
     // Mouse sensitivity.  This value is used to multiply input mouse
     // movement to control the effect of moving the mouse.
     //
-    // The "normal" maximum value available for this through the 
+    // The "normal" maximum value available for this through the
     // in-game options menu is 9. A value of 31 or greater will cause
     // the game to crash when entering the options menu.
     //
@@ -303,7 +303,7 @@ static default_t	doom_defaults_list[] =
 
     CONFIG_VARIABLE_INT(show_messages,     showMessages),
 
-    //! 
+    //!
     // Keyboard key to turn right.
     //
 
@@ -426,7 +426,7 @@ static default_t	doom_defaults_list[] =
     //!
     // Screen size, range 3-11.
     //
-    // A value of 11 gives a full-screen view with the status bar not 
+    // A value of 11 gives a full-screen view with the status bar not
     // displayed.  A value of 10 gives a full-screen view with the
     // status bar displayed.
     //
@@ -454,9 +454,9 @@ static default_t	doom_defaults_list[] =
     CONFIG_VARIABLE_INT(snd_musicdevice,   snd_musicdevice),
 
     //!
-    // Sound effects device.  A value of zero disables in-game sound 
-    // effects, a value of 1 enables PC speaker sound effects, while 
-    // a value in the range 2-9 enables the "normal" digital sound 
+    // Sound effects device.  A value of zero disables in-game sound
+    // effects, a value of 1 enables PC speaker sound effects, while
+    // a value in the range 2-9 enables the "normal" digital sound
     // effects.
     //
 
@@ -487,7 +487,7 @@ static default_t	doom_defaults_list[] =
     CONFIG_VARIABLE_INT(snd_mport,         snd_mport),
 
     //!
-    // Gamma correction level.  A value of zero disables gamma 
+    // Gamma correction level.  A value of zero disables gamma
     // correction, while a value in the range 1-4 gives increasing
     // levels of gamma correction.
     //
@@ -555,7 +555,7 @@ static default_t	doom_defaults_list[] =
     CONFIG_VARIABLE_STRING(chatmacro9,     chat_macros[9]),
 };
 
-static default_collection_t doom_defaults = 
+static default_collection_t doom_defaults =
 {
     doom_defaults_list,
     arrlen(doom_defaults_list),
@@ -564,10 +564,10 @@ static default_collection_t doom_defaults =
 
 //! @begin_config_file chocolate-doom.cfg
 
-static default_t extra_defaults_list[] = 
+static default_t extra_defaults_list[] =
 {
     //!
-    // If non-zero, video settings will be autoadjusted to a valid 
+    // If non-zero, video settings will be autoadjusted to a valid
     // configuration when the screen_width and screen_height variables
     // do not match any valid configuration.
     //
@@ -590,8 +590,8 @@ static default_t extra_defaults_list[] =
 
     //!
     // Number of milliseconds to wait on startup after the video mode
-    // has been set, before the game will start.  This allows the 
-    // screen to settle on some monitors that do not display an image 
+    // has been set, before the game will start.  This allows the
+    // screen to settle on some monitors that do not display an image
     // for a brief interval after changing video modes.
     //
 
@@ -630,7 +630,7 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(grabmouse,                 grabmouse),
 
     //!
-    // If non-zero, all vertical mouse movement is ignored.  This 
+    // If non-zero, all vertical mouse movement is ignored.  This
     // emulates the behavior of the "novert" tool available under DOS
     // that performs the same function.
     //
@@ -675,7 +675,7 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(show_endoom,               show_endoom),
 
     //!
-    // If non-zero, the Vanilla savegame limit is enforced; if the 
+    // If non-zero, the Vanilla savegame limit is enforced; if the
     // savegame exceeds 180224 bytes in size, the game will exit with
     // an error.  If this has a value of zero, there is no limit to
     // the size of savegames.
@@ -684,7 +684,7 @@ static default_t extra_defaults_list[] =
     CONFIG_VARIABLE_INT(vanilla_savegame_limit,    vanilla_savegame_limit),
 
     //!
-    // If non-zero, the Vanilla demo size limit is enforced; the game 
+    // If non-zero, the Vanilla demo size limit is enforced; the game
     // exits with an error when a demo exceeds the demo size limit
     // (128KiB by default).  If this has a value of zero, there is no
     // limit to the size of demos.
@@ -694,7 +694,7 @@ static default_t extra_defaults_list[] =
 
     //!
     // If non-zero, the game behaves like Vanilla Doom, always assuming
-    // an American keyboard mapping.  If this has a value of zero, the 
+    // an American keyboard mapping.  If this has a value of zero, the
     // native keyboard mapping of the keyboard is used.
     //
 
@@ -710,7 +710,7 @@ static default_t extra_defaults_list[] =
 #ifdef FEATURE_MULTIPLAYER
 
     //!
-    // Name to use in network games for identification.  This is only 
+    // Name to use in network games for identification.  This is only
     // used on the "waiting" screen while waiting for the game to start.
     //
 
@@ -823,10 +823,10 @@ static default_t extra_defaults_list[] =
     // sample rate conversions of sound effects.  Support for this
     // must be compiled into the program.
     //
-    // If zero, libsamplerate support is disabled.  If non-zero, 
+    // If zero, libsamplerate support is disabled.  If non-zero,
     // libsamplerate is enabled. Increasing values roughly correspond
-    // to higher quality conversion; the higher the quality, the 
-    // slower the conversion process.  Linear conversion = 1; 
+    // to higher quality conversion; the higher the quality, the
+    // slower the conversion process.  Linear conversion = 1;
     // Zero order hold = 2; Fast Sinc filter = 3; Medium quality
     // Sinc filter = 4; High quality Sinc filter = 5.
     //
@@ -1166,7 +1166,7 @@ static const int scantokey[128] =
     0  ,    27,     '1',    '2',    '3',    '4',    '5',    '6',
     '7',    '8',    '9',    '0',    '-',    '=',    KEY_BACKSPACE, 9,
     'q',    'w',    'e',    'r',    't',    'y',    'u',    'i',
-    'o',    'p',    '[',    ']',    13,		KEY_RCTRL, 'a',    's',
+    'o',    'p',    '[',    ']',    13,     KEY_RCTRL, 'a',    's',
     'd',    'f',    'g',    'h',    'j',    'k',    'l',    ';',
     '\'',   '`',    KEY_RSHIFT,'\\',   'z',    'x',    'c',    'v',
     'b',    'n',    'm',    ',',    '.',    '/',    KEY_RSHIFT,KEYP_MULTIPLY,
@@ -1187,13 +1187,13 @@ static void SaveDefaultCollection(default_collection_t *collection)
     default_t *defaults;
     int i, v;
     FILE *f;
-	
+
     f = fopen (collection->filename, "w");
     if (!f)
-	return; // can't write the file, but don't complain
+    return; // can't write the file, but don't complain
 
     defaults = collection->defaults;
-		
+
     for (i=0 ; i<collection->numdefaults ; i++)
     {
         int chars_written;
@@ -1207,14 +1207,14 @@ static void SaveDefaultCollection(default_collection_t *collection)
 
         // Print the value
 
-        switch (defaults[i].type) 
+        switch (defaults[i].type)
         {
             case DEFAULT_KEY:
 
                 // use the untranslated version if we can, to reduce
                 // the possibility of screwing up the user's config
                 // file
-                
+
                 v = * (int *) defaults[i].location;
 
                 if (v == KEY_RSHIFT)
@@ -1252,15 +1252,15 @@ static void SaveDefaultCollection(default_collection_t *collection)
                     }
                 }
 
-	        fprintf(f, "%i", v);
+            fprintf(f, "%i", v);
                 break;
 
             case DEFAULT_INT:
-	        fprintf(f, "%i", * (int *) defaults[i].location);
+            fprintf(f, "%i", * (int *) defaults[i].location);
                 break;
 
             case DEFAULT_INT_HEX:
-	        fprintf(f, "0x%x", * (int *) defaults[i].location);
+            fprintf(f, "0x%x", * (int *) defaults[i].location);
                 break;
 
             case DEFAULT_FLOAT:
@@ -1268,7 +1268,7 @@ static void SaveDefaultCollection(default_collection_t *collection)
                 break;
 
             case DEFAULT_STRING:
-	        fprintf(f,"\"%s\"", * (char **) (defaults[i].location));
+            fprintf(f,"\"%s\"", * (char **) (defaults[i].location));
                 break;
         }
 
@@ -1295,10 +1295,10 @@ static int ParseIntParameter(char *strparm)
 static void LoadDefaultCollection(default_collection_t *collection)
 {
     default_t  *defaults = collection->defaults;
-    int		i;
-    FILE*	f;
-    char	defname[80];
-    char	strparm[100];
+    int     i;
+    FILE*   f;
+    char    defname[80];
+    char    strparm[100];
 
     // read the file in, overriding any set defaults
     f = fopen(collection->filename, "r");
@@ -1309,13 +1309,13 @@ static void LoadDefaultCollection(default_collection_t *collection)
 
         return;
     }
-    
+
     while (!feof(f))
     {
         if (fscanf (f, "%79s %99[^\n]\n", defname, strparm) != 2)
         {
             // This line doesn't match
-          
+
             continue;
         }
 
@@ -1326,9 +1326,9 @@ static void LoadDefaultCollection(default_collection_t *collection)
         {
             strparm[strlen(strparm)-1] = '\0';
         }
-        
+
         // Find the setting in the list
-       
+
         for (i=0; i<collection->numdefaults; ++i)
         {
             default_t *def = &collection->defaults[i];
@@ -1383,10 +1383,10 @@ static void LoadDefaultCollection(default_collection_t *collection)
 
             // finish
 
-            break; 
+            break;
         }
     }
-            
+
     fclose (f);
 }
 
@@ -1408,7 +1408,7 @@ void M_SaveDefaults (void)
 void M_LoadDefaults (void)
 {
     int i;
- 
+
     // check for a custom default file
 
     //!
@@ -1423,8 +1423,8 @@ void M_LoadDefaults (void)
 
     if (i)
     {
-	doom_defaults.filename = myargv[i+1];
-	printf ("	default file: %s\n",doom_defaults.filename);
+    doom_defaults.filename = myargv[i+1];
+    printf ("   default file: %s\n",doom_defaults.filename);
     }
     else
     {
@@ -1437,7 +1437,7 @@ void M_LoadDefaults (void)
     //!
     // @arg <file>
     //
-    // Load extra configuration from the specified file, instead 
+    // Load extra configuration from the specified file, instead
     // of chocolate-doom.cfg.
     //
 
@@ -1446,14 +1446,14 @@ void M_LoadDefaults (void)
     if (i)
     {
         extra_defaults.filename = myargv[i+1];
-        printf("        extra configuration file: %s\n", 
+        printf("        extra configuration file: %s\n",
                extra_defaults.filename);
     }
     else
     {
-        extra_defaults.filename 
+        extra_defaults.filename
             = malloc(strlen(configdir) + strlen(PROGRAM_PREFIX) + 15);
-        sprintf(extra_defaults.filename, "%s%sdoom.cfg", 
+        sprintf(extra_defaults.filename, "%s%sdoom.cfg",
                 configdir, PROGRAM_PREFIX);
     }
 
@@ -1461,7 +1461,7 @@ void M_LoadDefaults (void)
     LoadDefaultCollection(&extra_defaults);
 }
 
-// 
+//
 // SetConfigDir:
 //
 // Sets the location of the configuration directory, where configuration
@@ -1488,7 +1488,7 @@ void M_SetConfigDir(void)
         configdir = malloc(strlen(homedir) + strlen(PACKAGE_TARNAME) + 5);
 
         sprintf(configdir, "%s%c.%s%c", homedir, DIR_SEPARATOR,
-			                PACKAGE_TARNAME, DIR_SEPARATOR);
+                            PACKAGE_TARNAME, DIR_SEPARATOR);
 
         // make the directory if it doesnt already exist
 
@@ -1630,4 +1630,3 @@ void M_ApplyPlatformDefaults(void)
     }
 #endif
 }
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -38,4 +38,3 @@ void I_ShutdownJoystick(void);
 void I_UpdateJoystick(void);
 
 #endif /* #ifndef __I_JOYSTICK__ */
-

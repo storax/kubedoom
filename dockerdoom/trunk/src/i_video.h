@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	System specific interface stuff.
+//  System specific interface stuff.
 //
 //-----------------------------------------------------------------------------
 
@@ -45,14 +45,14 @@ typedef struct
         // If NULL, no init function is called.
 
         void (*InitMode)(byte *palette);
-        
+
         // Function to call to draw the screen from the source buffer.
         // Return true if draw was successful.
 
         boolean (*DrawScreen)(int x1, int y1, int x2, int y2);
 
-        // If true, this is a "poor quality" mode.  The autoadjust 
-        // code should always attempt to use a different mode to this 
+        // If true, this is a "poor quality" mode.  The autoadjust
+        // code should always attempt to use a different mode to this
         // mode in fullscreen.
 
         boolean poor_quality;
@@ -99,4 +99,3 @@ extern int startup_delay;
 extern int vanilla_keyboard_mapping;
 
 #endif
-

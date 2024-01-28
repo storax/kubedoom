@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,9 +20,9 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Simple basic typedefs, isolated here to make it easier
-//	 separating modules.
-//    
+//  Simple basic typedefs, isolated here to make it easier
+//   separating modules.
+//
 //-----------------------------------------------------------------------------
 
 
@@ -36,13 +36,13 @@
 #include "libc_wince.h"
 #endif
 
-// C99 integer types; with gcc we just use this.  Other compilers 
+// C99 integer types; with gcc we just use this.  Other compilers
 // should add conditional statements that define the C99 types.
 
 // What is really wanted here is stdint.h; however, some old versions
-// of Solaris don't have stdint.h and only have inttypes.h (the 
-// pre-standardisation version).  inttypes.h is also in the C99 
-// standard and defined to include stdint.h, so include this. 
+// of Solaris don't have stdint.h and only have inttypes.h (the
+// pre-standardisation version).  inttypes.h is also in the C99
+// standard and defined to include stdint.h, so include this.
 
 #include <inttypes.h>
 
@@ -54,9 +54,9 @@ typedef bool boolean;
 
 #else
 
-typedef enum 
+typedef enum
 {
-    false, 
+    false,
     true
 } boolean;
 
@@ -81,4 +81,3 @@ typedef uint8_t byte;
 #define arrlen(array) (sizeof(array) / sizeof(*array))
 
 #endif
-

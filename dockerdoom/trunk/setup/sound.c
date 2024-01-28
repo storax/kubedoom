@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -43,7 +43,7 @@ typedef enum
     NUM_MUSMODES
 } musmode_t;
 
-static char *sfxmode_strings[] = 
+static char *sfxmode_strings[] =
 {
     "Disabled",
     "PC speaker",
@@ -148,7 +148,7 @@ void ConfigSound(void)
 
     TXT_SetColumnWidths(sfx_table, 20, 14);
 
-    TXT_AddWidgets(sfx_table, 
+    TXT_AddWidgets(sfx_table,
                    TXT_NewLabel("Sound effects"),
                    sfx_mode_control = TXT_NewDropdownList(&snd_sfxmode,
                                                           sfxmode_strings,
@@ -175,4 +175,3 @@ void ConfigSound(void)
     TXT_SignalConnect(mus_mode_control, "changed",
                       UpdateSndDevices, NULL);
 }
-

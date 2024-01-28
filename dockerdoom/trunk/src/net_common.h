@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -27,9 +27,9 @@
 #include "net_defs.h"
 #include "net_packet.h"
 
-typedef enum 
+typedef enum
 {
-    // sending syn packets, waiting for an ACK reply 
+    // sending syn packets, waiting for an ACK reply
     // (client side)
 
     NET_CONN_STATE_CONNECTING,
@@ -38,7 +38,7 @@ typedef enum
     // (server side)
 
     NET_CONN_STATE_WAITING_ACK,
-    
+
     // successfully connected
 
     NET_CONN_STATE_CONNECTED,
@@ -83,7 +83,7 @@ typedef enum
 
 typedef struct net_reliable_packet_s net_reliable_packet_t;
 
-typedef struct 
+typedef struct
 {
     net_connstate_t state;
     net_disconnect_reason_t disconnect_reason;
@@ -113,8 +113,7 @@ void NET_SafePuts(char *msg);
 unsigned int NET_ExpandTicNum(unsigned int relative, unsigned int b);
 
 boolean NET_ValidGameMode(GameMode_t mode, GameMission_t mission);
-boolean NET_ValidGameSettings(GameMode_t mode, GameMission_t mission, 
+boolean NET_ValidGameSettings(GameMode_t mode, GameMission_t mission,
                               net_gamesettings_t *settings);
 
 #endif /* #ifndef NET_COMMON_H */
-

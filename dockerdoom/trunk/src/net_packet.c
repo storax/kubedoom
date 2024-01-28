@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -34,7 +34,7 @@ net_packet_t *NET_NewPacket(int initial_size)
     net_packet_t *packet;
 
     packet = (net_packet_t *) Z_Malloc(sizeof(net_packet_t), PU_STATIC, 0);
-    
+
     if (initial_size == 0)
         initial_size = 256;
 
@@ -67,7 +67,7 @@ net_packet_t *NET_PacketDup(net_packet_t *packet)
 void NET_FreePacket(net_packet_t *packet)
 {
     //printf("%p: destroyed\n", packet);
-    
+
     total_packet_memory -= sizeof(net_packet_t) + packet->alloced;
     Z_Free(packet->data);
     Z_Free(packet);
@@ -120,7 +120,7 @@ boolean NET_ReadInt32(net_packet_t *packet, unsigned int *data)
 
     *data = (p[0] << 24) | (p[1] << 16) | (p[2] << 8) | p[3];
     packet->pos += 4;
-    
+
     return true;
 }
 
@@ -177,7 +177,7 @@ boolean NET_ReadSInt32(net_packet_t *packet, signed int *data)
     }
 }
 
-// Read a string from the packet.  Returns NULL if a terminating 
+// Read a string from the packet.  Returns NULL if a terminating
 // NUL character was not found before the end of the packet.
 
 char *NET_ReadString(net_packet_t *packet)
@@ -201,11 +201,11 @@ char *NET_ReadString(net_packet_t *packet)
     }
 
     // packet->data[packet->pos] == '\0': We have reached a terminating
-    // NULL.  Skip past this NULL and continue reading immediately 
+    // NULL.  Skip past this NULL and continue reading immediately
     // after it.
 
     ++packet->pos;
-    
+
     return start;
 }
 
@@ -216,7 +216,7 @@ static void NET_IncreasePacket(net_packet_t *packet)
     byte *newdata;
 
     total_packet_memory -= packet->alloced;
-   
+
     packet->alloced *= 2;
 
     newdata = Z_Malloc(packet->alloced, PU_STATIC, 0);
@@ -245,7 +245,7 @@ void NET_WriteInt8(net_packet_t *packet, unsigned int i)
 void NET_WriteInt16(net_packet_t *packet, unsigned int i)
 {
     byte *p;
-    
+
     if (packet->len + 2 > packet->alloced)
         NET_IncreasePacket(packet);
 
@@ -294,7 +294,3 @@ void NET_WriteString(net_packet_t *packet, char *string)
 
     packet->len += strlen(string) + 1;
 }
-
-
-
-

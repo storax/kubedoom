@@ -691,4 +691,3 @@ boolean mus2mid(MEMFILE *musinput, MEMFILE *midioutput)
 
     return false;
 }
-

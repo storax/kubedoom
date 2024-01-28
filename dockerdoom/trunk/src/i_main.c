@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Main program, simply calls D_DoomMain high level loop.
+//  Main program, simply calls D_DoomMain high level loop.
 //
 //-----------------------------------------------------------------------------
 
@@ -119,7 +119,7 @@ static void LockCPUAffinity(void)
 
 static void LockCPUAffinity(void)
 {
-    fprintf(stderr, 
+    fprintf(stderr,
     "WARNING: No known way to set processor affinity on this platform.\n"
     "         You may experience crashes due to SDL_mixer.\n");
 }
@@ -153,4 +153,3 @@ int main(int argc, char **argv)
 
     return 0;
 }
-

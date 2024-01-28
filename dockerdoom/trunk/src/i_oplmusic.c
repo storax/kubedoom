@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	System interface for music.
+//  System interface for music.
 //
 //-----------------------------------------------------------------------------
 
@@ -802,7 +802,7 @@ static void UpdateVoiceFrequency(opl_voice_t *voice)
     }
 }
 
-// Program a single voice for an instrument.  For a double voice 
+// Program a single voice for an instrument.  For a double voice
 // instrument (GENMIDI_FLAG_2VOICE), this is called twice for each
 // key on event.
 
@@ -1310,7 +1310,7 @@ static void I_OPL_UnRegisterSong(void *handle)
     }
 }
 
-// Determine whether memory block is a .mid file 
+// Determine whether memory block is a .mid file
 
 static boolean IsMid(byte *mem, int len)
 {
@@ -1362,9 +1362,9 @@ static void *I_OPL_RegisterSong(void *data, int len)
     {
         M_WriteFile(filename, data, len);
     }
-    else 
+    else
     {
-	// Assume a MUS file and try to convert
+    // Assume a MUS file and try to convert
 
         ConvertMus(data, len, filename);
     }
@@ -1467,4 +1467,3 @@ music_module_t music_opl_module =
     I_OPL_StopSong,
     I_OPL_MusicIsPlaying,
 };
-

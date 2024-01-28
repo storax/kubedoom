@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -192,7 +192,7 @@ byte *I_ZoneBase (int *size)
 
     zonemem = AutoAllocMemory(size, default_ram, min_ram);
 
-    printf("zone memory: %p, %x allocated for zone\n", 
+    printf("zone memory: %p, %x allocated for zone\n",
            zonemem, *size);
 
     return zonemem;
@@ -227,7 +227,7 @@ void I_Init (void)
 #define ENDOOM_W 80
 #define ENDOOM_H 25
 
-// 
+//
 // Displays the text mode ending screen after the game quits
 //
 
@@ -245,12 +245,12 @@ void I_Endoom(void)
     TXT_Init();
 
     // Make sure the new window has the right title and icon
- 
+
     I_SetWindowCaption();
     I_SetWindowIcon();
-    
+
     // Write the data to the screen memory
-  
+
     screendata = TXT_GetScreenData();
 
     indent = (ENDOOM_W - TXT_SCREEN_W) / 2;
@@ -272,10 +272,10 @@ void I_Endoom(void)
         {
             break;
         }
-        
+
         TXT_Sleep(0);
     }
-    
+
     // Shut down text mode screen
 
     TXT_Shutdown();
@@ -320,7 +320,7 @@ static boolean already_quitting = false;
 
 void I_Error (char *error, ...)
 {
-    va_list	argptr;
+    va_list argptr;
 
     if (already_quitting)
     {
@@ -331,7 +331,7 @@ void I_Error (char *error, ...)
     {
         already_quitting = true;
     }
-    
+
     // Message first.
     va_start(argptr, error);
     //fprintf(stderr, "\nError: ");
@@ -344,13 +344,13 @@ void I_Error (char *error, ...)
 
     if (demorecording)
     {
-	G_CheckDemoStatus();
+    G_CheckDemoStatus();
     }
 
     D_QuitNetGame ();
     I_ShutdownGraphics();
     S_Shutdown();
-    
+
 #ifdef _WIN32
     // On Windows, pop up a dialog box with the error message.
     {
@@ -374,18 +374,18 @@ void I_Error (char *error, ...)
     {
         CFStringRef message;
         char msgbuf[512];
-	int i;
+    int i;
 
         va_start(argptr, error);
         memset(msgbuf, 0, sizeof(msgbuf));
         vsnprintf(msgbuf, sizeof(msgbuf) - 1, error, argptr);
         va_end(argptr);
 
-	// The CoreFoundation message box wraps text lines, so replace
-	// newline characters with spaces so that multiline messages
-	// are continuous.
+    // The CoreFoundation message box wraps text lines, so replace
+    // newline characters with spaces so that multiline messages
+    // are continuous.
 
-	for (i = 0; msgbuf[i] != '\0'; ++i)
+    for (i = 0; msgbuf[i] != '\0'; ++i)
         {
             if (msgbuf[i] == '\n')
             {
@@ -517,4 +517,3 @@ boolean I_GetMemoryValue(unsigned int offset, void *value, int size)
 
     return false;
 }
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,8 +20,8 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Refresh (R_*) module, global header.
-//	All the rendering/drawing stuff is here.
+//  Refresh (R_*) module, global header.
+//  All the rendering/drawing stuff is here.
 //
 //-----------------------------------------------------------------------------
 
@@ -50,4 +50,4 @@
 #include "r_things.h"
 #include "r_draw.h"
 
-#endif		// __R_LOCAL__
+#endif      // __R_LOCAL__

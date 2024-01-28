@@ -4,8 +4,8 @@
 
 // Passed as second argument to P_SpawnMapThing() to tell it
 // if we're spawning a pid mobj or not.
-#define IS_NOT_PID_MOBJ		0
-#define IS_PID_MOBJ		1
+#define IS_NOT_PID_MOBJ     0
+#define IS_PID_MOBJ     1
 
 // All flags below are generally set up in d_main.c, D_DoomMain().
 

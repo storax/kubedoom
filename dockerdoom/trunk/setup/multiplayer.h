@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -34,4 +34,3 @@ void SetChatMacroDefaults(void);
 void SetPlayerNameDefault(void);
 
 #endif /* #ifndef SETUP_MULTIPLAYER_H */
-

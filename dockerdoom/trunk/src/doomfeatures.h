@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -44,5 +44,3 @@
 #define FEATURE_SOUND 1
 
 #endif /* #ifndef DOOM_FEATURES_H */
-
-

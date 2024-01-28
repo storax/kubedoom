@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -49,4 +49,3 @@ void NET_WriteInt32(net_packet_t *packet, unsigned int i);
 void NET_WriteString(net_packet_t *packet, char *string);
 
 #endif /* #ifndef NET_PACKET_H */
-

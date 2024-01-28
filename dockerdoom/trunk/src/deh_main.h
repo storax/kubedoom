@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -74,4 +74,3 @@ extern boolean deh_allow_long_cheats;
 extern boolean deh_apply_cheats;
 
 #endif /* #ifndef DEH_MAIN_H */
-

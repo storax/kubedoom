@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -123,16 +123,16 @@ void ConfigMouse(void)
 
     TXT_AddWidgets(window,
                    TXT_NewCheckBox("Enable mouse", &usemouse),
-                   TXT_NewInvertedCheckBox("Allow vertical mouse movement", 
+                   TXT_NewInvertedCheckBox("Allow vertical mouse movement",
                                            &novert),
-                   TXT_NewCheckBox("Grab mouse in windowed mode", 
+                   TXT_NewCheckBox("Grab mouse in windowed mode",
                                    &grabmouse),
                    TXT_NewCheckBox("Double click acts as \"use\"",
                                    &dclick_use),
 
                    TXT_NewSeparator("Mouse motion"),
                    motion_table = TXT_NewTable(2),
-    
+
                    TXT_NewSeparator("Buttons"),
                    buttons_table = TXT_NewTable(2),
                    more_buttons = TXT_NewButton("More buttons..."),
@@ -155,9 +155,8 @@ void ConfigMouse(void)
     AddMouseControl(buttons_table, "Move forward", &mousebforward);
     AddMouseControl(buttons_table, "Strafe on", &mousebstrafe);
     AddMouseControl(buttons_table, "Fire weapon", &mousebfire);
-    
+
     TXT_SetWindowAction(window, TXT_HORIZ_CENTER, TestConfigAction());
 
     TXT_SignalConnect(more_buttons, "pressed", ConfigExtraButtons, NULL);
 }
-

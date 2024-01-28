@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -33,8 +33,8 @@
 #include "i_system.h"
 #include "m_misc.h"
 
-int		myargc;
-char**		myargv;
+int     myargc;
+char**      myargv;
 
 
 
@@ -53,8 +53,8 @@ int M_CheckParmWithArgs(char *check, int num_args)
 
     for (i = 1; i < myargc - num_args; i++)
     {
-	if (!strcasecmp(check, myargv[i]))
-	    return i;
+    if (!strcasecmp(check, myargv[i]))
+        return i;
     }
 
     return 0;
@@ -66,7 +66,7 @@ int M_CheckParm(char *check)
 }
 
 #define MAXARGVS        100
-	
+
 static void LoadResponseFile(int argv_index)
 {
     FILE *handle;
@@ -95,7 +95,7 @@ static void LoadResponseFile(int argv_index)
 
     // Read in the entire file
     // Allocate one byte extra - this is in case there is an argument
-    // at the end of the response file, in which case a '\0' will be 
+    // at the end of the response file, in which case a '\0' will be
     // needed.
 
     file = malloc(size + 1);
@@ -120,7 +120,7 @@ static void LoadResponseFile(int argv_index)
         newargv[i] = myargv[i];
         ++newargc;
     }
-    
+
     infile = file;
     k = 0;
 
@@ -131,7 +131,7 @@ static void LoadResponseFile(int argv_index)
         while(k < size && isspace(infile[k]))
         {
             ++k;
-        } 
+        }
 
         if (k >= size)
         {
@@ -142,7 +142,7 @@ static void LoadResponseFile(int argv_index)
         // the contents as a single argument.  This allows long filenames
         // to be specified.
 
-        if (infile[k] == '\"') 
+        if (infile[k] == '\"')
         {
             // Skip the first character(")
             ++k;
@@ -156,9 +156,9 @@ static void LoadResponseFile(int argv_index)
                 ++k;
             }
 
-            if (k >= size || infile[k] == '\n') 
+            if (k >= size || infile[k] == '\n')
             {
-                I_Error("Quotes unclosed in response file '%s'", 
+                I_Error("Quotes unclosed in response file '%s'",
                         response_filename);
             }
 
@@ -184,7 +184,7 @@ static void LoadResponseFile(int argv_index)
 
             ++k;
         }
-    } 
+    }
 
     // Add arguments following the response file argument
 
@@ -226,4 +226,3 @@ void M_FindResponseFile(void)
         }
     }
 }
-

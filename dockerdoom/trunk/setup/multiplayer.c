@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -54,7 +54,7 @@ typedef enum
     JOIN_ADDRESS,
 } jointype_t;
 
-static iwad_t iwads[] = 
+static iwad_t iwads[] =
 {
     { "doom.wad",     "Doom",                 IWAD_DOOM },
     { "doom2.wad",    "Doom 2",               IWAD_DOOM2 },
@@ -76,7 +76,7 @@ static int found_iwad_selected;
 
 static char *iwadfile;
 
-static char *skills[] = 
+static char *skills[] =
 {
     "I'm too young to die.",
     "Hey, not too rough.",
@@ -85,7 +85,7 @@ static char *skills[] =
     "NIGHTMARE!",
 };
 
-static char *chex_skills[] = 
+static char *chex_skills[] =
 {
     "Easy does it",
     "Not so sticky",
@@ -94,7 +94,7 @@ static char *chex_skills[] =
     "SUPER SLIMEY!"
 };
 
-static char *gamemodes[] = 
+static char *gamemodes[] =
 {
     "Co-operative",
     "Deathmatch",
@@ -154,7 +154,7 @@ static void AddWADs(execute_context_t *exec)
 {
     int have_wads = 0;
     int i;
-    
+
     for (i=0; i<NUM_WADS; ++i)
     {
         if (wads[i] != NULL && strlen(wads[i]) > 0)
@@ -172,7 +172,7 @@ static void AddWADs(execute_context_t *exec)
 static void AddExtraParameters(execute_context_t *exec)
 {
     int i;
-    
+
     for (i=0; i<NUM_EXTRA_PARAMS; ++i)
     {
         if (extra_params[i] != NULL && strlen(extra_params[i]) > 0)
@@ -263,7 +263,7 @@ static void StartGame(int multiplayer)
     AddWADs(exec);
 
     TXT_Shutdown();
-    
+
     M_SaveDefaults();
     PassThroughArguments(exec);
 
@@ -339,7 +339,7 @@ static void CloseLevelSelectDialog(TXT_UNCAST_ARG(button), TXT_UNCAST_ARG(window
 {
     TXT_CAST_ARG(txt_window_t, window);
 
-    TXT_CloseWindow(window);            
+    TXT_CloseWindow(window);
 }
 
 static void LevelSelectDialog(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(user_data))
@@ -362,7 +362,7 @@ static void LevelSelectDialog(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(user_data))
     if (warptype == WARP_DOOM1)
     {
         // ExMy levels
-        
+
         iwad = GetCurrentIWAD();
 
         for (i=0; i<4 * 9; ++i)
@@ -406,10 +406,10 @@ static void LevelSelectDialog(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(user_data))
             y = i / 4;
 
             l = x * 8 + y + 1;
-          
+
             sprintf(buf, " MAP%02i ", l);
             button = TXT_NewButton(buf);
-            TXT_SignalConnect(button, "pressed", 
+            TXT_SignalConnect(button, "pressed",
                               SetDoom2Warp, (void *) l);
             TXT_SignalConnect(button, "pressed",
                               CloseLevelSelectDialog, window);
@@ -442,7 +442,7 @@ static void UpdateWarpType(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
 {
     warptype_t new_warptype;
     iwad_t *iwad;
-    
+
     // Get the selected IWAD
 
     iwad = GetIWADForDescription(found_iwads[found_iwad_selected]);
@@ -481,7 +481,7 @@ static txt_widget_t *IWADSelector(void)
     unsigned int i;
 
     // Find out what WADs are installed
-    
+
     installed_iwads = FindInstalledIWADs();
 
     // Build a list of the descriptions for all installed IWADs
@@ -518,7 +518,7 @@ static txt_widget_t *IWADSelector(void)
     {
         // Dropdown list allowing IWAD to be selected.
 
-        dropdown = TXT_NewDropdownList(&found_iwad_selected, 
+        dropdown = TXT_NewDropdownList(&found_iwad_selected,
                                        found_iwads, num_iwads);
 
         TXT_SignalConnect(dropdown, "changed", IWADSelected, NULL);
@@ -572,14 +572,14 @@ static void OpenWadsWindow(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(user_data))
     }
 }
 
-static void OpenExtraParamsWindow(TXT_UNCAST_ARG(widget), 
+static void OpenExtraParamsWindow(TXT_UNCAST_ARG(widget),
                                   TXT_UNCAST_ARG(user_data))
 {
     txt_window_t *window;
     int i;
 
     window = TXT_NewWindow("Extra command line parameters");
-    
+
     for (i=0; i<NUM_EXTRA_PARAMS; ++i)
     {
         TXT_AddWidget(window, TXT_NewInputBox(&extra_params[i], 70));
@@ -609,7 +609,7 @@ static void StartGameMenu(char *window_title, int multiplayer)
 
     window = TXT_NewWindow(window_title);
 
-    TXT_AddWidgets(window, 
+    TXT_AddWidgets(window,
                    gameopt_table = TXT_NewTable(2),
                    TXT_NewSeparator("Monster options"),
                    TXT_NewInvertedCheckBox("Monsters enabled", &nomonsters),
@@ -621,7 +621,7 @@ static void StartGameMenu(char *window_title, int multiplayer)
 
     TXT_SetWindowAction(window, TXT_HORIZ_CENTER, WadWindowAction());
     TXT_SetWindowAction(window, TXT_HORIZ_RIGHT, StartGameAction(multiplayer));
-    
+
     TXT_SetColumnWidths(gameopt_table, 12, 6);
 
     TXT_AddWidgets(gameopt_table,
@@ -655,7 +655,7 @@ static void StartGameMenu(char *window_title, int multiplayer)
     }
 
     TXT_AddWidget(window,
-                  TXT_NewButton2("Add extra parameters...", 
+                  TXT_NewButton2("Add extra parameters...",
                                  OpenExtraParamsWindow, NULL));
 
     TXT_SetColumnWidths(advanced_table, 12, 6);
@@ -699,7 +699,7 @@ static void DoJoinGame(void *unused1, void *unused2)
     AddWADs(exec);
 
     TXT_Shutdown();
-    
+
     M_SaveDefaults();
 
     PassThroughArguments(exec);
@@ -735,7 +735,7 @@ void JoinMultiGame(void)
 
     window = TXT_NewWindow("Join multiplayer game");
 
-    TXT_AddWidgets(window, 
+    TXT_AddWidgets(window,
         gameopt_table = TXT_NewTable(2),
         TXT_NewSeparator("Server"),
         serveropt_table = TXT_NewTable(2),
@@ -768,7 +768,7 @@ void JoinMultiGame(void)
 void SetChatMacroDefaults(void)
 {
     int i;
-    char *defaults[] = 
+    char *defaults[] =
     {
         HUSTR_CHATMACRO1,
         HUSTR_CHATMACRO2,
@@ -781,7 +781,7 @@ void SetChatMacroDefaults(void)
         HUSTR_CHATMACRO9,
         HUSTR_CHATMACRO0,
     };
-    
+
     // If the chat macros have not been set, initialize with defaults.
 
     for (i=0; i<10; ++i)
@@ -821,7 +821,7 @@ void MultiplayerConfig(void)
 
     window = TXT_NewWindow("Multiplayer Configuration");
 
-    TXT_AddWidgets(window, 
+    TXT_AddWidgets(window,
                    TXT_NewStrut(0, 1),
                    TXT_NewHorizBox(TXT_NewLabel("Player name:  "),
                                    TXT_NewInputBox(&net_player_name, 25),
@@ -844,7 +844,6 @@ void MultiplayerConfig(void)
                        TXT_NewInputBox(&chat_macros[(i + 1) % 10], 40),
                        NULL);
     }
-    
+
     TXT_AddWidget(window, table);
 }
-

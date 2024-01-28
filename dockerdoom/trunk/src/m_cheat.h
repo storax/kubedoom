@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Cheat code checking.
+//  Cheat code checking.
 //
 //-----------------------------------------------------------------------------
 
@@ -57,14 +57,14 @@ typedef struct
 
 int
 cht_CheckCheat
-( cheatseq_t*		cht,
-  char			key );
+( cheatseq_t*       cht,
+  char          key );
 
 
 void
 cht_GetParam
-( cheatseq_t*		cht,
-  char*			buffer );
+( cheatseq_t*       cht,
+  char*         buffer );
 
 
 #endif

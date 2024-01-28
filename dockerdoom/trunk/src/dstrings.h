@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -21,7 +21,7 @@
 //
 //
 // DESCRIPTION:
-//	DOOM strings, by language.
+//  DOOM strings, by language.
 //
 //-----------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@
 #include "d_englsh.h"
 
 // Misc. other strings.
-#define SAVEGAMENAME	"doomsav"
+#define SAVEGAMENAME    "doomsav"
 
 
 // QuitDOOM messages

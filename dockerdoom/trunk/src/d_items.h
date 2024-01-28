@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Items: key cards, artifacts, weapon, ammunition.
+//  Items: key cards, artifacts, weapon, ammunition.
 //
 //-----------------------------------------------------------------------------
 
@@ -35,12 +35,12 @@
 // Weapon info: sprite frames, ammunition use.
 typedef struct
 {
-    ammotype_t	ammo;
-    int		upstate;
-    int		downstate;
-    int		readystate;
-    int		atkstate;
-    int		flashstate;
+    ammotype_t  ammo;
+    int     upstate;
+    int     downstate;
+    int     readystate;
+    int     atkstate;
+    int     flashstate;
 
 } weaponinfo_t;
 

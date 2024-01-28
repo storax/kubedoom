@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -36,8 +36,8 @@
 // Retrieve column data for span blitting.
 byte*
 R_GetColumn
-( int		tex,
-  int		col );
+( int       tex,
+  int       col );
 
 
 // I/O, setting up the stuff.

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -45,4 +45,3 @@ extern void NET_Query_AddToMaster(net_addr_t *master_addr);
 extern void NET_Query_MasterResponse(net_packet_t *packet);
 
 #endif /* #ifndef NET_QUERY_H */
-

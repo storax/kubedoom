@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -83,7 +83,7 @@ boolean M_FileExists(char *filename)
     }
     else
     {
-        // If we can't open because the file is a directory, the 
+        // If we can't open because the file is a directory, the
         // "file" exists at least!
 
         return errno == EISDIR;
@@ -95,13 +95,13 @@ boolean M_FileExists(char *filename)
 //
 
 long M_FileLength(FILE *handle)
-{ 
+{
     long savedpos;
     long length;
 
     // save the current position in the file
     savedpos = ftell(handle);
-    
+
     // jump to the end and find the length
     fseek(handle, 0, SEEK_END);
     length = ftell(handle);
@@ -119,19 +119,19 @@ long M_FileLength(FILE *handle)
 boolean M_WriteFile(char *name, void *source, int length)
 {
     FILE *handle;
-    int	count;
-	
+    int count;
+
     handle = fopen(name, "wb");
 
     if (handle == NULL)
-	return false;
+    return false;
 
     count = fwrite(source, 1, length, handle);
     fclose(handle);
-	
+
     if (count < length)
-	return false;
-		
+    return false;
+
     return true;
 }
 
@@ -143,25 +143,25 @@ boolean M_WriteFile(char *name, void *source, int length)
 int M_ReadFile(char *name, byte **buffer)
 {
     FILE *handle;
-    int	count, length;
+    int count, length;
     byte *buf;
-	
+
     handle = fopen(name, "rb");
     if (handle == NULL)
-	I_Error ("Couldn't read file %s", name);
+    I_Error ("Couldn't read file %s", name);
 
     // find the size of the file by seeking to the end and
     // reading the current position
 
     length = M_FileLength(handle);
-    
+
     buf = Z_Malloc (length, PU_STATIC, NULL);
     count = fread(buf, 1, length, handle);
     fclose (handle);
-	
+
     if (count < length)
-	I_Error ("Couldn't read file %s", name);
-		
+    I_Error ("Couldn't read file %s", name);
+
     *buffer = buf;
     return length;
 }
@@ -205,4 +205,3 @@ boolean M_StrToInt(const char *str, int *result)
         || sscanf(str, " 0%o", result) == 1
         || sscanf(str, " %d", result) == 1;
 }
-

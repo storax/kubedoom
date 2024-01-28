@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -122,7 +122,7 @@ void I_InitJoystick(void)
 
 void I_ShutdownJoystick(void)
 {
-    if (joystick != NULL) 
+    if (joystick != NULL)
     {
         SDL_JoystickClose(joystick);
         joystick = NULL;
@@ -139,7 +139,7 @@ static int GetButtonState(void)
 
     result = 0;
 
-    for (i=0; i<SDL_JoystickNumButtons(joystick); ++i) 
+    for (i=0; i<SDL_JoystickNumButtons(joystick); ++i)
     {
         if (SDL_JoystickGetButton(joystick, i))
         {
@@ -185,4 +185,3 @@ void I_UpdateJoystick(void)
         D_PostEvent(&ev);
     }
 }
-

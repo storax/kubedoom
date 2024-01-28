@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -41,4 +41,3 @@ extern int joystick_y_invert;
 void ConfigJoystick(void);
 
 #endif /* #ifndef SETUP_JOYSTICK_H */
-

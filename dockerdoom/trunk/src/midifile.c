@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -88,7 +88,7 @@ static boolean CheckChunkHeader(chunk_header_t *chunk,
                                 char *expected_id)
 {
     boolean result;
-    
+
     result = (memcmp((char *) chunk->chunk_id, expected_id, 4) == 0);
 
     if (!result)
@@ -320,7 +320,7 @@ static boolean ReadEvent(midi_event_t *event, unsigned int *last_event_type,
         return false;
     }
 
-    // All event types have their top bit set.  Therefore, if 
+    // All event types have their top bit set.  Therefore, if
     // the top bit is not set, it is because we are using the "same
     // as previous event type" shortcut to save a byte.  Skip back
     // a byte so that we read this byte again.
@@ -454,7 +454,7 @@ static boolean ReadTrack(midi_track_t *track, FILE *stream)
     {
         // Resize the track slightly larger to hold another event:
 
-        new_events = realloc(track->events, 
+        new_events = realloc(track->events,
                              sizeof(midi_event_t) * (track->num_events + 1));
 
         if (new_events == NULL)
@@ -812,4 +812,3 @@ int main(int argc, char *argv[])
 }
 
 #endif
-

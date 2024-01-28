@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	WAD I/O functions.
+//  WAD I/O functions.
 //
 //-----------------------------------------------------------------------------
 
@@ -40,9 +40,9 @@ extern wad_file_class_t win32_wad_file;
 
 #ifdef HAVE_MMAP
 extern wad_file_class_t posix_wad_file;
-#endif 
+#endif
 
-static wad_file_class_t *wad_file_classes[] = 
+static wad_file_class_t *wad_file_classes[] =
 {
 #ifdef _WIN32
     &win32_wad_file,
@@ -95,4 +95,3 @@ size_t W_Read(wad_file_t *wad, unsigned int offset,
 {
     return wad->file_class->Read(wad, offset, buffer, buffer_len);
 }
-

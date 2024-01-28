@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -34,10 +34,10 @@
 // NOT called by W_Ticker. Fixme.
 void
 P_SetupLevel
-( int		episode,
-  int		map,
-  int		playermask,
-  skill_t	skill);
+( int       episode,
+  int       map,
+  int       playermask,
+  skill_t   skill);
 
 // Called by startup code.
 void P_Init (void);

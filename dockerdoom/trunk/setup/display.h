@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -19,7 +19,7 @@
 // 02111-1307, USA.
 //
 
-#ifndef SETUP_DISPLAY_H 
+#ifndef SETUP_DISPLAY_H
 #define SETUP_DISPLAY_H
 
 extern int autoadjust_video_settings;
@@ -35,4 +35,3 @@ void ConfigDisplay(void);
 void SetDisplayDriver(void);
 
 #endif /* #ifndef SETUP_DISPLAY_H */
-

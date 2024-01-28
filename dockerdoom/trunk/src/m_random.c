@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Random number LUT.
+//  Random number LUT.
 //
 //-----------------------------------------------------------------------------
 
@@ -56,8 +56,8 @@ static const unsigned char rndtable[256] = {
     120, 163, 236, 249
 };
 
-int	rndindex = 0;
-int	prndindex = 0;
+int rndindex = 0;
+int prndindex = 0;
 
 // Which one is deterministic?
 int P_Random (void)
@@ -80,7 +80,3 @@ void M_ClearRandom (void)
 
     rndindex = time(NULL) & 0xff;
 }
-
-
-
-

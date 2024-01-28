@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -21,7 +21,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	System interface for sound.
+//  System interface for sound.
 //
 //-----------------------------------------------------------------------------
 
@@ -66,7 +66,7 @@ static int mixer_channels;
 
 int use_libsamplerate = 0;
 
-// When a sound stops, check if it is still playing.  If it is not, 
+// When a sound stops, check if it is still playing.  If it is not,
 // we can mark the sound data as CACHE to be freed back for other
 // means.
 
@@ -81,7 +81,7 @@ static void ReleaseSoundOnChannel(int channel)
     }
 
     channels_playing[channel] = sfx_None;
-    
+
 #ifdef HAVE_LIBSAMPLERATE
     // Don't allow precached sounds to be swapped out.
     if (use_libsamplerate)
@@ -97,7 +97,7 @@ static void ReleaseSoundOnChannel(int channel)
     }
 
     // Not used on any channel, and can be safely released
-    
+
     Z_ChangeTag(sound_chunks[id].abuf, PU_CACHE);
 }
 
@@ -221,8 +221,8 @@ static void ExpandSoundData_SDL(byte *data,
 {
     SDL_AudioCVT convertor;
     uint32_t expanded_length;
- 
-    // Calculate the length of the expanded version of the sample.    
+
+    // Calculate the length of the expanded version of the sample.
 
     expanded_length = (uint32_t) ((((uint64_t) length) * mixer_freq) / samplerate);
 
@@ -230,7 +230,7 @@ static void ExpandSoundData_SDL(byte *data,
 
     expanded_length *= 4;
     destination->alen = expanded_length;
-    destination->abuf 
+    destination->abuf
         = Z_Malloc(expanded_length, PU_STATIC, &destination->abuf);
 
     // If we can, use the standard / optimized SDL conversion routines.
@@ -326,10 +326,10 @@ static void ExpandSoundData_SDL(byte *data,
 //     lump already released
 
 static boolean LoadSoundLump(int sound,
-			     int *lumpnum,
-			     int *samplerate,
-			     uint32_t *length,
-			     byte **data_ref)
+                 int *lumpnum,
+                 int *samplerate,
+                 uint32_t *length,
+                 byte **data_ref)
 {
     int lumplen;
     byte *data;
@@ -345,9 +345,9 @@ static boolean LoadSoundLump(int sound,
 
     if (lumplen < 8 || data[0] != 0x03 || data[1] != 0x00)
     {
-	// Invalid sound
-	W_ReleaseLumpNum(*lumpnum);
-	return false;
+    // Invalid sound
+    W_ReleaseLumpNum(*lumpnum);
+    return false;
     }
 
     // 16 bit sample rate field, 32 bit length field
@@ -367,8 +367,8 @@ static boolean LoadSoundLump(int sound,
 
     if (*length > lumplen - 8 || *length <= 48)
     {
-	W_ReleaseLumpNum(*lumpnum);
-	return false;
+    W_ReleaseLumpNum(*lumpnum);
+    return false;
     }
 
     // Prune header
@@ -408,9 +408,9 @@ static boolean CacheSFX_SDL(int sound)
     sound_chunks[sound].volume = MIX_MAX_VOLUME;
 
     ExpandSoundData_SDL(data,
-			samplerate, 
-			length, 
-			&sound_chunks[sound]);
+            samplerate,
+            length,
+            &sound_chunks[sound]);
 
 #ifdef DEBUG_DUMP_WAVS
     {
@@ -423,7 +423,7 @@ static boolean CacheSFX_SDL(int sound)
 #endif
 
     // don't need the original lump any more
-  
+
     W_ReleaseLumpNum(lumpnum);
 
     return true;
@@ -477,51 +477,51 @@ static void I_PrecacheSounds_SRC(void)
         S_sfx[sound_i].lumpnum = W_CheckNumForName(namebuf);
         if (S_sfx[sound_i].lumpnum != -1)
         {
-	    int lumpnum;
-	    int samplerate;
-	    uint32_t length;
-	    byte *data;
+        int lumpnum;
+        int samplerate;
+        uint32_t length;
+        byte *data;
             double of_temp;
             int retn;
             float *rsound;
             uint32_t rlen;
-	    SRC_DATA src_data;
+        SRC_DATA src_data;
 
-	    if (!LoadSoundLump(sound_i, &lumpnum, &samplerate, &length, &data))
-		continue;
+        if (!LoadSoundLump(sound_i, &lumpnum, &samplerate, &length, &data))
+        continue;
 
             assert(length <= LONG_MAX);
-	    src_data.input_frames = length;
-	    src_data.data_in = malloc(length * sizeof(float));
-	    src_data.src_ratio = (double)mixer_freq / samplerate;
+        src_data.input_frames = length;
+        src_data.data_in = malloc(length * sizeof(float));
+        src_data.src_ratio = (double)mixer_freq / samplerate;
 
-	    // mixer_freq / 4 adds a quarter-second safety margin.
+        // mixer_freq / 4 adds a quarter-second safety margin.
 
             of_temp = src_data.src_ratio * length + (mixer_freq / 4);
             assert(of_temp <= LONG_MAX);
-	    src_data.output_frames = of_temp;
-	    src_data.data_out = malloc(src_data.output_frames * sizeof(float));
-	    assert(src_data.data_in != NULL && src_data.data_out != NULL);
+        src_data.output_frames = of_temp;
+        src_data.data_out = malloc(src_data.output_frames * sizeof(float));
+        assert(src_data.data_in != NULL && src_data.data_out != NULL);
 
-	    // Convert input data to floats
+        // Convert input data to floats
 
-	    for (sample_i=0; sample_i<length; ++sample_i)
-	    {
-		// Unclear whether 128 should be interpreted as "zero" or
-		// whether a symmetrical range should be assumed.  The
-		// following assumes a symmetrical range.
+        for (sample_i=0; sample_i<length; ++sample_i)
+        {
+        // Unclear whether 128 should be interpreted as "zero" or
+        // whether a symmetrical range should be assumed.  The
+        // following assumes a symmetrical range.
 
-		src_data.data_in[sample_i] = data[sample_i] / 127.5 - 1;
-	    }
+        src_data.data_in[sample_i] = data[sample_i] / 127.5 - 1;
+        }
 
             // don't need the original lump any more
 
             W_ReleaseLumpNum(lumpnum);
 
-	    // Resample
+        // Resample
 
-	    retn = src_simple(&src_data, SRC_ConversionMode(), 1);
-	    assert(retn == 0);
+        retn = src_simple(&src_data, SRC_ConversionMode(), 1);
+        assert(retn == 0);
             assert(src_data.output_frames_gen > 0);
             resampled_sound[sound_i] = src_data.data_out;
             resampled_sound_length[sound_i] = src_data.output_frames_gen;
@@ -532,11 +532,11 @@ static void I_PrecacheSounds_SRC(void)
 
             rsound = resampled_sound[sound_i];
             rlen = resampled_sound_length[sound_i];
-	    for (sample_i=0; sample_i<rlen; ++sample_i)
-	    {
-	        float fabs_amp = fabsf(rsound[sample_i]);
+        for (sample_i=0; sample_i<rlen; ++sample_i)
+        {
+            float fabs_amp = fabsf(rsound[sample_i]);
                 if (fabs_amp > max_amp)
-  		    max_amp = fabs_amp;
+            max_amp = fabs_amp;
             }
         }
     }
@@ -600,7 +600,7 @@ static Mix_Chunk *GetSFXChunk(int sound_id)
     else
     {
         // don't free the sound while it is playing!
-   
+
         Z_ChangeTag(sound_chunks[sound_id].abuf, PU_STATIC);
     }
 
@@ -618,7 +618,7 @@ static int I_SDL_GetSfxLumpNum(sfxinfo_t* sfx)
     char namebuf[9];
 
     sprintf(namebuf, "ds%s", DEH_String(sfx->name));
-    
+
     return W_GetNumForName(namebuf);
 }
 
@@ -690,7 +690,7 @@ static int I_SDL_StartSound(int id, int channel, int vol, int sep)
     channels_playing[channel] = id;
 
     // set separation, etc.
- 
+
     I_SDL_UpdateSoundParams(channel, vol, sep);
 
     return channel;
@@ -722,7 +722,7 @@ static boolean I_SDL_SoundIsPlaying(int handle)
     return Mix_Playing(handle);
 }
 
-// 
+//
 // Periodically called to update the sound system
 //
 
@@ -738,14 +738,14 @@ static void I_SDL_UpdateSound(void)
         {
             // Sound has finished playing on this channel,
             // but sound data has not been released to cache
-            
+
             ReleaseSoundOnChannel(i);
         }
     }
 }
 
 static void I_SDL_ShutdownSound(void)
-{    
+{
     if (!sound_initialized)
     {
         return;
@@ -785,9 +785,9 @@ static int GetSliceSize(void)
 }
 
 static boolean I_SDL_InitSound(void)
-{ 
+{
     int i;
-    
+
     // No sounds yet
 
     for (i=0; i<NUMSFX; ++i)
@@ -869,7 +869,7 @@ static boolean I_SDL_InitSound(void)
     return true;
 }
 
-static snddevice_t sound_sdl_devices[] = 
+static snddevice_t sound_sdl_devices[] =
 {
     SNDDEVICE_SB,
     SNDDEVICE_PAS,
@@ -879,7 +879,7 @@ static snddevice_t sound_sdl_devices[] =
     SNDDEVICE_AWE32,
 };
 
-sound_module_t sound_sdl_module = 
+sound_module_t sound_sdl_module =
 {
     sound_sdl_devices,
     arrlen(sound_sdl_devices),
@@ -892,4 +892,3 @@ sound_module_t sound_sdl_module =
     I_SDL_StopSound,
     I_SDL_SoundIsPlaying,
 };
-

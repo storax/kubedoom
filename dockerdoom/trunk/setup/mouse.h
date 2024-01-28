@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -44,4 +44,3 @@ void ConfigMouse(void);
 
 
 #endif /* #ifndef SETUP_MOUSE_H */
-

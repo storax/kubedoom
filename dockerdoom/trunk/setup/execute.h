@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -42,4 +42,3 @@ int FindInstalledIWADs(void);
 txt_window_action_t *TestConfigAction(void);
 
 #endif /* #ifndef TESTCONFIG_H */
-

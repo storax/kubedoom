@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Refresh module, BSP traversal and handling.
+//  Refresh module, BSP traversal and handling.
 //
 //-----------------------------------------------------------------------------
 
@@ -30,29 +30,29 @@
 
 
 
-extern seg_t*		curline;
-extern side_t*		sidedef;
-extern line_t*		linedef;
-extern sector_t*	frontsector;
-extern sector_t*	backsector;
+extern seg_t*       curline;
+extern side_t*      sidedef;
+extern line_t*      linedef;
+extern sector_t*    frontsector;
+extern sector_t*    backsector;
 
-extern int		rw_x;
-extern int		rw_stopx;
+extern int      rw_x;
+extern int      rw_stopx;
 
-extern boolean		segtextured;
+extern boolean      segtextured;
 
 // false if the back side is the same plane
-extern boolean		markfloor;		
-extern boolean		markceiling;
+extern boolean      markfloor;
+extern boolean      markceiling;
 
-extern boolean		skymap;
+extern boolean      skymap;
 
-extern drawseg_t	drawsegs[MAXDRAWSEGS];
-extern drawseg_t*	ds_p;
+extern drawseg_t    drawsegs[MAXDRAWSEGS];
+extern drawseg_t*   ds_p;
 
-extern lighttable_t**	hscalelight;
-extern lighttable_t**	vscalelight;
-extern lighttable_t**	dscalelight;
+extern lighttable_t**   hscalelight;
+extern lighttable_t**   vscalelight;
+extern lighttable_t**   dscalelight;
 
 
 typedef void (*drawfunc_t) (int start, int stop);

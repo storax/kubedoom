@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -24,7 +24,7 @@
 //-----------------------------------------------------------------------------
 
 #ifndef NET_DEFS_H
-#define NET_DEFS_H 
+#define NET_DEFS_H
 
 #include "doomdef.h"
 #include "doomtype.h"
@@ -94,7 +94,7 @@ struct _net_addr_s
 
 // packet types
 
-typedef enum 
+typedef enum
 {
     NET_PACKET_TYPE_SYN,
     NET_PACKET_TYPE_ACK,
@@ -121,7 +121,7 @@ typedef enum
     NET_MASTER_PACKET_TYPE_QUERY_RESPONSE
 } net_master_packet_type_t;
 
-typedef struct 
+typedef struct
 {
     int ticdup;
     int extratics;
@@ -154,7 +154,7 @@ typedef struct
 
 // Complete set of ticcmds from all players
 
-typedef struct 
+typedef struct
 {
     signed int latency;
     unsigned int seq;
@@ -176,4 +176,3 @@ typedef struct
 } net_querydata_t;
 
 #endif /* #ifndef NET_DEFS_H */
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -41,5 +41,3 @@ struct txt_key_input_s
 txt_key_input_t *TXT_NewKeyInput(int *variable);
 
 #endif /* #ifndef TXT_KEY_INPUT_H */
-
-

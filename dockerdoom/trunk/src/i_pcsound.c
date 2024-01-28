@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -19,7 +19,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	System interface for PC speaker sound.
+//  System interface for PC speaker sound.
 //
 //-----------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ static void PCSCallbackFunc(int *duration, int *freq)
         *freq = 0;
         return;
     }
-    
+
     if (current_sound_lump != NULL && current_sound_remaining > 0)
     {
         // Read the next tone
@@ -109,7 +109,7 @@ static boolean CachePCSLump(int sound_id)
     int headerlen;
 
     // Free the current sound lump back to the cache
- 
+
     if (current_sound_lump != NULL)
     {
         W_ReleaseLumpNum(current_sound_lump_num);
@@ -122,7 +122,7 @@ static boolean CachePCSLump(int sound_id)
     lumplen = W_LumpLength(S_sfx[sound_id].lumpnum);
 
     // Read header
-  
+
     if (current_sound_lump[0] != 0x00 || current_sound_lump[1] != 0x00)
     {
         return false;
@@ -156,7 +156,7 @@ static int I_PCS_StartSound(int id,
         return -1;
     }
 
-    // These PC speaker sounds are not played - this can be seen in the 
+    // These PC speaker sounds are not played - this can be seen in the
     // Heretic source code, where there are remnants of this left over
     // from Doom.
 
@@ -208,7 +208,7 @@ static void I_PCS_StopSound(int handle)
     {
         current_sound_remaining = 0;
     }
-    
+
     SDL_UnlockMutex(sound_lock);
 }
 
@@ -222,7 +222,7 @@ static int I_PCS_GetSfxLumpNum(sfxinfo_t* sfx)
     char namebuf[9];
 
     sprintf(namebuf, "dp%s", DEH_String(sfx->name));
-    
+
     return W_GetNumForName(namebuf);
 }
 
@@ -278,12 +278,12 @@ void I_PCS_UpdateSoundParams(int channel, int vol, int sep)
     // no-op.
 }
 
-static snddevice_t sound_pcsound_devices[] = 
+static snddevice_t sound_pcsound_devices[] =
 {
     SNDDEVICE_PCSPEAKER,
 };
 
-sound_module_t sound_pcsound_module = 
+sound_module_t sound_pcsound_module =
 {
     sound_pcsound_devices,
     arrlen(sound_pcsound_devices),
@@ -296,4 +296,3 @@ sound_module_t sound_pcsound_module =
     I_PCS_StopSound,
     I_PCS_SoundIsPlaying,
 };
-

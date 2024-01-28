@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -21,7 +21,7 @@
 //
 // DESCRIPTION:
 //   Duh.
-// 
+//
 //-----------------------------------------------------------------------------
 
 
@@ -72,10 +72,10 @@ void G_WorldDone (void);
 
 // Read current data from inputs and build a player movement command.
 
-void G_BuildTiccmd (ticcmd_t *cmd); 
+void G_BuildTiccmd (ticcmd_t *cmd);
 
 void G_Ticker (void);
-boolean G_Responder (event_t*	ev);
+boolean G_Responder (event_t*   ev);
 
 void G_ScreenShot (void);
 

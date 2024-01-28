@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -35,7 +35,7 @@
 #include "deh_defs.h"
 #include "deh_io.h"
 
-static char *deh_signatures[] = 
+static char *deh_signatures[] =
 {
     "Patch File for DeHackEd v2.3",
     "Patch File for DeHackEd v3.0",
@@ -55,9 +55,9 @@ extern deh_section_t deh_section_pointer;
 extern deh_section_t deh_section_sound;
 // deh_text.c:
 extern deh_section_t deh_section_text;
-// deh_thing.c: 
+// deh_thing.c:
 extern deh_section_t deh_section_thing;
-// deh_weapon.c: 
+// deh_weapon.c:
 extern deh_section_t deh_section_weapon;
 
 // If true, we can do long string replacements.
@@ -164,7 +164,7 @@ static char *CleanString(char *s)
         ++s;
 
     // Trailing whitespace
-   
+
     strending = s + strlen(s) - 1;
 
     while (strlen(s) > 0 && isspace(*strending))
@@ -176,7 +176,7 @@ static char *CleanString(char *s)
     return s;
 }
 
-// This pattern is used a lot of times in different sections, 
+// This pattern is used a lot of times in different sections,
 // an assignment is essentially just a statement of the form:
 //
 // Variable Name = Value
@@ -191,7 +191,7 @@ boolean DEH_ParseAssignment(char *line, char **variable_name, char **value)
     char *p;
 
     // find the equals
-    
+
     p = strchr(line, '=');
 
     if (p == NULL && p-line > 2)
@@ -204,11 +204,11 @@ boolean DEH_ParseAssignment(char *line, char **variable_name, char **value)
 
     *p = '\0';
     *variable_name = CleanString(line);
-    
+
     // value immediately follows the '='
-    
+
     *value = CleanString(p+1);
-    
+
     return true;
 }
 
@@ -216,7 +216,7 @@ static boolean CheckSignatures(deh_context_t *context)
 {
     size_t i;
     char *line;
-    
+
     // Read the first line
 
     line = DEH_ReadLine(context);
@@ -245,7 +245,7 @@ static void DEH_ParseComment(char *comment)
 {
     // Allow comments containing this special value to allow string
     // replacements longer than those permitted by DOS dehacked.
-    // This allows us to use a dehacked patch for doing string 
+    // This allows us to use a dehacked patch for doing string
     // replacements for emulating Chex Quest.
     //
     // If you use this, your dehacked patch may not work in Vanilla
@@ -274,7 +274,7 @@ static void DEH_ParseContext(deh_context_t *context)
     char section_name[20];
     void *tag = NULL;
     char *line;
-    
+
     // Read the header and check it matches the signature
 
     if (!CheckSignatures(context))
@@ -283,11 +283,11 @@ static void DEH_ParseContext(deh_context_t *context)
     }
 
     // Read the file
-    
-    for (;;) 
+
+    for (;;)
     {
         // read a new line
- 
+
         line = DEH_ReadLine(context);
 
         // end of file?
@@ -338,7 +338,7 @@ static void DEH_ParseContext(deh_context_t *context)
                 sscanf(line, "%19s", section_name);
 
                 current_section = GetSectionByName(section_name);
-                
+
                 if (current_section != NULL)
                 {
                     tag = current_section->start(context, line);
@@ -373,9 +373,9 @@ int DEH_LoadFile(char *filename)
         fprintf(stderr, "DEH_LoadFile: Unable to open %s\n", filename);
         return 0;
     }
-    
+
     DEH_ParseContext(context);
-    
+
     DEH_CloseFile(context);
 
     return 1;
@@ -438,9 +438,9 @@ void DEH_Init(void)
     // Ignore cheats in dehacked files.
     //
 
-    if (M_CheckParm("-nocheats") > 0) 
+    if (M_CheckParm("-nocheats") > 0)
     {
-	deh_apply_cheats = false;
+    deh_apply_cheats = false;
     }
 
     //!
@@ -464,4 +464,3 @@ void DEH_Init(void)
         }
     }
 }
-

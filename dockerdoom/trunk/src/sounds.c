@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,8 +20,8 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Created by a sound utility.
-//	Kept as a sample, DOOM2 sounds.
+//  Created by a sound utility.
+//  Kept as a sample, DOOM2 sounds.
 //
 //-----------------------------------------------------------------------------
 
@@ -105,7 +105,7 @@ musicinfo_t S_music[] =
     { "ultima", 0, 0, 0 },
     { "read_m", 0, 0, 0 },
     { "dm2ttl", 0, 0, 0 },
-    { "dm2int", 0, 0, 0 } 
+    { "dm2int", 0, 0, 0 }
 };
 
 
@@ -225,6 +225,5 @@ sfxinfo_t S_sfx[] =
   { "skeact", false, 70, 0, -1, -1, 0, 0, 0 },
   { "skesit", false, 70, 0, -1, -1, 0, 0, 0 },
   { "skeatk", false, 70, 0, -1, -1, 0, 0, 0 },
-  { "radio", false, 60, 0, -1, -1, 0, 0, 0 } 
+  { "radio", false, 60, 0, -1, -1, 0, 0, 0 }
 };
-

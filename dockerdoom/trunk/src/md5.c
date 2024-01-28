@@ -123,7 +123,7 @@ void MD5_UpdateString(md5_context_t *context, char *str)
 }
 
 /*
- * Final wrapup - pad to 64-byte boundary with the bit pattern 
+ * Final wrapup - pad to 64-byte boundary with the bit pattern
  * 1 0* (64-bit count of bits processed, MSB-first)
  */
 void
@@ -262,4 +262,3 @@ MD5_Transform(uint32_t buf[4], uint32_t const in[16])
 }
 
 #endif
-

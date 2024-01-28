@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	The not so system specific sound interface.
+//  The not so system specific sound interface.
 //
 //-----------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@
 #include "p_mobj.h"
 #include "sounds.h"
 
-typedef enum 
+typedef enum
 {
     SNDDEVICE_NONE = 0,
     SNDDEVICE_PCSPEAKER = 1,
@@ -154,7 +154,7 @@ extern int snd_samplerate;
 void S_Init(int sfxVolume, int musicVolume);
 
 
-// Shut down sound 
+// Shut down sound
 
 void S_Shutdown(void);
 
@@ -207,4 +207,3 @@ void S_SetSfxVolume(int volume);
 
 
 #endif
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,10 +20,10 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Main loop menu stuff.
-//	Random number LUT.
-//	Default Config File.
-//	PCX Screenshots.
+//  Main loop menu stuff.
+//  Random number LUT.
+//  Default Config File.
+//  PCX Screenshots.
 //
 //-----------------------------------------------------------------------------
 
@@ -42,21 +42,16 @@ void M_ClearBox (fixed_t *box)
 
 void
 M_AddToBox
-( fixed_t*	box,
-  fixed_t	x,
-  fixed_t	y )
+( fixed_t*  box,
+  fixed_t   x,
+  fixed_t   y )
 {
     if (x<box[BOXLEFT])
-	box[BOXLEFT] = x;
+    box[BOXLEFT] = x;
     else if (x>box[BOXRIGHT])
-	box[BOXRIGHT] = x;
+    box[BOXRIGHT] = x;
     if (y<box[BOXBOTTOM])
-	box[BOXBOTTOM] = y;
+    box[BOXBOTTOM] = y;
     else if (y>box[BOXTOP])
-	box[BOXTOP] = y;
+    box[BOXTOP] = y;
 }
-
-
-
-
-

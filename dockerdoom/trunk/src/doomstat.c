@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Put all global tate variables here.
+//  Put all global tate variables here.
 //
 //-----------------------------------------------------------------------------
 
@@ -31,13 +31,9 @@
 
 // Game Mode - identify IWAD as shareware, retail etc.
 GameMode_t gamemode = indetermined;
-GameMission_t	gamemission = doom;
+GameMission_t   gamemission = doom;
 GameVersion_t   gameversion = exe_final2;
 char *gamedescription;
 
 // Set if homebrew PWAD stuff has been added.
-boolean	modifiedgame;
-
-
-
-
+boolean modifiedgame;

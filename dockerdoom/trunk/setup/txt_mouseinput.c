@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -33,7 +33,7 @@
 
 #define MOUSE_INPUT_WIDTH 8
 
-static int MousePressCallback(txt_window_t *window, 
+static int MousePressCallback(txt_window_t *window,
                               int x, int y, int b,
                               TXT_UNCAST_ARG(mouse_input))
 {
@@ -63,10 +63,10 @@ static void OpenPromptWindow(txt_mouse_input_t *mouse_input)
 
     window = TXT_NewWindow(NULL);
     TXT_SetWindowAction(window, TXT_HORIZ_LEFT, NULL);
-    TXT_SetWindowAction(window, TXT_HORIZ_CENTER, 
+    TXT_SetWindowAction(window, TXT_HORIZ_CENTER,
                         TXT_NewWindowAbortAction(window));
     TXT_SetWindowAction(window, TXT_HORIZ_RIGHT, NULL);
-    
+
     label = TXT_NewLabel("Press the new mouse button...");
 
     TXT_AddWidget(window, label);
@@ -121,9 +121,9 @@ static void TXT_MouseInputDrawer(TXT_UNCAST_ARG(mouse_input), int selected)
 
     TXT_SetWidgetBG(mouse_input, selected);
     TXT_FGColor(TXT_COLOR_BRIGHT_WHITE);
-    
+
     TXT_DrawString(buf);
-    
+
     for (i=strlen(buf); i<MOUSE_INPUT_WIDTH; ++i)
     {
         TXT_DrawString(" ");
@@ -184,4 +184,3 @@ txt_mouse_input_t *TXT_NewMouseInput(int *variable)
 
     return mouse_input;
 }
-

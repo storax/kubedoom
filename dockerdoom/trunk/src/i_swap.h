@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Endianess handling, swapping 16bit and 32bit.
+//  Endianess handling, swapping 16bit and 32bit.
 //
 //-----------------------------------------------------------------------------
 
@@ -50,4 +50,3 @@
 #endif
 
 #endif
-

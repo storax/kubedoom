@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Networking stuff.
+//  Networking stuff.
 //
 //-----------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@
 #define MAXNETNODES 8
 
 // Networking and tick handling related.
-#define BACKUPTICS		128
+#define BACKUPTICS      128
 
 extern int extratics;
 
@@ -54,4 +54,3 @@ extern boolean drone;
 extern boolean net_cl_new_sync;
 
 #endif
-

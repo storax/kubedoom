@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -77,7 +77,7 @@ void M_MakeDirectory(char *path)
 }
 
 
-// 
+//
 // M_SetConfigDir:
 //
 // Sets the location of the configuration directory, where configuration
@@ -104,7 +104,7 @@ void M_SetConfigDir(void)
         configdir = malloc(strlen(homedir) + strlen(PACKAGE_TARNAME) + 5);
 
         sprintf(configdir, "%s%c.%s%c", homedir, DIR_SEPARATOR,
-			                PACKAGE_TARNAME, DIR_SEPARATOR);
+                            PACKAGE_TARNAME, DIR_SEPARATOR);
 
         // make the directory if it doesnt already exist
 
@@ -114,7 +114,7 @@ void M_SetConfigDir(void)
 #endif /* #ifndef _WIN32 */
     {
 #if defined(_WIN32) && !defined(_WIN32_WCE)
-        // when given the -cdrom option, save config+savegames in 
+        // when given the -cdrom option, save config+savegames in
         // c:\doomdata.  This only applies under Windows.
 
         if (M_CheckParm("-cdrom") > 0)
@@ -179,7 +179,7 @@ typedef struct
     // If zero, we didn't read this value from a config file.
     int            untranslated;
 
-    // The value we translated the scancode into when we read the 
+    // The value we translated the scancode into when we read the
     // config file on startup.  If the variable value is different from
     // this, it has been changed and needs to be converted; otherwise,
     // use the 'untranslated' value.
@@ -250,14 +250,14 @@ static default_t doom_defaults_list[] =
 
 };
 
-static default_collection_t doom_defaults = 
+static default_collection_t doom_defaults =
 {
     doom_defaults_list,
     arrlen(doom_defaults_list),
     NULL,
 };
 
-static default_t extra_defaults_list[] = 
+static default_t extra_defaults_list[] =
 {
     {"autoadjust_video_settings",   &autoadjust_video_settings, DEFAULT_INT, 0, 0},
     {"fullscreen",                  &fullscreen, DEFAULT_INT, 0, 0},
@@ -366,7 +366,7 @@ static int scantokey[128] =
     0  ,    27,     '1',    '2',    '3',    '4',    '5',    '6',
     '7',    '8',    '9',    '0',    '-',    '=',    KEY_BACKSPACE, 9,
     'q',    'w',    'e',    'r',    't',    'y',    'u',    'i',
-    'o',    'p',    '[',    ']',    13,		KEY_RCTRL, 'a',    's',
+    'o',    'p',    '[',    ']',    13,     KEY_RCTRL, 'a',    's',
     'd',    'f',    'g',    'h',    'j',    'k',    'l',    ';',
     '\'',   '`',    KEY_RSHIFT,'\\',   'z',    'x',    'c',    'v',
     'b',    'n',    'm',    ',',    '.',    '/',    KEY_RSHIFT,KEYP_MULTIPLY,
@@ -387,13 +387,13 @@ static void SaveDefaultCollection(default_collection_t *collection)
     default_t *defaults;
     int i, v;
     FILE *f;
-	
+
     f = fopen (collection->filename, "w");
     if (!f)
-	return; // can't write the file, but don't complain
+    return; // can't write the file, but don't complain
 
     defaults = collection->defaults;
-		
+
     for (i=0 ; i<collection->numdefaults ; i++)
     {
         int chars_written;
@@ -407,14 +407,14 @@ static void SaveDefaultCollection(default_collection_t *collection)
 
         // Print the value
 
-        switch (defaults[i].type) 
+        switch (defaults[i].type)
         {
             case DEFAULT_KEY:
 
                 // use the untranslated version if we can, to reduce
                 // the possibility of screwing up the user's config
                 // file
-                
+
                 v = * (int *) defaults[i].location;
 
                 if (v == KEY_RSHIFT)
@@ -452,15 +452,15 @@ static void SaveDefaultCollection(default_collection_t *collection)
                     }
                 }
 
-	        fprintf(f, "%i", v);
+            fprintf(f, "%i", v);
                 break;
 
             case DEFAULT_INT_HEX:
-	        fprintf(f, "0x%x", * (int *) defaults[i].location);
+            fprintf(f, "0x%x", * (int *) defaults[i].location);
                 break;
 
             case DEFAULT_INT:
-	        fprintf(f, "%i", * (int *) defaults[i].location);
+            fprintf(f, "%i", * (int *) defaults[i].location);
                 break;
 
             case DEFAULT_FLOAT:
@@ -468,7 +468,7 @@ static void SaveDefaultCollection(default_collection_t *collection)
                 break;
 
             case DEFAULT_STRING:
-	        fprintf(f,"\"%s\"", * (char **) (defaults[i].location));
+            fprintf(f,"\"%s\"", * (char **) (defaults[i].location));
                 break;
         }
 
@@ -495,10 +495,10 @@ static int ParseIntParameter(char *strparm)
 static void LoadDefaultCollection(default_collection_t *collection)
 {
     default_t  *defaults = collection->defaults;
-    int		i;
-    FILE*	f;
-    char	defname[80];
-    char	strparm[100];
+    int     i;
+    FILE*   f;
+    char    defname[80];
+    char    strparm[100];
 
     // read the file in, overriding any set defaults
     f = fopen(collection->filename, "r");
@@ -509,13 +509,13 @@ static void LoadDefaultCollection(default_collection_t *collection)
 
         return;
     }
-    
+
     while (!feof(f))
     {
         if (fscanf (f, "%79s %99[^\n]\n", defname, strparm) != 2)
         {
             // This line doesn't match
-          
+
             continue;
         }
 
@@ -526,9 +526,9 @@ static void LoadDefaultCollection(default_collection_t *collection)
         {
             strparm[strlen(strparm)-1] = '\0';
         }
-        
+
         // Find the setting in the list
-       
+
         for (i=0; i<collection->numdefaults; ++i)
         {
             default_t *def = &collection->defaults[i];
@@ -584,10 +584,10 @@ static void LoadDefaultCollection(default_collection_t *collection)
 
             // finish
 
-            break; 
+            break;
         }
     }
-            
+
     fclose (f);
 }
 
@@ -609,14 +609,14 @@ void M_SaveDefaults (void)
 void M_LoadDefaults (void)
 {
     int i;
- 
+
     // check for a custom default file
     i = M_CheckParm ("-config");
 
     if (i && i<myargc-1)
     {
-	doom_defaults.filename = myargv[i+1];
-	printf ("	default file: %s\n",doom_defaults.filename);
+    doom_defaults.filename = myargv[i+1];
+    printf ("   default file: %s\n",doom_defaults.filename);
     }
     else
     {
@@ -631,14 +631,14 @@ void M_LoadDefaults (void)
     if (i && i<myargc-1)
     {
         extra_defaults.filename = myargv[i+1];
-        printf("        extra configuration file: %s\n", 
+        printf("        extra configuration file: %s\n",
                extra_defaults.filename);
     }
     else
     {
-        extra_defaults.filename 
+        extra_defaults.filename
             = malloc(strlen(configdir) + strlen(PROGRAM_PREFIX) + 15);
-        sprintf(extra_defaults.filename, "%s%sdoom.cfg", 
+        sprintf(extra_defaults.filename, "%s%sdoom.cfg",
                 configdir, PROGRAM_PREFIX);
     }
 
@@ -646,9 +646,9 @@ void M_LoadDefaults (void)
     LoadDefaultCollection(&extra_defaults);
 }
 
-// 
+//
 // Save normal (default.cfg) defaults to a given file
-// 
+//
 
 void M_SaveMainDefaults(char *filename)
 {
@@ -668,9 +668,9 @@ void M_SaveMainDefaults(char *filename)
     doom_defaults.filename = main_filename;
 }
 
-// 
+//
 // Save extra (chocolate-doom.cfg) defaults to a given file
-// 
+//
 
 void M_SaveExtraDefaults(char *filename)
 {
@@ -800,4 +800,3 @@ void M_ApplyPlatformDefaults(void)
     }
 #endif
 }
-

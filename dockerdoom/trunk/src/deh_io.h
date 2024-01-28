@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -38,4 +38,3 @@ void DEH_Error(deh_context_t *context, char *msg, ...);
 void DEH_Warning(deh_context_t *context, char *msg, ...);
 
 #endif /* #ifndef DEH_IO_H */
-

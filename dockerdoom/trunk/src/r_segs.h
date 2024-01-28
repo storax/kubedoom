@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Refresh module, drawing LineSegs from BSP.
+//  Refresh module, drawing LineSegs from BSP.
 //
 //-----------------------------------------------------------------------------
 
@@ -33,9 +33,9 @@
 
 void
 R_RenderMaskedSegRange
-( drawseg_t*	ds,
-  int		x1,
-  int		x2 );
+( drawseg_t*    ds,
+  int       x1,
+  int       x2 );
 
 
 #endif

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -60,4 +60,3 @@ extern unsigned int net_local_is_freedoom;
 
 
 #endif /* #ifndef NET_CLIENT_H */
-

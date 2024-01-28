@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -38,7 +38,7 @@
 // Set the value of a particular field in a structure by name
 //
 
-boolean DEH_SetMapping(deh_context_t *context, deh_mapping_t *mapping, 
+boolean DEH_SetMapping(deh_context_t *context, deh_mapping_t *mapping,
                        void *structptr, char *name, int value)
 {
     int i;
@@ -61,7 +61,7 @@ boolean DEH_SetMapping(deh_context_t *context, deh_mapping_t *mapping,
 
      //       printf("Setting %p::%s to %i (%i bytes)\n",
      //               structptr, name, value, entry->size);
-                
+
             switch (entry->size)
             {
                 case 1:
@@ -124,10 +124,9 @@ void DEH_StructMD5Sum(md5_context_t *context, deh_mapping_t *mapping,
                 MD5_UpdateInt32(context, *((uint32_t *) location));
                 break;
             default:
-                I_Error("Unknown dehacked mapping field type for '%s' (BUG)", 
+                I_Error("Unknown dehacked mapping field type for '%s' (BUG)",
                         entry->name);
                 break;
         }
     }
 }
-

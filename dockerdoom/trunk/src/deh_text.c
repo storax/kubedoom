@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -35,7 +35,7 @@
 #include "deh_io.h"
 #include "deh_main.h"
 
-typedef struct 
+typedef struct
 {
     char *from_text;
     char *to_text;
@@ -51,7 +51,7 @@ static unsigned int strhash(char *s)
 {
     char *p = s;
     unsigned int h = *p;
-  
+
     if (h)
     {
         for (p += 1; *p; p++)
@@ -71,7 +71,7 @@ char *DEH_String(char *s)
     // Fallback if we have not initialized the hash table yet
 
     if (hash_table_length < 0)
-	return s;
+    return s;
 
     entry = strhash(s) % hash_table_length;
 
@@ -99,13 +99,13 @@ static void IncreaseHashtable(void)
     deh_substitution_t **old_table;
     int old_table_length;
     int i;
-    
+
     // save the old table
 
     old_table = hash_table;
     old_table_length = hash_table_length;
-    
-    // double the size 
+
+    // double the size
 
     hash_table_length *= 2;
     hash_table = Z_Malloc(sizeof(deh_substitution_t *) * hash_table_length,
@@ -137,9 +137,9 @@ static void DEH_AddToHashtable(deh_substitution_t *sub)
     {
         IncreaseHashtable();
     }
-    
+
     // find where to insert it
-    
+
     entry = strhash(sub->from_text) % hash_table_length;
 
     while (hash_table[entry] != NULL)
@@ -151,7 +151,7 @@ static void DEH_AddToHashtable(deh_substitution_t *sub)
     ++hash_table_entries;
 }
 
-// Given a string length, find the maximum length of a 
+// Given a string length, find the maximum length of a
 // string that can replace it.
 
 static int TXT_MaxStringLength(int len)
@@ -165,7 +165,7 @@ static int TXT_MaxStringLength(int len)
     // Extend up to the next 4-byte boundary
 
     len += (4 - (len % 4)) % 4;
-            
+
     // Less one for the NUL terminator.
 
     return len - 1;
@@ -174,7 +174,7 @@ static int TXT_MaxStringLength(int len)
 static void DEH_TextInit(void)
 {
     // init hash table
-    
+
     hash_table_entries = 0;
     hash_table_length = 16;
     hash_table = Z_Malloc(sizeof(deh_substitution_t *) * hash_table_length,
@@ -187,14 +187,14 @@ static void *DEH_TextStart(deh_context_t *context, char *line)
     deh_substitution_t *sub;
     int fromlen, tolen;
     int i;
-    
+
     if (sscanf(line, "Text %i %i", &fromlen, &tolen) != 2)
     {
         DEH_Warning(context, "Parse error on section start");
         return NULL;
     }
 
-    // Only allow string replacements that are possible in Vanilla Doom.  
+    // Only allow string replacements that are possible in Vanilla Doom.
     // Chocolate Doom is unforgiving!
 
     if (!deh_allow_long_strings && tolen > TXT_MaxStringLength(fromlen))
@@ -215,7 +215,7 @@ static void *DEH_TextStart(deh_context_t *context, char *line)
         int c;
 
         c = DEH_GetChar(context);
-            
+
         sub->from_text[i] = c;
     }
 
@@ -228,13 +228,13 @@ static void *DEH_TextStart(deh_context_t *context, char *line)
         int c;
 
         c = DEH_GetChar(context);
-            
+
         sub->to_text[i] = c;
     }
     sub->to_text[tolen] = '\0';
 
     DEH_AddToHashtable(sub);
-    
+
     return NULL;
 }
 
@@ -478,4 +478,3 @@ void DEH_snprintf(char *buffer, size_t len, char *fmt, ...)
 
     va_end(args);
 }
-

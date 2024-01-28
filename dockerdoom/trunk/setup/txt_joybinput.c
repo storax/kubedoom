@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -83,7 +83,7 @@ static void OpenErrorWindow(void)
     TXT_AddWidget(window, TXT_NewLabel("Please configure a joystick first!"));
 
     TXT_SetWindowAction(window, TXT_HORIZ_LEFT, NULL);
-    TXT_SetWindowAction(window, TXT_HORIZ_CENTER, 
+    TXT_SetWindowAction(window, TXT_HORIZ_CENTER,
                         TXT_NewWindowEscapeAction(window));
     TXT_SetWindowAction(window, TXT_HORIZ_RIGHT, NULL);
 }
@@ -117,10 +117,10 @@ static void OpenPromptWindow(txt_joystick_input_t *joystick_input)
 
     window = TXT_NewWindow(NULL);
     TXT_SetWindowAction(window, TXT_HORIZ_LEFT, NULL);
-    TXT_SetWindowAction(window, TXT_HORIZ_CENTER, 
+    TXT_SetWindowAction(window, TXT_HORIZ_CENTER,
                         TXT_NewWindowAbortAction(window));
     TXT_SetWindowAction(window, TXT_HORIZ_RIGHT, NULL);
-    
+
     label = TXT_NewLabel("Press the new joystick button...");
 
     TXT_AddWidget(window, label);
@@ -164,9 +164,9 @@ static void TXT_JoystickInputDrawer(TXT_UNCAST_ARG(joystick_input), int selected
 
     TXT_SetWidgetBG(joystick_input, selected);
     TXT_FGColor(TXT_COLOR_BRIGHT_WHITE);
-    
+
     TXT_DrawString(buf);
-    
+
     for (i=strlen(buf); i<JOYSTICK_INPUT_WIDTH; ++i)
     {
         TXT_DrawString(" ");
@@ -196,7 +196,7 @@ static int TXT_JoystickInputKeyPress(TXT_UNCAST_ARG(joystick_input), int joystic
 static void TXT_JoystickInputMousePress(TXT_UNCAST_ARG(widget), int x, int y, int b)
 {
     TXT_CAST_ARG(txt_joystick_input_t, widget);
-            
+
     // Clicking is like pressing enter
 
     if (b == TXT_MOUSE_LEFT)
@@ -227,4 +227,3 @@ txt_joystick_input_t *TXT_NewJoystickInput(int *variable)
 
     return joystick_input;
 }
-

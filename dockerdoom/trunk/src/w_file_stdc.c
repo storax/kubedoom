@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	WAD I/O functions.
+//  WAD I/O functions.
 //
 //-----------------------------------------------------------------------------
 
@@ -71,7 +71,7 @@ static void W_StdC_CloseFile(wad_file_t *wad)
     Z_Free(stdc_wad);
 }
 
-// Read data from the specified position in the file into the 
+// Read data from the specified position in the file into the
 // provided buffer.  Returns the number of bytes read.
 
 size_t W_StdC_Read(wad_file_t *wad, unsigned int offset,
@@ -94,11 +94,9 @@ size_t W_StdC_Read(wad_file_t *wad, unsigned int offset,
 }
 
 
-wad_file_class_t stdc_wad_file = 
+wad_file_class_t stdc_wad_file =
 {
     W_StdC_OpenFile,
     W_StdC_CloseFile,
     W_StdC_Read,
 };
-
-

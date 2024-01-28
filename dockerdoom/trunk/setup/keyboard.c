@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -107,7 +107,7 @@ static int always_run = 0;
 
 static int *controls[] = { &key_left, &key_right, &key_up, &key_down,
                            &key_strafeleft, &key_straferight, &key_fire,
-                           &key_use, &key_strafe, &key_speed, 
+                           &key_use, &key_strafe, &key_speed,
                            &key_pause,
                            &key_weapon1, &key_weapon2, &key_weapon3,
                            &key_weapon4, &key_weapon5, &key_weapon6,
@@ -122,7 +122,7 @@ static int *shortcuts[] = { &key_menu_help, &key_menu_save, &key_menu_load,
                             &key_menu_volume, &key_menu_detail, &key_menu_qsave,
                             &key_menu_endgame, &key_menu_messages, &key_spy,
                             &key_menu_qload, &key_menu_quit, &key_menu_gamma,
-                            &key_menu_incscreen, &key_menu_decscreen, 
+                            &key_menu_incscreen, &key_menu_decscreen,
                             &key_message_refresh, &key_multi_msg,
                             &key_multi_msgplayer[0], &key_multi_msgplayer[1],
                             &key_multi_msgplayer[2], &key_multi_msgplayer[3] };
@@ -138,8 +138,8 @@ static void UpdateJoybSpeed(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(var))
     if (always_run)
     {
         /*
-         <Janizdreg> if you want to pick one for chocolate doom to use, 
-                     pick 29, since that is the most universal one that 
+         <Janizdreg> if you want to pick one for chocolate doom to use,
+                     pick 29, since that is the most universal one that
                      also works with heretic, hexen and strife =P
 
          NB. This choice also works with original, ultimate and final exes.
@@ -347,7 +347,7 @@ void ConfigKeyboard(void)
     TXT_AddWidgets(window,
                    TXT_NewSeparator("Misc."),
                    run_control = TXT_NewCheckBox("Always run", &always_run),
-                   TXT_NewInvertedCheckBox("Use native keyboard mapping", 
+                   TXT_NewInvertedCheckBox("Use native keyboard mapping",
                                            &vanilla_keyboard_mapping),
                    NULL);
 
@@ -371,4 +371,3 @@ void ConfigKeyboard(void)
 
     TXT_SetWindowAction(window, TXT_HORIZ_CENTER, TestConfigAction());
 }
-

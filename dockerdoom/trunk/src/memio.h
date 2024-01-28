@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -25,11 +25,11 @@
 
 typedef struct _MEMFILE MEMFILE;
 
-typedef enum 
+typedef enum
 {
-	MEM_SEEK_SET,
-	MEM_SEEK_CUR,
-	MEM_SEEK_END,
+    MEM_SEEK_SET,
+    MEM_SEEK_CUR,
+    MEM_SEEK_END,
 } mem_rel_t;
 
 MEMFILE *mem_fopen_read(void *buf, size_t buflen);
@@ -42,4 +42,4 @@ long mem_ftell(MEMFILE *stream);
 int mem_fseek(MEMFILE *stream, signed long offset, mem_rel_t whence);
 
 #endif /* #ifndef MEMIO_H */
-	  
+

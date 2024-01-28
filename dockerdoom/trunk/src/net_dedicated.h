@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -21,7 +21,7 @@
 //-----------------------------------------------------------------------------
 //
 // Dedicated server code.
-// 
+//
 
 #ifndef NET_DEDICATED_H
 #define NET_DEDICATED_H
@@ -29,5 +29,3 @@
 void NET_DedicatedServer(void);
 
 #endif /* #ifndef NET_DEDICATED_H */
-
-

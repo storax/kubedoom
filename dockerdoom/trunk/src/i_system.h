@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	System specific interface stuff.
+//  System specific interface stuff.
 //
 //-----------------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ void I_Init (void);
 // Called by startup code
 // to get the ammount of memory to malloc
 // for the zone management.
-byte*	I_ZoneBase (int *size);
+byte*   I_ZoneBase (int *size);
 
 boolean I_ConsoleStdout(void);
 
@@ -89,4 +89,3 @@ void I_Error (char *error, ...);
 boolean I_GetMemoryValue(unsigned int offset, void *value, int size);
 
 #endif
-

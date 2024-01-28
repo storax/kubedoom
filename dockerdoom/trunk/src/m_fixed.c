@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	Fixed point implementation.
+//  Fixed point implementation.
 //
 //-----------------------------------------------------------------------------
 
@@ -40,8 +40,8 @@
 
 fixed_t
 FixedMul
-( fixed_t	a,
-  fixed_t	b )
+( fixed_t   a,
+  fixed_t   b )
 {
     return ((int64_t) a * (int64_t) b) >> FRACBITS;
 }
@@ -56,15 +56,14 @@ fixed_t FixedDiv(fixed_t a, fixed_t b)
 {
     if ((abs(a) >> 14) >= abs(b))
     {
-	return (a^b) < 0 ? INT_MIN : INT_MAX;
+    return (a^b) < 0 ? INT_MIN : INT_MAX;
     }
     else
     {
-	int64_t result;
+    int64_t result;
 
-	result = ((int64_t) a << 16) / b;
+    result = ((int64_t) a << 16) / b;
 
-	return (fixed_t) result;
+    return (fixed_t) result;
     }
 }
-

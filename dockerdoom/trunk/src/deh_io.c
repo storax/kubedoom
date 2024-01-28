@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -271,7 +271,7 @@ char *DEH_ReadLine(deh_context_t *context)
             ++pos;
         }
     }
-    
+
     return context->readbuffer;
 }
 
@@ -280,7 +280,7 @@ void DEH_Warning(deh_context_t *context, char *msg, ...)
     va_list args;
 
     va_start(args, msg);
-    
+
     fprintf(stderr, "%s:%i: warning: ", context->filename, context->linenum);
     vfprintf(stderr, msg, args);
     fprintf(stderr, "\n");
@@ -293,7 +293,7 @@ void DEH_Error(deh_context_t *context, char *msg, ...)
     va_list args;
 
     va_start(args, msg);
-    
+
     fprintf(stderr, "%s:%i: ", context->filename, context->linenum);
     vfprintf(stderr, msg, args);
     fprintf(stderr, "\n");
@@ -302,5 +302,3 @@ void DEH_Error(deh_context_t *context, char *msg, ...)
 
     I_Error("Error parsing dehacked file");
 }
-
-

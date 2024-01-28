@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -32,7 +32,7 @@
 
 #define KEY_INPUT_WIDTH 8
 
-static int KeyPressCallback(txt_window_t *window, int key, 
+static int KeyPressCallback(txt_window_t *window, int key,
                             TXT_UNCAST_ARG(key_input))
 {
     TXT_CAST_ARG(txt_key_input_t, key_input);
@@ -78,10 +78,10 @@ static void OpenPromptWindow(txt_key_input_t *key_input)
 
     window = TXT_NewWindow(NULL);
     TXT_SetWindowAction(window, TXT_HORIZ_LEFT, NULL);
-    TXT_SetWindowAction(window, TXT_HORIZ_CENTER, 
+    TXT_SetWindowAction(window, TXT_HORIZ_CENTER,
                         TXT_NewWindowAbortAction(window));
     TXT_SetWindowAction(window, TXT_HORIZ_RIGHT, NULL);
-    
+
     label = TXT_NewLabel("Press the new key...");
 
     TXT_AddWidget(window, label);
@@ -129,9 +129,9 @@ static void TXT_KeyInputDrawer(TXT_UNCAST_ARG(key_input), int selected)
 
     TXT_SetWidgetBG(key_input, selected);
     TXT_FGColor(TXT_COLOR_BRIGHT_WHITE);
-    
+
     TXT_DrawString(buf);
-    
+
     for (i=strlen(buf); i<KEY_INPUT_WIDTH; ++i)
     {
         TXT_DrawString(" ");
@@ -161,7 +161,7 @@ static int TXT_KeyInputKeyPress(TXT_UNCAST_ARG(key_input), int key)
 static void TXT_KeyInputMousePress(TXT_UNCAST_ARG(widget), int x, int y, int b)
 {
     TXT_CAST_ARG(txt_key_input_t, widget);
-            
+
     // Clicking is like pressing enter
 
     if (b == TXT_MOUSE_LEFT)
@@ -192,4 +192,3 @@ txt_key_input_t *TXT_NewKeyInput(int *variable)
 
     return key_input;
 }
-

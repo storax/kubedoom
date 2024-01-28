@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -28,8 +28,8 @@
 
 #include <string.h>
 
-int		myargc;
-char**		myargv;
+int     myargc;
+char**      myargv;
 
 // From doomdef.h -- no need to include it all!
 #ifdef _WIN32
@@ -49,17 +49,13 @@ char**		myargv;
 // or 0 if not present
 int M_CheckParm (char *check)
 {
-    int		i;
+    int     i;
 
     for (i = 1;i<myargc;i++)
     {
-	if ( !strcasecmp(check, myargv[i]) )
-	    return i;
+    if ( !strcasecmp(check, myargv[i]) )
+        return i;
     }
 
     return 0;
 }
-
-
-
-

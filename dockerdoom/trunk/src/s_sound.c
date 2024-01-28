@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -52,7 +52,7 @@
 // Distance tp origin when sounds should be maxed out.
 // This should relate to movement clipping resolution
 // (see BLOCKMAP handling).
-// In the source code release: (160*FRACUNIT).  Changed back to the 
+// In the source code release: (160*FRACUNIT).  Changed back to the
 // Vanilla value of 200 (why was this changed?)
 
 #define S_CLOSE_DIST (200 * FRACUNIT)
@@ -79,7 +79,7 @@ typedef struct
 
     // handle of the sound being played
     int handle;
-    
+
 } channel_t;
 
 // Low-level sound and music modules we are using
@@ -96,7 +96,7 @@ static channel_t *channels;
 
 int sfxVolume = 8;
 
-// Maximum volume of music. 
+// Maximum volume of music.
 
 int musicVolume = 8;
 
@@ -110,7 +110,7 @@ static int snd_SfxVolume;
 
 // Whether songs are mus_paused
 
-static boolean mus_paused;        
+static boolean mus_paused;
 
 // Music currently being played
 
@@ -132,7 +132,7 @@ extern music_module_t music_opl_module;
 
 // Compiled-in sound modules:
 
-static sound_module_t *sound_modules[] = 
+static sound_module_t *sound_modules[] =
 {
 #ifdef FEATURE_SOUND
     &sound_sdl_module,
@@ -184,7 +184,7 @@ static void InitSfxModule(void)
         // Is the sfx device in the list of devices supported by
         // this module?
 
-        if (SndDeviceInList(snd_sfxdevice, 
+        if (SndDeviceInList(snd_sfxdevice,
                             sound_modules[i]->sound_devices,
                             sound_modules[i]->num_sound_devices))
         {
@@ -212,7 +212,7 @@ static void InitMusicModule(void)
         // Is the music device in the list of devices supported
         // by this module?
 
-        if (SndDeviceInList(snd_musicdevice, 
+        if (SndDeviceInList(snd_musicdevice,
                             music_modules[i]->sound_devices,
                             music_modules[i]->num_sound_devices))
         {
@@ -234,7 +234,7 @@ static void InitMusicModule(void)
 //
 
 void S_Init(int sfxVolume, int musicVolume)
-{  
+{
     boolean nosound, nosfx, nomusic;
     int i;
 
@@ -249,7 +249,7 @@ void S_Init(int sfxVolume, int musicVolume)
     //!
     // @vanilla
     //
-    // Disable sound effects. 
+    // Disable sound effects.
     //
 
     nosfx = M_CheckParm("-nosfx") > 0;
@@ -342,7 +342,7 @@ static void S_StopChannel(int cnum)
                 break;
             }
         }
-        
+
         // degrade usefulness of sound data
 
         c->sfxinfo->usefulness--;
@@ -403,10 +403,10 @@ void S_Start(void)
         {
             mnum = spmus[gamemap-1];
         }
-    }        
+    }
 
     S_ChangeMusic(mnum, true);
-}        
+}
 
 void S_StopSound(mobj_t *origin)
 {
@@ -431,7 +431,7 @@ static int S_GetChannel(mobj_t *origin, sfxinfo_t *sfxinfo)
 {
     // channel number to use
     int                cnum;
-    
+
     channel_t*        c;
 
     // Find an open channel
@@ -462,7 +462,7 @@ static int S_GetChannel(mobj_t *origin, sfxinfo_t *sfxinfo)
 
         if (cnum == numChannels)
         {
-            // FUCK!  No lower priority.  Sorry, Charlie.    
+            // FUCK!  No lower priority.  Sorry, Charlie.
             return -1;
         }
         else
@@ -503,12 +503,12 @@ static int S_AdjustSoundParams(mobj_t *listener, mobj_t *source,
 
     // From _GG1_ p.428. Appox. eucledian distance fast.
     approx_dist = adx + ady - ((adx < ady ? adx : ady)>>1);
-    
+
     if (gamemap != 8 && approx_dist > S_CLIPPING_DIST)
     {
         return 0;
     }
-    
+
     // angle of source to listener
     angle = R_PointToAngle2(listener->x,
                             listener->y,
@@ -550,9 +550,9 @@ static int S_AdjustSoundParams(mobj_t *listener, mobj_t *source,
         // distance effect
         *vol = (snd_SfxVolume
                 * ((S_CLIPPING_DIST - approx_dist)>>FRACBITS))
-            / S_ATTENUATOR; 
+            / S_ATTENUATOR;
     }
-    
+
     return (*vol > 0);
 }
 
@@ -592,7 +592,7 @@ void S_StartSound(void *origin_p, int sfx_id)
         {
             volume = snd_SfxVolume;
         }
-    }        
+    }
     else
     {
         priority = NORM_PRIORITY;
@@ -610,7 +610,7 @@ void S_StartSound(void *origin_p, int sfx_id)
 
         if (origin->x == players[consoleplayer].mo->x
          && origin->y == players[consoleplayer].mo->y)
-        {        
+        {
             sep = NORM_SEP;
         }
 
@@ -618,7 +618,7 @@ void S_StartSound(void *origin_p, int sfx_id)
         {
             return;
         }
-    }        
+    }
     else
     {
         sep = NORM_SEP;
@@ -658,7 +658,7 @@ void S_StartSound(void *origin_p, int sfx_id)
                                                          volume,
                                                          sep);
     }
-}        
+}
 
 //
 // Stop and resume music, during game PAUSE.
@@ -736,7 +736,7 @@ void S_UpdateSounds(mobj_t *listener)
                                                   c->origin,
                                                   &volume,
                                                   &sep);
-                    
+
                     if (!audible)
                     {
                         S_StopChannel(cnum);
@@ -763,7 +763,7 @@ void S_SetMusicVolume(int volume)
     {
         I_Error("Attempt to set music volume at %d",
                 volume);
-    }    
+    }
 
     if (music_module != NULL)
     {
@@ -834,7 +834,7 @@ void S_ChangeMusic(int musicnum, int looping)
         // Load & register it
 
         music->data = W_CacheLumpNum(music->lumpnum, PU_STATIC);
-        handle = music_module->RegisterSong(music->data, 
+        handle = music_module->RegisterSong(music->data,
                                             W_LumpLength(music->lumpnum));
         music->handle = handle;
 
@@ -872,11 +872,10 @@ void S_StopMusic(void)
             music_module->StopSong();
             music_module->UnRegisterSong(mus_playing->handle);
             W_ReleaseLumpNum(mus_playing->lumpnum);
-            
+
             mus_playing->data = NULL;
         }
 
         mus_playing = NULL;
     }
 }
-

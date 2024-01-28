@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -44,4 +44,3 @@ boolean NET_ReadMD5Sum(net_packet_t *packet, md5_digest_t digest);
 void NET_WriteMD5Sum(net_packet_t *packet, md5_digest_t digest);
 
 #endif /* #ifndef NET_STRUCTRW_H */
-

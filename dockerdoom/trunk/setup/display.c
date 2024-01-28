@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -52,14 +52,14 @@ static pixel_depth_t pixel_depths[] =
 static char **supported_bpps;
 static int num_supported_bpps;
 
-typedef struct 
+typedef struct
 {
     int w, h;
 } screen_mode_t;
 
 // List of aspect ratio-uncorrected modes
 
-static screen_mode_t screen_modes_unscaled[] = 
+static screen_mode_t screen_modes_unscaled[] =
 {
     { 320,  200 },
     { 640,  400 },
@@ -71,7 +71,7 @@ static screen_mode_t screen_modes_unscaled[] =
 
 // List of aspect ratio-corrected modes
 
-static screen_mode_t screen_modes_scaled[] = 
+static screen_mode_t screen_modes_scaled[] =
 {
     { 256,  200 },
     { 320,  240 },
@@ -104,7 +104,7 @@ int startup_delay = 1000;
 int show_endoom = 1;
 
 // These are the last screen width/height values that were chosen by the
-// user.  These are used when finding the "nearest" mode, so when 
+// user.  These are used when finding the "nearest" mode, so when
 // changing the fullscreen / aspect ratio options, the setting does not
 // jump around.
 
@@ -128,7 +128,7 @@ void SetDisplayDriver(void)
 
         first_time = 0;
     }
-    
+
     // Don't override the command line environment, if it has been set.
 
     if (system_video_env_set)
@@ -428,7 +428,7 @@ static int FindBestMode(screen_mode_t *modes)
         }
 
         diff = (selected_screen_width - modes[i].w)
-                  * (selected_screen_width - modes[i].w) 
+                  * (selected_screen_width - modes[i].w)
              + (selected_screen_height - modes[i].h)
                   * (selected_screen_height - modes[i].h);
 
@@ -462,7 +462,7 @@ static void GenerateModesTable(TXT_UNCAST_ARG(widget),
 
         modes = screen_modes_fullscreen;
     }
-    else if (aspect_ratio_correct) 
+    else if (aspect_ratio_correct)
     {
         modes = screen_modes_scaled;
     }
@@ -472,11 +472,11 @@ static void GenerateModesTable(TXT_UNCAST_ARG(widget),
     }
 
     // Build the table
- 
+
     TXT_ClearTable(modes_table);
     TXT_SetColumnWidths(modes_table, 14, 14, 14, 14, 14);
 
-    for (i=0; modes[i].w != 0; ++i) 
+    for (i=0; modes[i].w != 0; ++i)
     {
         // Skip bad fullscreen modes
 
@@ -548,7 +548,7 @@ static void SetWin32VideoDriver(void)
     }
 }
 
-static void UpdateVideoDriver(TXT_UNCAST_ARG(widget), 
+static void UpdateVideoDriver(TXT_UNCAST_ARG(widget),
                               TXT_UNCAST_ARG(modes_table))
 {
     TXT_CAST_ARG(txt_table_t, modes_table);
@@ -562,7 +562,7 @@ static void UpdateVideoDriver(TXT_UNCAST_ARG(widget),
         video_driver = "windib";
     }
 
-    // When the video driver is changed, we need to restart the textscreen 
+    // When the video driver is changed, we need to restart the textscreen
     // library.
 
     RestartTextscreen();
@@ -599,7 +599,7 @@ static void AdvancedDisplayConfig(TXT_UNCAST_ARG(widget),
 
     TXT_SignalConnect(ar_checkbox, "changed", GenerateModesTable, modes_table);
 
-    // On Windows, there is an extra control to change between 
+    // On Windows, there is an extra control to change between
     // the Windows GDI and DirectX video drivers.
 
 #if defined(_WIN32) && !defined(_WIN32_WCE)
@@ -677,7 +677,7 @@ void ConfigDisplay(void)
 
     // Build window:
 
-    TXT_AddWidget(window, 
+    TXT_AddWidget(window,
                   fs_checkbox = TXT_NewCheckBox("Full screen", &fullscreen));
 
     if (num_supported_bpps > 1)
@@ -741,7 +741,7 @@ void ConfigDisplay(void)
     // fullscreen and windowed mode (which causes the window's
     // height to change).
 
-    TXT_SetWindowPosition(window, TXT_HORIZ_CENTER, TXT_VERT_TOP, 
+    TXT_SetWindowPosition(window, TXT_HORIZ_CENTER, TXT_VERT_TOP,
                                   TXT_SCREEN_W / 2, window_y);
 
     GenerateModesTable(NULL, modes_table);
@@ -756,4 +756,3 @@ void ConfigDisplay(void)
     TXT_SignalConnect(advanced_button, "pressed",
                       AdvancedDisplayConfig, modes_table);
 }
-

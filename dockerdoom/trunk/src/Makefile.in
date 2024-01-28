@@ -301,7 +301,7 @@ net_structrw.c       net_structrw.h        \
 z_native.c           z_zone.h
 
 @PROGRAM_PREFIX@server_SOURCES = $(DEDSERV_FILES)
-@PROGRAM_PREFIX@server_LDADD = ../wince/libc_wince.a @LDFLAGS@ @SDLNET_LIBS@ 
+@PROGRAM_PREFIX@server_LDADD = ../wince/libc_wince.a @LDFLAGS@ @SDLNET_LIBS@
 MAIN_SOURCE_FILES = \
 am_map.c             am_map.h              \
 d_englsh.h                                 \
@@ -389,7 +389,7 @@ w_file.c             w_file.h              \
 w_file_stdc.c                              \
 w_file_posix.c                             \
 w_file_win32.c                             \
-z_zone.c             z_zone.h   
+z_zone.c             z_zone.h
 
 
 # source files needed for FEATURE_DEHACKED
@@ -538,10 +538,10 @@ uninstall-gamesPROGRAMS:
 
 clean-gamesPROGRAMS:
 	-test -z "$(games_PROGRAMS)" || rm -f $(games_PROGRAMS)
-@PROGRAM_PREFIX@doom$(EXEEXT): $(@PROGRAM_PREFIX@doom_OBJECTS) $(@PROGRAM_PREFIX@doom_DEPENDENCIES) 
+@PROGRAM_PREFIX@doom$(EXEEXT): $(@PROGRAM_PREFIX@doom_OBJECTS) $(@PROGRAM_PREFIX@doom_DEPENDENCIES)
 	@rm -f @PROGRAM_PREFIX@doom$(EXEEXT)
 	$(LINK) $(@PROGRAM_PREFIX@doom_OBJECTS) $(@PROGRAM_PREFIX@doom_LDADD) $(LIBS)
-@PROGRAM_PREFIX@server$(EXEEXT): $(@PROGRAM_PREFIX@server_OBJECTS) $(@PROGRAM_PREFIX@server_DEPENDENCIES) 
+@PROGRAM_PREFIX@server$(EXEEXT): $(@PROGRAM_PREFIX@server_OBJECTS) $(@PROGRAM_PREFIX@server_DEPENDENCIES)
 	@rm -f @PROGRAM_PREFIX@server$(EXEEXT)
 	$(LINK) $(@PROGRAM_PREFIX@server_OBJECTS) $(@PROGRAM_PREFIX@server_LDADD) $(LIBS)
 

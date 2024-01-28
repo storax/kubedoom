@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -28,4 +28,3 @@ extern int vanilla_demo_limit;
 void CompatibilitySettings(void);
 
 #endif /* #ifndef SETUP_COMPATIBILITY_H */
-

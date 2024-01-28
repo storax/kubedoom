@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -22,7 +22,7 @@
 //
 //  * The client waiting screen when we are waiting for the server to
 //    start the game.
-//   
+//
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -63,11 +63,11 @@ static void BuildGUI(void)
     txt_table_t *table;
     txt_window_action_t *cancel;
     int i;
-    
+
     had_warning = false;
 
     TXT_SetDesktopTitle(PACKAGE_STRING);
-    
+
     window = TXT_NewWindow("Waiting for game start...");
     table = TXT_NewTable(3);
     TXT_AddWidget(window, table);
@@ -79,7 +79,7 @@ static void BuildGUI(void)
     TXT_AddWidget(table, TXT_NewStrut(17, 1));
 
     // Player labels
-    
+
     for (i=0; i<MAXPLAYERS; ++i)
     {
         sprintf(buf, " %i. ", i + 1);
@@ -178,9 +178,9 @@ static void CheckMD5Sums(void)
         return;
     }
 
-    correct_wad = memcmp(net_local_wad_md5sum, net_server_wad_md5sum, 
+    correct_wad = memcmp(net_local_wad_md5sum, net_server_wad_md5sum,
                          sizeof(md5_digest_t)) == 0;
-    correct_deh = memcmp(net_local_deh_md5sum, net_server_deh_md5sum, 
+    correct_deh = memcmp(net_local_deh_md5sum, net_server_deh_md5sum,
                          sizeof(md5_digest_t)) == 0;
     same_freedoom = net_server_is_freedoom == net_local_is_freedoom;
 
@@ -199,8 +199,8 @@ static void CheckMD5Sums(void)
     if (!same_freedoom)
     {
         printf("Warning: Mixing Freedoom with non-Freedoom\n");
-        printf("Local: %i  Server: %i\n", 
-               net_local_is_freedoom, 
+        printf("Local: %i  Server: %i\n",
+               net_local_is_freedoom,
                net_server_is_freedoom);
     }
 
@@ -254,7 +254,7 @@ static void CheckMD5Sums(void)
 
     TXT_AddWidget(window, TXT_NewLabel
             ("If you continue, this may cause your game to desync."));
-    
+
     had_warning = true;
 }
 
@@ -289,7 +289,6 @@ void NET_WaitForStart(void)
 
         TXT_Sleep(100);
     }
-    
+
     TXT_Shutdown();
 }
-

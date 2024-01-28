@@ -40,17 +40,16 @@ appdir = $(prefix)/share/applications
 app_DATA = @PROGRAM_PREFIX@setup.desktop
 
 @PROGRAM_PREFIX@setup.desktop : setup.desktop
-	cp $^ $@
+    cp $^ $@
 
 .rc.o:
-	$(WINDRES) $^ -o $@
+    $(WINDRES) $^ -o $@
 %.o : %.rc
-	$(WINDRES) $^ -o $@
+    $(WINDRES) $^ -o $@
 
 if HAVE_PYTHON
 
 setup_icon.c : ../data/setup8.ico
-	../data/convert-icon $^ $@
+    ../data/convert-icon $^ $@
 
 endif
-

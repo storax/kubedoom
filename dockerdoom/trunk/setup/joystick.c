@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -78,7 +78,7 @@ static int *all_joystick_buttons[] = {
 };
 
 //
-// Calibration 
+// Calibration
 //
 
 static txt_window_t *calibration_window;
@@ -94,7 +94,7 @@ static void SetJoystickButtonLabel(void)
 
     name = "None set";
 
-    if (joystick_initted 
+    if (joystick_initted
      && joystick_index >= 0 && joystick_index < SDL_NumJoysticks())
     {
         name = (char *) SDL_JoystickName(joystick_index);
@@ -124,7 +124,7 @@ static int OpenAllJoysticks(void)
 
     result = 0;
 
-    for (i=0; i<num_joysticks; ++i) 
+    for (i=0; i<num_joysticks; ++i)
     {
         all_joysticks[i] = SDL_JoystickOpen(i);
 
@@ -209,7 +209,7 @@ static void CalibrateAxis(int *axis_index, int *axis_invert)
     joystick = all_joysticks[joystick_index];
 
     // Check all axes to find which axis has the largest value.  We test
-    // for one axis at a time, so eg. when we prompt to push the joystick 
+    // for one axis at a time, so eg. when we prompt to push the joystick
     // left, whichever axis has the largest value is the left axis.
 
     best_axis = 0;
@@ -219,7 +219,7 @@ static void CalibrateAxis(int *axis_index, int *axis_invert)
     for (i=0; i<SDL_JoystickNumAxes(joystick); ++i)
     {
         axis_value = SDL_JoystickGetAxis(joystick, i);
-    
+
         if (abs(axis_value) > best_value)
         {
             best_value = abs(axis_value);
@@ -287,7 +287,7 @@ static void NoJoystick(void)
                                "your OS first."));
 
     TXT_SetWindowAction(window, TXT_HORIZ_LEFT, NULL);
-    TXT_SetWindowAction(window, TXT_HORIZ_CENTER, 
+    TXT_SetWindowAction(window, TXT_HORIZ_CENTER,
                         TXT_NewWindowEscapeAction(window));
     TXT_SetWindowAction(window, TXT_HORIZ_RIGHT, NULL);
 
@@ -317,7 +317,7 @@ static void CalibrateJoystick(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
 
     calibration_window = TXT_NewWindow("Joystick calibration");
 
-    TXT_AddWidgets(calibration_window, 
+    TXT_AddWidgets(calibration_window,
                    TXT_NewLabel("Please follow the following instructions\n"
                                 "in order to calibrate your joystick."),
                    TXT_NewStrut(0, 1),
@@ -326,7 +326,7 @@ static void CalibrateJoystick(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(unused))
                    NULL);
 
     TXT_SetWindowAction(calibration_window, TXT_HORIZ_LEFT, NULL);
-    TXT_SetWindowAction(calibration_window, TXT_HORIZ_CENTER, 
+    TXT_SetWindowAction(calibration_window, TXT_HORIZ_CENTER,
                         TXT_NewWindowAbortAction(calibration_window));
     TXT_SetWindowAction(calibration_window, TXT_HORIZ_RIGHT, NULL);
 
@@ -348,7 +348,7 @@ void JoyButtonSetCallback(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(variable))
     TXT_CAST_ARG(int, variable);
     unsigned int i;
 
-    // Only allow a button to be bound to one action at a time.  If 
+    // Only allow a button to be bound to one action at a time.  If
     // we assign a key that another action is using, set that other action
     // to -1.
 
@@ -363,7 +363,7 @@ void JoyButtonSetCallback(TXT_UNCAST_ARG(widget), TXT_UNCAST_ARG(variable))
 }
 
 
-// 
+//
 // GUI
 //
 
@@ -394,7 +394,7 @@ void ConfigJoystick(void)
     txt_table_t *button_table;
     txt_table_t *joystick_table;
 
-    if (!joystick_initted) 
+    if (!joystick_initted)
     {
         joystick_initted = SDL_Init(SDL_INIT_JOYSTICK) >= 0;
     }
@@ -443,4 +443,3 @@ void ConfigJoystick(void)
 
     SetJoystickButtonLabel();
 }
-

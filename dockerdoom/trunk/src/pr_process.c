@@ -23,7 +23,7 @@
 // Have this routine return a pointer to the pid mobj it creates.
 // Return NULL if nothing is created.
 // Also accept a parameter to tell if it is spawning a pid mobj.
-mobj_t *P_SpawnMapThing(mapthing_t*	mthing, boolean is_pid_mobj); /* from p_mobj.c */
+mobj_t *P_SpawnMapThing(mapthing_t* mthing, boolean is_pid_mobj); /* from p_mobj.c */
 
 // Use this to see if the newly created pid mobj is colliding
 // with anything.
@@ -163,9 +163,9 @@ void pr_check(void) {
 // a new monster.
 void add_to_pid_list(int pid, const char *name, int demon) {
 
-   mobj_t	*new_mobj = NULL;
-   int		name_length = 0;
-   boolean	position_ok = false;
+   mobj_t   *new_mobj = NULL;
+   int      name_length = 0;
+   boolean  position_ok = false;
 
 // If the list isn't empty and the new pid is larger than the largest
 // pid currently in the list, spawn the mobj and link it as the tail
@@ -255,7 +255,7 @@ void add_to_pid_list(int pid, const char *name, int demon) {
                pid_list_pos->height >>= 2;
 
                // if any of these conditions, we CAN'T resurrect
-               if ( !(pid_list_pos->flags & MF_CORPSE)  || 
+               if ( !(pid_list_pos->flags & MF_CORPSE)  ||
                      (pid_list_pos->tics != -1)  ||
                      (pid_list_pos->info->raisestate == S_NULL) ||
                     !(position_ok)  ) {  // can't raise it: delete and respawn
@@ -342,7 +342,7 @@ void add_to_pid_list(int pid, const char *name, int demon) {
 // are deleted.
 void cleanup_pid_list(mobj_t *del_mobj) {
 
-   mobj_t	*pid_list_pos_npid_hold = NULL;
+   mobj_t   *pid_list_pos_npid_hold = NULL;
 
    if ( del_mobj != NULL ) {
       // jump directly to the passed-in mobj
@@ -433,33 +433,33 @@ void cleanup_pid_list(mobj_t *del_mobj) {
 //
 mobj_t *add_new_process(int pid, const char *pname, int demon) {
 
-    mapthing_t	mt_ext;
+    mapthing_t  mt_ext;
 
 // Add a variable for pname's length
-    int			pname_length = 0;
+    int         pname_length = 0;
 
 // Variables to hold original x,y of mt_ext.
-    int			orig_x = 0;
-    int			orig_y = 0;
+    int         orig_x = 0;
+    int         orig_y = 0;
 
 // Holds the radius of the monster in map units.
-    int			monster_radius = 0;
+    int         monster_radius = 0;
 
 // Variable to hold the pid mobj we just created.  Needed for collision
 // check function and possible removal of the mobj.
-    mobj_t		*pid_mobj;
+    mobj_t      *pid_mobj;
 
 // Variables to control monster placement.  Use 3 nested for loops to
 // alter location by the monster radius.  A flag is used to break out
 // of the nested loop when we successfully place the monster.
-    int			i = 0;
-    int			j = 0;
-    int			k = 0;
-    boolean		monster_placed = false;
+    int         i = 0;
+    int         j = 0;
+    int         k = 0;
+    boolean     monster_placed = false;
 
 // This holds the bounding box number for placement calculations.
 // Only assigned >= 0 if on a custom level.
-    short		box_num = -1;
+    short       box_num = -1;
 
     /* make sure the unused data is zero */
     memset((void*)&mt_ext, 0, sizeof(mt_ext));
@@ -554,49 +554,49 @@ mobj_t *add_new_process(int pid, const char *pname, int demon) {
 // The second parameter is to tell the routine that it is spawning
 // a pid mobj and not to pay attention to the nomonsters flag.
     pid_mobj = P_SpawnMapThing(&mt_ext, IS_PID_MOBJ);
-    
-	totalkills--;
-	fprintf(stderr, "   process %d [%s] monster at %d %d\n",
-			 pid, pname, mt_ext.x, mt_ext.y);
-	if ( !P_CheckPosition(pid_mobj, pid_mobj->x, pid_mobj->y) ) {
-	   monster_placed = false;
-	   for ( i = 0; i < 2 && !monster_placed; i++ ) {
-		  for ( j = 0; j < 3 && !monster_placed; j++ ) {
-			 for ( k = 0; k < 3 && !monster_placed; k++ ) {
-				if ( j == 1 && k == 1 ) {
-				   continue;
-				}
-				mt_ext.x = orig_x + ( (i + 1) * monster_radius * (k - 1) );
-				mt_ext.y = orig_y + ( (i + 1) * monster_radius * (j - 1) );
-				if ( box_num >= 0 ){  // if this is a custom level
-				   // This routine is called for custom level processing only.
-				   // It guarantees the mt_ext.x and mt_ext.y are at least
-				   // the monster's radius inside its bounding spawn box.
-				   clip_to_spawnbox(&mt_ext.x, &mt_ext.y,
-									monster_radius, box_num * 2048);
-				}
-				P_SetMobjState(pid_mobj, S_NULL);
 
-				// The second parameter is to tell the routine that it
-				// is spawning a pid mobj and not to pay attention to
-				// the nomonsters flag.
-				pid_mobj = P_SpawnMapThing(&mt_ext, IS_PID_MOBJ);
+    totalkills--;
+    fprintf(stderr, "   process %d [%s] monster at %d %d\n",
+             pid, pname, mt_ext.x, mt_ext.y);
+    if ( !P_CheckPosition(pid_mobj, pid_mobj->x, pid_mobj->y) ) {
+       monster_placed = false;
+       for ( i = 0; i < 2 && !monster_placed; i++ ) {
+          for ( j = 0; j < 3 && !monster_placed; j++ ) {
+             for ( k = 0; k < 3 && !monster_placed; k++ ) {
+                if ( j == 1 && k == 1 ) {
+                   continue;
+                }
+                mt_ext.x = orig_x + ( (i + 1) * monster_radius * (k - 1) );
+                mt_ext.y = orig_y + ( (i + 1) * monster_radius * (j - 1) );
+                if ( box_num >= 0 ){  // if this is a custom level
+                   // This routine is called for custom level processing only.
+                   // It guarantees the mt_ext.x and mt_ext.y are at least
+                   // the monster's radius inside its bounding spawn box.
+                   clip_to_spawnbox(&mt_ext.x, &mt_ext.y,
+                                    monster_radius, box_num * 2048);
+                }
+                P_SetMobjState(pid_mobj, S_NULL);
 
-				totalkills--;
-				fprintf(stderr, "      repositioned at %d %d\n",
-						 mt_ext.x, mt_ext.y);
-				if ( P_CheckPosition(pid_mobj, pid_mobj->x, pid_mobj->y) ) {
-				   monster_placed = true;
-				}
-			 }
-		  }
-	   }
-	   if ( !monster_placed ) {
-		  P_SetMobjState(pid_mobj, S_NULL);
-		  pid_mobj = NULL;
-		  fprintf(stderr, "      not spawned for now, try next time.\n" );
-	   }
-	}
+                // The second parameter is to tell the routine that it
+                // is spawning a pid mobj and not to pay attention to
+                // the nomonsters flag.
+                pid_mobj = P_SpawnMapThing(&mt_ext, IS_PID_MOBJ);
+
+                totalkills--;
+                fprintf(stderr, "      repositioned at %d %d\n",
+                         mt_ext.x, mt_ext.y);
+                if ( P_CheckPosition(pid_mobj, pid_mobj->x, pid_mobj->y) ) {
+                   monster_placed = true;
+                }
+             }
+          }
+       }
+       if ( !monster_placed ) {
+          P_SetMobjState(pid_mobj, S_NULL);
+          pid_mobj = NULL;
+          fprintf(stderr, "      not spawned for now, try next time.\n" );
+       }
+    }
 
 // If we spawned the monster without collisions
     if ( pid_mobj != NULL ) {
@@ -633,10 +633,10 @@ mobj_t *add_new_process(int pid, const char *pname, int demon) {
 // The last argument is the lowest x coordinate for that
 // particular process' area.
 void clip_to_spawnbox(short *x, short *y, int radius, int box_min_x){
-   int		min_x;
-   int		max_x;
-   int		min_y;
-   int		max_y;
+   int      min_x;
+   int      max_x;
+   int      min_y;
+   int      max_y;
 
    min_x = box_min_x + radius;
    max_x = box_min_x + 1024 - radius;

@@ -22,7 +22,7 @@ net_structrw.c       net_structrw.h        \
 z_native.c           z_zone.h
 
 @PROGRAM_PREFIX@server_SOURCES=$(DEDSERV_FILES)
-@PROGRAM_PREFIX@server_LDADD = ../wince/libc_wince.a @LDFLAGS@ @SDLNET_LIBS@ 
+@PROGRAM_PREFIX@server_LDADD = ../wince/libc_wince.a @LDFLAGS@ @SDLNET_LIBS@
 
 MAIN_SOURCE_FILES=\
 am_map.c             am_map.h              \
@@ -111,7 +111,7 @@ w_file.c             w_file.h              \
 w_file_stdc.c                              \
 w_file_posix.c                             \
 w_file_win32.c                             \
-z_zone.c             z_zone.h   
+z_zone.c             z_zone.h
 
 # source files needed for FEATURE_DEHACKED
 
@@ -188,26 +188,25 @@ appdir = $(prefix)/share/applications
 app_DATA = @PROGRAM_PREFIX@doom.desktop
 
 @PROGRAM_PREFIX@doom.desktop : doom.desktop
-	cp $^ $@
+    cp $^ $@
 
 screensaverdir = $(prefix)/share/applications/screensavers
 screensaver_DATA = @PROGRAM_PREFIX@doom-screensaver.desktop
 
 @PROGRAM_PREFIX@doom-screensaver.desktop: doom-screensaver.desktop
-	cp $^ $@
+    cp $^ $@
 
 .rc.o:
-	$(WINDRES) $^ -o $@
+    $(WINDRES) $^ -o $@
 %.o : %.rc
-	$(WINDRES) $^ -o $@
+    $(WINDRES) $^ -o $@
 
 if HAVE_PYTHON
 
 icon.c : ../data/doom8.ico
-	../data/convert-icon $^ $@
+    ../data/convert-icon $^ $@
 
 endif
 
 midiread : midifile.c
-	$(CC) -DTEST $(CFLAGS) @LDFLAGS@ $^ -o $@
-
+    $(CC) -DTEST $(CFLAGS) @LDFLAGS@ $^ -o $@

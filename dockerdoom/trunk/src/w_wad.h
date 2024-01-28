@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
@@ -20,7 +20,7 @@
 // 02111-1307, USA.
 //
 // DESCRIPTION:
-//	WAD I/O functions.
+//  WAD I/O functions.
 //
 //-----------------------------------------------------------------------------
 
@@ -47,10 +47,10 @@ typedef struct lumpinfo_s lumpinfo_t;
 
 struct lumpinfo_s
 {
-    char	name[8];
+    char    name[8];
     wad_file_t *wad_file;
-    int		position;
-    int		size;
+    int     position;
+    int     size;
     void       *cache;
 
     // Used for hash table lookups
@@ -64,14 +64,14 @@ extern unsigned int numlumps;
 
 wad_file_t *W_AddFile (char *filename);
 
-int	W_CheckNumForName (char* name);
-int	W_GetNumForName (char* name);
+int W_CheckNumForName (char* name);
+int W_GetNumForName (char* name);
 
-int	W_LumpLength (unsigned int lump);
+int W_LumpLength (unsigned int lump);
 void    W_ReadLump (unsigned int lump, void *dest);
 
-void*	W_CacheLumpNum (int lump, int tag);
-void*	W_CacheLumpName (char* name, int tag);
+void*   W_CacheLumpNum (int lump, int tag);
+void*   W_CacheLumpName (char* name, int tag);
 
 void    W_GenerateHashTable(void);
 

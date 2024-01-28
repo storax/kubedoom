@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -36,11 +36,10 @@ void CompatibilitySettings(void)
 
     window = TXT_NewWindow("Compatibility");
 
-    TXT_AddWidgets(window, 
+    TXT_AddWidgets(window,
                    TXT_NewCheckBox("Vanilla savegame limit",
                                    &vanilla_savegame_limit),
                    TXT_NewCheckBox("Vanilla demo limit",
                                    &vanilla_demo_limit),
                    NULL);
 }
-

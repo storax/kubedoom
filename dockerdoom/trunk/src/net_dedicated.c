@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005 Simon Howard
@@ -21,7 +21,7 @@
 //-----------------------------------------------------------------------------
 //
 // Dedicated server code.
-// 
+//
 
 #include "doomtype.h"
 
@@ -34,14 +34,14 @@
 #include "net_sdl.h"
 #include "net_server.h"
 
-// 
+//
 // People can become confused about how dedicated servers work.  Game
 // options are specified to the controlling player who is the first to
 // join a game.  Bomb out with an error message if game options are
 // specified to a dedicated server.
 //
 
-static char *not_dedicated_options[] = 
+static char *not_dedicated_options[] =
 {
     "-deh", "-iwad", "-cdrom", "-gameversion", "-nomonsters", "-respawn",
     "-fast", "-altdeath", "-deathmatch", "-turbo", "-merge", "-af", "-as",
@@ -80,4 +80,3 @@ void NET_DedicatedServer(void)
         I_Sleep(10);
     }
 }
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -51,4 +51,3 @@ extern int use_libsamplerate;
 void ConfigSound(void);
 
 #endif /* #ifndef SETUP_SOUND_H */
-

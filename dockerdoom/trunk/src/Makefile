@@ -189,15 +189,15 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -O2 -g -Wall  -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT
 CPP = gcc -E
-CPPFLAGS = 
+CPPFLAGS =
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-ECHO_C = 
+ECHO_C =
 ECHO_N = -n
-ECHO_T = 
+ECHO_T =
 EGREP = /bin/grep -E
-EXEEXT = 
+EXEEXT =
 GREP = /bin/grep
 HAVE_PYTHON = true
 INSTALL = /usr/bin/install -c
@@ -206,9 +206,9 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS =  -lSDL -lpthread
-LIBOBJS = 
-LIBS = -lm 
-LTLIBOBJS = 
+LIBOBJS =
+LIBS = -lm
+LTLIBOBJS =
 MAKEINFO = ${SHELL} /home/orson/Downloads/chocolate-doom-1.6.0/autotools/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
@@ -226,19 +226,19 @@ PACKAGE_VERSION = 2012.02.05-1.6.0
 PATH_SEPARATOR = :
 PROGRAM_PREFIX = ps
 RANLIB = ranlib
-SDLMIXER_CFLAGS = 
+SDLMIXER_CFLAGS =
 SDLMIXER_LIBS =  -lSDL_mixer
-SDLNET_CFLAGS = 
+SDLNET_CFLAGS =
 SDLNET_LIBS =  -lSDL_net
 SDL_CFLAGS = -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT
 SDL_CONFIG = /usr/bin/sdl-config
 SDL_LIBS = -lSDL -lpthread
-SET_MAKE = 
+SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 2012.02.05-1.6.0
 WINDOWS_RC_VERSION = 2012, 02, 05-1, 6, 0, 0
-WINDRES = 
+WINDRES =
 abs_builddir = /home/orson/Downloads/chocolate-doom-1.6.0/src
 abs_srcdir = /home/orson/Downloads/chocolate-doom-1.6.0/src
 abs_top_builddir = /home/orson/Downloads/chocolate-doom-1.6.0
@@ -247,18 +247,18 @@ ac_aux_dir = autotools
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
-am__quote = 
+am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
-build_alias = 
+build_alias =
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host_alias = 
+host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
@@ -278,12 +278,12 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target_alias = 
+target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
 gamesdir = $(prefix)/games
-AM_CFLAGS = -I../opl -I../textscreen -I../pcsound  
+AM_CFLAGS = -I../opl -I../textscreen -I../pcsound
 DEDSERV_FILES = \
 d_dedicated.c                              \
 i_main.c                                   \
@@ -301,7 +301,7 @@ net_structrw.c       net_structrw.h        \
 z_native.c           z_zone.h
 
 psserver_SOURCES = $(DEDSERV_FILES)
-psserver_LDADD = ../wince/libc_wince.a  -lSDL -lpthread  -lSDL_net 
+psserver_LDADD = ../wince/libc_wince.a  -lSDL -lpthread  -lSDL_net
 MAIN_SOURCE_FILES = \
 am_map.c             am_map.h              \
 d_englsh.h                                 \
@@ -389,7 +389,7 @@ w_file.c             w_file.h              \
 w_file_stdc.c                              \
 w_file_posix.c                             \
 w_file_win32.c                             \
-z_zone.c             z_zone.h   
+z_zone.c             z_zone.h
 
 
 # source files needed for FEATURE_DEHACKED
@@ -538,10 +538,10 @@ uninstall-gamesPROGRAMS:
 
 clean-gamesPROGRAMS:
 	-test -z "$(games_PROGRAMS)" || rm -f $(games_PROGRAMS)
-psdoom$(EXEEXT): $(psdoom_OBJECTS) $(psdoom_DEPENDENCIES) 
+psdoom$(EXEEXT): $(psdoom_OBJECTS) $(psdoom_DEPENDENCIES)
 	@rm -f psdoom$(EXEEXT)
 	$(LINK) $(psdoom_OBJECTS) $(psdoom_LDADD) $(LIBS)
-psserver$(EXEEXT): $(psserver_OBJECTS) $(psserver_DEPENDENCIES) 
+psserver$(EXEEXT): $(psserver_OBJECTS) $(psserver_DEPENDENCIES)
 	@rm -f psserver$(EXEEXT)
 	$(LINK) $(psserver_OBJECTS) $(psserver_LDADD) $(LIBS)
 

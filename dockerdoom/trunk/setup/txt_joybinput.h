@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2007 Simon Howard
@@ -43,5 +43,3 @@ struct txt_joystick_input_s
 txt_joystick_input_t *TXT_NewJoystickInput(int *variable);
 
 #endif /* #ifndef TXT_JOYB_INPUT_H */
-
-
