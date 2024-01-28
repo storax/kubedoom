@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -81,5 +81,3 @@ txt_radiobutton_t *TXT_NewRadioButton(char *label, int *variable, int value);
 void TXT_SetRadioButtonLabel(txt_radiobutton_t *radiobutton, char *value);
 
 #endif /* #ifndef TXT_RADIOBUTTON_H */
-
-

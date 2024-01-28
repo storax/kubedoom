@@ -19,7 +19,7 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //---------------------------------------------------------------------------
-// 
+//
 // VGA font data
 // Font data is from the DOSBox project (http://dosbox.sourceforge.net/)
 //
@@ -552,4 +552,3 @@ static txt_font_t main_font =
 };
 
 #endif /* __FONT_H__ */
-

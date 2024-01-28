@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -395,7 +395,7 @@ static int TXT_ScrollPaneKeyPress(TXT_UNCAST_ARG(scrollpane), int key)
             ShowSelectedWidget(scrollpane);
         }
 
-        // If the child widget didn't use the keypress, we can see 
+        // If the child widget didn't use the keypress, we can see
         // if it can be interpreted as a scrolling command.
 
         if (result == 0)
@@ -563,4 +563,3 @@ txt_scrollpane_t *TXT_NewScrollPane(int w, int h, TXT_UNCAST_ARG(target))
 
     return scrollpane;
 }
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -74,7 +74,7 @@ static int TXT_ButtonKeyPress(TXT_UNCAST_ARG(button), int key)
         TXT_EmitSignal(button, "pressed");
         return 1;
     }
-    
+
     return 0;
 }
 
@@ -132,4 +132,3 @@ txt_button_t *TXT_NewButton2(char *label, TxtWidgetSignalFunc func,
 
     return button;
 }
-

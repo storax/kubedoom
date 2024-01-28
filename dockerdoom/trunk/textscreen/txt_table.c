@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -51,7 +51,7 @@ void TXT_ClearTable(TXT_UNCAST_ARG(table))
             TXT_DestroyWidget(table->widgets[i]);
         }
     }
-    
+
     // Shrink the table to just the column strut widgets
 
     table->num_widgets = table->columns;
@@ -69,8 +69,8 @@ static int TableRows(txt_table_t *table)
     return (table->num_widgets + table->columns - 1) / table->columns;
 }
 
-static void CalcRowColSizes(txt_table_t *table, 
-                            unsigned int *row_heights, 
+static void CalcRowColSizes(txt_table_t *table,
+                            unsigned int *row_heights,
                             unsigned int *col_widths)
 {
     int x, y;
@@ -154,10 +154,10 @@ void TXT_AddWidget(TXT_UNCAST_ARG(table), TXT_UNCAST_ARG(widget))
          && widget->widget_class == &txt_separator_class
          && last_widget->widget_class == &txt_separator_class)
         {
-            // The previous widget added was a separator; replace 
+            // The previous widget added was a separator; replace
             // it with this one.
             //
-            // This way, if the first widget added to a window is 
+            // This way, if the first widget added to a window is
             // a separator, it replaces the "default" separator that
             // the window itself adds on creation.
 
@@ -193,8 +193,8 @@ void TXT_AddWidgets(TXT_UNCAST_ARG(table), ...)
     va_start(args, TXT_UNCAST_ARG_NAME(table));
 
     // Keep adding widgets until a NULL is reached.
-   
-    for (;;) 
+
+    for (;;)
     {
         widget = va_arg(args, txt_widget_t *);
 
@@ -233,7 +233,7 @@ static int SelectableCell(txt_table_t *table, int x, int y)
 }
 
 // Tries to locate a selectable widget in the given row, returning
-// the column number of the first column available or -1 if none are 
+// the column number of the first column available or -1 if none are
 // available in the given row.
 //
 // Starts from start_col, then searches nearby columns.
@@ -295,7 +295,7 @@ static int TXT_TableKeyPress(TXT_UNCAST_ARG(table), int key)
         for (new_y = table->selected_y + 1; new_y < rows; ++new_y)
         {
             new_x = FindSelectableColumn(table, new_y, table->selected_x);
-                            
+
             if (new_x >= 0)
             {
                 // Found a selectable widget in this column!
@@ -305,7 +305,7 @@ static int TXT_TableKeyPress(TXT_UNCAST_ARG(table), int key)
 
                 return 1;
             }
-        } 
+        }
     }
 
     if (key == KEY_UPARROW)
@@ -317,7 +317,7 @@ static int TXT_TableKeyPress(TXT_UNCAST_ARG(table), int key)
         for (new_y = table->selected_y - 1; new_y >= 0; --new_y)
         {
             new_x = FindSelectableColumn(table, new_y, table->selected_x);
-                            
+
             if (new_x >= 0)
             {
                 // Found a selectable widget in this column!
@@ -327,7 +327,7 @@ static int TXT_TableKeyPress(TXT_UNCAST_ARG(table), int key)
 
                 return 1;
             }
-        } 
+        }
     }
 
     if (key == KEY_LEFTARROW)
@@ -413,24 +413,24 @@ static void LayoutCell(txt_table_t *table, int x, int y, int col_width,
 
         case TXT_HORIZ_CENTER:
             TXT_CalcWidgetSize(widget);
-            
+
             // Separators are always drawn left-aligned.
 
             if (widget->widget_class != &txt_separator_class)
             {
                 draw_x += (col_width - widget->w) / 2;
             }
-            
+
             break;
 
         case TXT_HORIZ_RIGHT:
             TXT_CalcWidgetSize(widget);
-            
+
             if (widget->widget_class != &txt_separator_class)
             {
                 draw_x += col_width - widget->w;
             }
-            
+
             break;
     }
 
@@ -464,7 +464,7 @@ static void TXT_TableLayout(TXT_UNCAST_ARG(table))
     CalcRowColSizes(table, row_heights, column_widths);
 
     // If this table only has one column, expand column size to fit
-    // the display width.  Ensures that separators reach the window edges 
+    // the display width.  Ensures that separators reach the window edges
     // when drawing windows.
 
     if (table->columns == 1)
@@ -473,9 +473,9 @@ static void TXT_TableLayout(TXT_UNCAST_ARG(table))
     }
 
     // Draw all cells
-    
+
     draw_y = table->widget.y;
-    
+
     for (y=0; y<rows; ++y)
     {
         draw_x = table->widget.x;
@@ -489,7 +489,7 @@ static void TXT_TableLayout(TXT_UNCAST_ARG(table))
 
             if (table->widgets[i] != NULL)
             {
-                LayoutCell(table, x, y, column_widths[x], 
+                LayoutCell(table, x, y, column_widths[x],
                            draw_x, draw_y);
             }
 
@@ -502,14 +502,14 @@ static void TXT_TableLayout(TXT_UNCAST_ARG(table))
     free(row_heights);
     free(column_widths);
 }
-                
+
 static void TXT_TableDrawer(TXT_UNCAST_ARG(table), int selected)
 {
     TXT_CAST_ARG(txt_table_t, table);
     txt_widget_t *widget;
     int selected_cell;
     int i;
-    
+
     // Check the table's current selection points at something valid before
     // drawing.
 
@@ -518,9 +518,9 @@ static void TXT_TableDrawer(TXT_UNCAST_ARG(table), int selected)
     // Find the index of the currently-selected widget.
 
     selected_cell = table->selected_y * table->columns + table->selected_x;
-    
+
     // Draw all cells
-    
+
     for (i=0; i<table->num_widgets; ++i)
     {
         widget = table->widgets[i];
@@ -626,7 +626,7 @@ void TXT_InitTable(txt_table_t *table, int columns)
     table->selected_x = 0;
     table->selected_y = 0;
 
-    // Add a strut for each column at the start of the table. 
+    // Add a strut for each column at the start of the table.
     // These are used by the TXT_SetColumnWidths function below:
     // the struts are created with widths of 0 each, but this
     // function changes them.
@@ -681,7 +681,7 @@ txt_table_t *TXT_NewHorizBox(TXT_UNCAST_ARG(first_widget), ...)
             ++num_args;
         }
     }
-    
+
     va_end(args);
 
     // Create the table.
@@ -710,7 +710,7 @@ txt_table_t *TXT_NewHorizBox(TXT_UNCAST_ARG(first_widget), ...)
             TXT_AddWidget(result, widget);
         }
     }
-    
+
     va_end(args);
 
     return result;
@@ -757,17 +757,17 @@ int TXT_SelectWidget(TXT_UNCAST_ARG(table), TXT_UNCAST_ARG(widget))
         {
             continue;
         }
-        
+
         if (table->widgets[i] == widget)
         {
             // Found the item!  Select it and return.
-            
+
             table->selected_x = i % table->columns;
             table->selected_y = i / table->columns;
 
             return 1;
         }
-        
+
         if (table->widgets[i]->widget_class == &txt_table_class)
         {
             // This item is a subtable.  Recursively search this table.
@@ -893,4 +893,3 @@ int TXT_PageTable(TXT_UNCAST_ARG(table), int pagex, int pagey)
 
     return changed;
 }
-

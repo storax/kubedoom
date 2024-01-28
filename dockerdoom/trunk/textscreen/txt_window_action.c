@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -87,11 +87,11 @@ static int TXT_WindowActionKeyPress(TXT_UNCAST_ARG(action), int key)
         TXT_EmitSignal(action, "pressed");
         return 1;
     }
-    
+
     return 0;
 }
 
-static void TXT_WindowActionMousePress(TXT_UNCAST_ARG(action), 
+static void TXT_WindowActionMousePress(TXT_UNCAST_ARG(action),
                                        int x, int y, int b)
 {
     TXT_CAST_ARG(txt_window_action_t, action);
@@ -175,4 +175,3 @@ txt_window_action_t *TXT_NewWindowSelectAction(txt_window_t *window)
 
     return action;
 }
-

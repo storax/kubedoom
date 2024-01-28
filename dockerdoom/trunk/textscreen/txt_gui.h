@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005,2006 Simon Howard
@@ -44,4 +44,3 @@ void TXT_PushClipArea(int x1, int x2, int y1, int y2);
 void TXT_PopClipArea(void);
 
 #endif /* #ifndef TXT_GUI_H */
-

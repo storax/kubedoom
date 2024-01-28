@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -50,7 +50,7 @@ struct txt_spincontrol_s
 {
     txt_widget_t widget;
     txt_spincontrol_type_t type;
-    union { float f; int i; } min, max, *value, step; 
+    union { float f; int i; } min, max, *value, step;
     int editing;
     char *buffer;
 };
@@ -80,5 +80,3 @@ txt_spincontrol_t *TXT_NewSpinControl(int *value, int min, int max);
 txt_spincontrol_t *TXT_NewFloatSpinControl(float *value, float min, float max);
 
 #endif /* #ifndef TXT_SPINCONTROL_H */
-
-

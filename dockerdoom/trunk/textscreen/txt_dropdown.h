@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -44,7 +44,7 @@ typedef struct txt_dropdown_list_s txt_dropdown_list_t;
 
 //
 // Drop-down list box.
-// 
+//
 
 struct txt_dropdown_list_s
 {
@@ -68,9 +68,7 @@ struct txt_dropdown_list_s
  * @param num_values      The number of variables in the list.
  */
 
-txt_dropdown_list_t *TXT_NewDropdownList(int *variable, 
+txt_dropdown_list_t *TXT_NewDropdownList(int *variable,
                                          char **values, int num_values);
 
 #endif /* #ifndef TXT_DROPDOWN_H */
-
-

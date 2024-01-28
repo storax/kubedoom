@@ -5,4 +5,3 @@
 void DummyWindowsCEFunction(void)
 {
 }
-

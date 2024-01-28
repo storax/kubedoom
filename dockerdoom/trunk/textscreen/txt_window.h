@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -49,15 +49,15 @@
 
 typedef struct txt_window_s txt_window_t;
 
-#include "txt_widget.h" 
+#include "txt_widget.h"
 #include "txt_table.h"
 #include "txt_window_action.h"
 
 // Callback function for window key presses
 
 typedef int (*TxtWindowKeyPress)(txt_window_t *window, int key, void *user_data);
-typedef int (*TxtWindowMousePress)(txt_window_t *window, 
-                                   int x, int y, int b, 
+typedef int (*TxtWindowMousePress)(txt_window_t *window,
+                                   int x, int y, int b,
                                    void *user_data);
 
 struct txt_window_s
@@ -65,7 +65,7 @@ struct txt_window_s
     // Base class: all windows are tables with one column.
 
     txt_table_t table;
-    
+
     // Window title
 
     char *title;
@@ -145,7 +145,7 @@ void TXT_SetWindowPosition(txt_window_t *window,
  *                    current window action in the given slot is removed.
  */
 
-void TXT_SetWindowAction(txt_window_t *window, txt_horiz_align_t position, 
+void TXT_SetWindowAction(txt_window_t *window, txt_horiz_align_t position,
                          txt_window_action_t *action);
 
 /**
@@ -177,5 +177,3 @@ void TXT_SetMouseListener(txt_window_t *window,
                           void *user_data);
 
 #endif /* #ifndef TXT_WINDOW_T */
-
-

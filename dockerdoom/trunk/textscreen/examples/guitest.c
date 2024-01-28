@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006-2009 Simon Howard
@@ -33,7 +33,7 @@
 
 #include "textscreen.h"
 
-enum 
+enum
 {
     RADIO_VALUE_BADGER,
     RADIO_VALUE_MUSHROOM,
@@ -58,7 +58,7 @@ void PwnBox(TXT_UNCAST_ARG(widget), void *user_data)
 {
     txt_window_t *window;
     txt_window_action_t *close_button;
-    
+
     window = TXT_NewWindow("Pwned!");
     TXT_AddWidget(window, TXT_NewLabel(" BOOM! HEADSHOT! "));
 
@@ -72,7 +72,7 @@ void PwnBox(TXT_UNCAST_ARG(widget), void *user_data)
 void UpdateLabel(TXT_UNCAST_ARG(widget), void *user_data)
 {
     char buf[40];
-    
+
     strcpy(buf, " Current value: ");
     if (cheesy)
     {
@@ -99,7 +99,7 @@ void SetupWindow(void)
     txt_label_t *toplabel;
     char buf[100];
     int i;
-    
+
     window = TXT_NewWindow("Window test");
 
     TXT_AddWidget(window, TXT_NewSeparator("Main section"));
@@ -167,9 +167,9 @@ void Window2(void)
     txt_scrollpane_t *scrollpane;
 
     window = TXT_NewWindow("Another test");
-    TXT_SetWindowPosition(window, 
-                          TXT_HORIZ_RIGHT, 
-                          TXT_VERT_TOP, 
+    TXT_SetWindowPosition(window,
+                          TXT_HORIZ_RIGHT,
+                          TXT_VERT_TOP,
                           TXT_SCREEN_W - 1, 1);
 
     TXT_AddWidgets(window,
@@ -256,5 +256,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005,2006 Simon Howard
@@ -33,7 +33,7 @@
 #include "SDL.h"
 
 // Event callback function type: a function of this type can be used
-// to intercept events in the textscreen event processing loop.  
+// to intercept events in the textscreen event processing loop.
 // Returning 1 will cause the event to be eaten; the textscreen code
 // will not see it.
 
@@ -47,4 +47,3 @@ typedef int (*TxtSDLEventCallbackFunc)(SDL_Event *event, void *user_data);
 void TXT_SDL_SetEventCallback(TxtSDLEventCallbackFunc callback, void *user_data);
 
 #endif /* #ifndef TXT_SDL_H */
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -71,7 +71,7 @@ static void TXT_RadioButtonDrawer(TXT_UNCAST_ARG(radiobutton), int selected)
     TXT_FGColor(TXT_COLOR_BRIGHT_WHITE);
 
     TXT_DrawString(radiobutton->label);
-    
+
     for (i=strlen(radiobutton->label); i < w-5; ++i)
     {
         TXT_DrawString(" ");
@@ -98,11 +98,11 @@ static int TXT_RadioButtonKeyPress(TXT_UNCAST_ARG(radiobutton), int key)
         }
         return 1;
     }
-    
+
     return 0;
 }
 
-static void TXT_RadioButtonMousePress(TXT_UNCAST_ARG(radiobutton), 
+static void TXT_RadioButtonMousePress(TXT_UNCAST_ARG(radiobutton),
                                       int x, int y, int b)
 {
     TXT_CAST_ARG(txt_radiobutton_t, radiobutton);
@@ -145,4 +145,3 @@ void TXT_SetRadioButtonLabel(txt_radiobutton_t *radiobutton, char *value)
     free(radiobutton->label);
     radiobutton->label = strdup(value);
 }
-

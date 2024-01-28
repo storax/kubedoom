@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -70,10 +70,10 @@ static void TXT_InputBoxDrawer(TXT_UNCAST_ARG(inputbox), int selected)
     if (!inputbox->editing)
     {
         // If not editing, use the current value from inputbox->value.
- 
+
         SetBufferFromValue(inputbox);
     }
-    
+
     TXT_DrawString(inputbox->buffer);
 
     chars = strlen(inputbox->buffer);
@@ -84,7 +84,7 @@ static void TXT_InputBoxDrawer(TXT_UNCAST_ARG(inputbox), int selected)
         TXT_DrawString("_");
         ++chars;
     }
-    
+
     for (i=chars; i < w; ++i)
     {
         TXT_DrawString(" ");
@@ -159,7 +159,7 @@ static int TXT_InputBoxKeyPress(TXT_UNCAST_ARG(inputbox), int key)
     {
         Backspace(inputbox);
     }
-    
+
     return 1;
 }
 
@@ -202,7 +202,7 @@ static int TXT_IntInputBoxKeyPress(TXT_UNCAST_ARG(inputbox), int key)
     {
         Backspace(inputbox);
     }
-    
+
     return 1;
 }
 
@@ -297,4 +297,3 @@ txt_inputbox_t *TXT_NewIntInputBox(int *value, int size)
     inputbox->editing = 0;
     return inputbox;
 }
-

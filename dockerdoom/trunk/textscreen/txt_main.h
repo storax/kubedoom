@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005,2006 Simon Howard
@@ -27,7 +27,7 @@
 #ifndef TXT_MAIN_H
 #define TXT_MAIN_H
 
-// For the moment, txt_sdl.c is the only implementation of the base 
+// For the moment, txt_sdl.c is the only implementation of the base
 // text mode screen API:
 
 #include "txt_sdl.h"
@@ -108,7 +108,7 @@ int TXT_GetChar(void);
 
 int TXT_GetModifierState(txt_modifier_t mod);
 
-// Provides a short description of a key code, placing into the 
+// Provides a short description of a key code, placing into the
 // provided buffer.
 
 void TXT_GetKeyDescription(int key, char *buf);
@@ -132,4 +132,3 @@ void TXT_EnableKeyMapping(int enable);
 void TXT_SetWindowTitle(char *title);
 
 #endif /* #ifndef TXT_MAIN_H */
-

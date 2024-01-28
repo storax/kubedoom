@@ -89,4 +89,3 @@ void PopulateEnvironment(void)
     SHGetSpecialFolderPath(NULL, temp, CSIDL_PERSONAL, 0);
     SetEnvironment("HOME=", temp);
 }
-

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -71,7 +71,7 @@ static void TXT_CheckBoxDrawer(TXT_UNCAST_ARG(checkbox), int selected)
     TXT_FGColor(TXT_COLOR_BRIGHT_WHITE);
 
     TXT_DrawString(checkbox->label);
-    
+
     for (i=strlen(checkbox->label); i < w-5; ++i)
     {
         TXT_DrawString(" ");
@@ -95,7 +95,7 @@ static int TXT_CheckBoxKeyPress(TXT_UNCAST_ARG(checkbox), int key)
         TXT_EmitSignal(checkbox, "changed");
         return 1;
     }
-    
+
     return 0;
 }
 
@@ -145,4 +145,3 @@ txt_checkbox_t *TXT_NewInvertedCheckBox(char *label, int *variable)
 
     return result;
 }
-

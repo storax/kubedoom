@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -77,5 +77,3 @@ txt_inputbox_t *TXT_NewInputBox(char **value, int size);
 txt_inputbox_t *TXT_NewIntInputBox(int *value, int size);
 
 #endif /* #ifndef TXT_INPUTBOX_H */
-
-

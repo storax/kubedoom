@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -57,7 +57,7 @@ void TXT_RemoveDesktopWindow(txt_window_t *win)
             ++to;
         }
     }
-    
+
     num_windows = to;
 }
 
@@ -78,11 +78,11 @@ static void DrawDesktopBackground(const char *title)
     unsigned char *p;
 
     screendata = TXT_GetScreenData();
-    
+
     // Fill the screen with gradient characters
 
     p = screendata;
-    
+
     for (i=0; i<TXT_SCREEN_W * TXT_SCREEN_H; ++i)
     {
         *p++ = 0xb1;
@@ -211,10 +211,9 @@ void TXT_GUIMainLoop(void)
         {
             TXT_ExitMainLoop();
         }
-        
+
         TXT_DrawDesktop();
 //        TXT_DrawASCIITable();
         TXT_Sleep(0);
     }
 }
-

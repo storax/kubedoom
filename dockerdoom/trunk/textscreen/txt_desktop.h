@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -73,5 +73,3 @@ void TXT_GUIMainLoop(void);
 txt_window_t *TXT_GetActiveWindow(void);
 
 #endif /* #ifndef TXT_DESKTOP_H */
-
-

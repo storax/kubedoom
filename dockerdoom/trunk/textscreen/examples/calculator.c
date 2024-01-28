@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006-2009 Simon Howard
@@ -62,7 +62,7 @@ void InsertNumber(TXT_UNCAST_ARG(button), TXT_UNCAST_ARG(value))
         input_value = 0;
         starting_input = 0;
     }
-    
+
     input_value *= 10;
     input_value += *value;
     UpdateInputBox();
@@ -133,7 +133,7 @@ void BuildGUI()
 {
     txt_window_t *window;
     txt_table_t *table;
-    
+
     window = TXT_NewWindow("Calculator");
 
     input_box = TXT_NewLabel("asdf");
@@ -163,7 +163,7 @@ void BuildGUI()
 
     TXT_AddWidget(table, TXT_NewButton2("  =  ", Calculate, NULL));
     AddOperatorButton(table, "/", OP_DIV);
-    
+
     TXT_AddWidget(window, TXT_NewStrut(0, 1));
     UpdateInputBox();
 }
@@ -175,7 +175,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Failed to initialise GUI\n");
         exit(-1);
     }
-    
+
     TXT_SetDesktopTitle("Calculator demo");
 
     BuildGUI();
@@ -186,4 +186,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-

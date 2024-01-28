@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005,2006 Simon Howard
@@ -42,7 +42,7 @@ struct txt_cliparea_s
 // +-++
 // +-++
 
-static const int borders[4][4] = 
+static const int borders[4][4] =
 {
     {0xda, 0xc4, 0xc2, 0xbf},
     {0xb3, ' ',  0xb3, 0xb3},
@@ -62,11 +62,11 @@ void TXT_DrawDesktopBackground(const char *title)
     unsigned char *p;
 
     screendata = TXT_GetScreenData();
-    
+
     // Fill the screen with gradient characters
 
     p = screendata;
-    
+
     for (i=0; i<TXT_SCREEN_W * TXT_SCREEN_H; ++i)
     {
         *p++ = 0xb1;
@@ -150,7 +150,7 @@ void TXT_DrawWindowFrame(const char *title, int x, int y, int w, int h)
         {
             bx = x1 == x ? 0 :
                  x1 == x + w - 1 ? 3 : 1;
-                 
+
             if (VALID_X(x1) && VALID_Y(y1))
             {
                 TXT_GotoXY(x1, y1);
@@ -171,7 +171,7 @@ void TXT_DrawWindowFrame(const char *title, int x, int y, int w, int h)
         {
             TXT_DrawString(" ");
         }
-    
+
         TXT_GotoXY(x + (w - strlen(title)) / 2, y + 1);
         TXT_DrawString(title);
     }
@@ -402,9 +402,8 @@ void TXT_PopClipArea(void)
         return;
 
     // Unlink the last entry and delete
-   
+
     next_cliparea = cliparea->next;
     free(cliparea);
     cliparea = next_cliparea;
 }
-

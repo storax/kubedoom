@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -57,5 +57,3 @@ struct txt_strut_s
 txt_strut_t *TXT_NewStrut(int width, int height);
 
 #endif /* #ifndef TXT_STRUT_H */
-
-

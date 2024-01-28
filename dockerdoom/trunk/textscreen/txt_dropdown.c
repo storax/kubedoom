@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -31,7 +31,7 @@
 #include "txt_main.h"
 #include "txt_window.h"
 
-typedef struct 
+typedef struct
 {
     txt_window_t *window;
     txt_dropdown_list_t *list;
@@ -78,7 +78,7 @@ static void ItemSelected(TXT_UNCAST_ARG(button), TXT_UNCAST_ARG(callback_data))
 
 // Free callback data when the window is closed
 
-static void FreeCallbackData(TXT_UNCAST_ARG(list), 
+static void FreeCallbackData(TXT_UNCAST_ARG(list),
                              TXT_UNCAST_ARG(callback_data))
 {
     TXT_CAST_ARG(callback_data_t, callback_data);
@@ -153,18 +153,18 @@ static void OpenSelectorWindow(txt_dropdown_list_t *list)
         data->list = list;
         data->window = window;
         data->item = i;
-        
+
         // When the button is pressed, invoke the button press callback
-       
+
         TXT_SignalConnect(button, "pressed", ItemSelected, data);
-        
+
         // When the window is closed, free back the callback struct
 
         TXT_SignalConnect(window, "closed", FreeCallbackData, data);
 
         // Is this the currently-selected value?  If so, select the button
         // in the window as the default.
-        
+
         if (i == *list->variable)
         {
             TXT_SelectWidget(window, button);
@@ -183,13 +183,13 @@ static int DropdownListWidth(txt_dropdown_list_t *list)
     int result;
 
     // Find the maximum string width
- 
+
     result = 0;
 
     for (i=0; i<list->num_values; ++i)
     {
         int w = strlen(list->values[i]);
-        if (w > result) 
+        if (w > result)
         {
             result = w;
         }
@@ -233,7 +233,7 @@ static void TXT_DropdownListDrawer(TXT_UNCAST_ARG(list), int selected)
 
     TXT_DrawString(str);
 
-    for (i=strlen(str); i<list->widget.w; ++i) 
+    for (i=strlen(str); i<list->widget.w; ++i)
     {
         TXT_DrawString(" ");
     }
@@ -252,11 +252,11 @@ static int TXT_DropdownListKeyPress(TXT_UNCAST_ARG(list), int key)
         OpenSelectorWindow(list);
         return 1;
     }
-    
+
     return 0;
 }
 
-static void TXT_DropdownListMousePress(TXT_UNCAST_ARG(list), 
+static void TXT_DropdownListMousePress(TXT_UNCAST_ARG(list),
                                        int x, int y, int b)
 {
     TXT_CAST_ARG(txt_dropdown_list_t, list);
@@ -280,7 +280,7 @@ txt_widget_class_t txt_dropdown_list_class =
     NULL,
 };
 
-txt_dropdown_list_t *TXT_NewDropdownList(int *variable, char **values, 
+txt_dropdown_list_t *TXT_NewDropdownList(int *variable, char **values,
                                          int num_values)
 {
     txt_dropdown_list_t *list;
@@ -294,4 +294,3 @@ txt_dropdown_list_t *TXT_NewDropdownList(int *variable, char **values,
 
     return list;
 }
-

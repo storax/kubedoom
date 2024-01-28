@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -53,7 +53,7 @@ static void TXT_LabelDrawer(TXT_UNCAST_ARG(label), int selected)
 
     for (y=0; y<label->h; ++y)
     {
-        // Calculate the amount to indent this line due to the align 
+        // Calculate the amount to indent this line due to the align
         // setting
 
         switch (label->widget.align)
@@ -68,7 +68,7 @@ static void TXT_LabelDrawer(TXT_UNCAST_ARG(label), int selected)
                 align_indent = label->w - strlen(label->lines[y]);
                 break;
         }
-        
+
         // Draw this line
 
         TXT_GotoXY(origin_x, origin_y + y);
@@ -123,7 +123,7 @@ void TXT_SetLabel(txt_label_t *label, char *value)
     free(label->label);
     free(label->lines);
 
-    // Set the new value 
+    // Set the new value
 
     label->label = strdup(value);
 
@@ -144,7 +144,7 @@ void TXT_SetLabel(txt_label_t *label, char *value)
     label->lines = malloc(sizeof(char *) * label->h);
     label->lines[0] = label->label;
     y = 1;
-    
+
     for (p = label->label; *p != '\0'; ++p)
     {
         if (*p == '\n')
@@ -193,4 +193,3 @@ void TXT_SetBGColor(txt_label_t *label, txt_color_t color)
 {
     label->bgcolor = color;
 }
-

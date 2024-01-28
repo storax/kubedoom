@@ -14,4 +14,3 @@ extern int *_GetErrno();
 #define errno (*_GetErrno())
 
 #endif /* #ifndef WINCE_ERROR_H */
-

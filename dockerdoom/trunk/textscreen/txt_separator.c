@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -60,7 +60,7 @@ static void TXT_SeparatorDrawer(TXT_UNCAST_ARG(separator), int selected)
     // to overlap the window borders.
 
     TXT_DrawSeparator(x-2, y, w + 4);
-    
+
     if (separator->label != NULL)
     {
         TXT_GotoXY(x, y);
@@ -118,4 +118,3 @@ txt_separator_t *TXT_NewSeparator(char *label)
 
     return separator;
 }
-

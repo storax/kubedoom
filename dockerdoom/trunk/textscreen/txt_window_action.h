@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -93,4 +93,3 @@ txt_window_action_t *TXT_NewWindowAbortAction(txt_window_t *window);
 txt_window_action_t *TXT_NewWindowSelectAction(txt_window_t *window);
 
 #endif /* #ifndef TXT_WINDOW_ACTION_H */
-

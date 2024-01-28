@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2005,2006 Simon Howard
@@ -30,7 +30,7 @@
 #include "txt_io.h"
 #include "txt_main.h"
 
-static struct 
+static struct
 {
     txt_color_t color;
     const char *name;
@@ -93,7 +93,7 @@ static void NewLine(unsigned char *screendata)
 
         p = screendata + (TXT_SCREEN_H - 1) * 2 * TXT_SCREEN_W;
 
-        for (i=0; i<TXT_SCREEN_W; ++i) 
+        for (i=0; i<TXT_SCREEN_W; ++i)
         {
             *p++ = ' ';
             *p++ = fgcolor | (bgcolor << 4);
@@ -104,7 +104,7 @@ static void NewLine(unsigned char *screendata)
 static void PutChar(unsigned char *screendata, int c)
 {
     unsigned char *p;
-   
+
     p = screendata + cur_y * TXT_SCREEN_W * 2 +  cur_x * 2;
 
     switch (c)
@@ -129,7 +129,7 @@ static void PutChar(unsigned char *screendata, int c)
 
             ++cur_x;
 
-            if (cur_x >= TXT_SCREEN_W) 
+            if (cur_x >= TXT_SCREEN_W)
             {
                 NewLine(screendata);
             }
@@ -201,7 +201,7 @@ void TXT_Puts(const char *s)
                 }
 
                 TXT_FGColor(col);
-                
+
                 p = ending;
             }
         }
@@ -254,4 +254,3 @@ void TXT_ClearScreen(void)
     cur_x = 0;
     cur_y = 0;
 }
-

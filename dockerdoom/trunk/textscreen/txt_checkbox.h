@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -79,5 +79,3 @@ txt_checkbox_t *TXT_NewCheckBox(char *label, int *variable);
 txt_checkbox_t *TXT_NewInvertedCheckBox(char *label, int *variable);
 
 #endif /* #ifndef TXT_CHECKBOX_H */
-
-

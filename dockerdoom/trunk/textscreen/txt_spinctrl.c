@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -51,7 +51,7 @@ static void FloatFormatString(float step, char *buf)
     }
 }
 
-// Number of characters needed to represent a character 
+// Number of characters needed to represent a character
 
 static unsigned int IntWidth(int val)
 {
@@ -78,7 +78,7 @@ static unsigned int FloatWidth(float val, float step)
     if (precision > 0)
     {
         result += precision + 1;
-    }    
+    }
 
     return result;
 }
@@ -103,7 +103,7 @@ static unsigned int SpinControlWidth(txt_spincontrol_t *spincontrol)
             break;
 
     }
-    
+
     // Choose the wider of the two values.  Add one so that there is always
     // space for the cursor when editing.
 
@@ -152,7 +152,7 @@ static void TXT_SpinControlDrawer(TXT_UNCAST_ARG(spincontrol), int selected)
     TXT_BGColor(TXT_WINDOW_BACKGROUND, 0);
 
     TXT_DrawString("\x1b ");
-    
+
     TXT_FGColor(TXT_COLOR_BRIGHT_WHITE);
 
     // Choose background color
@@ -170,7 +170,7 @@ static void TXT_SpinControlDrawer(TXT_UNCAST_ARG(spincontrol), int selected)
     {
         SetBuffer(spincontrol);
     }
-    
+
     i = 0;
 
     padding = spincontrol->widget.w - strlen(spincontrol->buffer) - 4;
@@ -311,7 +311,7 @@ static int TXT_SpinControlKeyPress(TXT_UNCAST_ARG(spincontrol), int key)
 
             return 1;
         }
-        
+
         if (key == KEY_RIGHTARROW)
         {
             switch (spincontrol->type)
@@ -404,4 +404,3 @@ txt_spincontrol_t *TXT_NewFloatSpinControl(float *value, float min, float max)
 
     return spincontrol;
 }
-

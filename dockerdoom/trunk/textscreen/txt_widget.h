@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -180,4 +180,3 @@ void TXT_SetWidgetBG(TXT_UNCAST_ARG(widget), int selected);
 int TXT_ContainsWidget(TXT_UNCAST_ARG(haystack), TXT_UNCAST_ARG(needle));
 
 #endif /* #ifndef TXT_WIDGET_H */
-

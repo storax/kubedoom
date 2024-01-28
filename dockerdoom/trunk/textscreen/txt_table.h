@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2006 Simon Howard
@@ -60,7 +60,7 @@ struct txt_table_s
 
     int columns;
 
-    // Currently selected 
+    // Currently selected
 
     int selected_x;
     int selected_y;
@@ -192,5 +192,3 @@ void TXT_ClearTable(TXT_UNCAST_ARG(table));
 int TXT_PageTable(TXT_UNCAST_ARG(table), int pagex, int pagey);
 
 #endif /* #ifndef TXT_TABLE_T */
-
-
