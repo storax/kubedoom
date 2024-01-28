@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -39,4 +39,3 @@ void OPL_Timer_Unlock(void);
 void OPL_Timer_SetPaused(int paused);
 
 #endif /* #ifndef OPL_TIMER_H */
-

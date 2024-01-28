@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -79,22 +79,22 @@ static unsigned int OPL_Win32_PortRead(opl_port_t port)
 {
     unsigned char result;
     opl_port_t dst_port = opl_port_base + port;
-    
-    __asm    
+
+    __asm
     {
         mov edx, dword ptr [dst_port]
         in al, dx
         mov byte ptr [result], al
     }
-    
+
     return result;
 }
 
 static void OPL_Win32_PortWrite(opl_port_t port, unsigned int value)
 {
     opl_port_t dst_port = opl_port_base + port;
-    
-    __asm    
+
+    __asm
     {
         mov edx, dword ptr [dst_port]
         mov al, byte ptr [value]
@@ -196,4 +196,3 @@ opl_driver_t opl_win32_driver =
 };
 
 #endif /* #ifdef _WIN32 */
-

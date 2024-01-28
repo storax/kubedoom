@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -42,4 +42,3 @@ int OPL_Queue_Pop(opl_callback_queue_t *queue,
 unsigned int OPL_Queue_Peek(opl_callback_queue_t *queue);
 
 #endif /* #ifndef OPL_QUEUE_H */
-

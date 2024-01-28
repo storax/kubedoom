@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -69,7 +69,7 @@ static SDL_mutex *timer_mutex;
 static int CallbackWaiting(unsigned int *next_time)
 {
     // If paused, just wait in 50ms increments until unpaused.
-    // Update pause_offset so after we unpause, the callback 
+    // Update pause_offset so after we unpause, the callback
     // times will be right.
 
     if (opl_timer_paused)
@@ -248,4 +248,3 @@ void OPL_Timer_SetPaused(int paused)
     opl_timer_paused = paused;
     SDL_UnlockMutex(callback_queue_mutex);
 }
-

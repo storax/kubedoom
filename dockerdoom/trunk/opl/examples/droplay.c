@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -69,7 +69,7 @@ void ClearAllRegs(void)
 
     for (i=0; i<=0xff; ++i)
     {
-	WriteReg(i, 0x00);
+    WriteReg(i, 0x00);
     }
 }
 
@@ -214,4 +214,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-

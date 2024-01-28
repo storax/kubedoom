@@ -463,4 +463,3 @@ void OPL_SetPaused(int paused)
         driver->set_paused_func(paused);
     }
 }
-

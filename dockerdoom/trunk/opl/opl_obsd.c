@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -122,4 +122,3 @@ opl_driver_t opl_openbsd_driver =
 };
 
 #endif /* #ifndef NO_OBSD_DRIVER */
-

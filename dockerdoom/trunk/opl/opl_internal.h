@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // Copyright(C) 2009 Simon Howard
@@ -61,4 +61,3 @@ typedef struct
 extern unsigned int opl_sample_rate;
 
 #endif /* #ifndef OPL_INTERNAL_H */
-
