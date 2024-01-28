@@ -1,0 +1,20 @@
+line_ending: lf  # Set according to your preference
+doublestar: false
+continue_on_error: false
+include: []  # Add paths to include if necessary
+exclude: [chart]  # Add paths to exclude if necessary
+regex_exclude: ['.pre-commit-config.yaml']  # Add regex patterns to exclude files based on content
+extensions: [".yaml", ".yml"]  # File extensions to format
+
+formatter:
+  type: basic
+  indent: 2  # Set indentation level
+  include_document_start: false  # Set according to your preference
+  line_ending: lf  # Override global line ending for formatter
+  retain_line_breaks: true  # Set to true to retain existing line breaks
+  disallow_anchors: false  # Set according to your preference
+  max_line_length: 0  # Set according to your preference
+  scan_folded_as_literal: true  # Preserve newlines in folded block scalars
+  indentless_arrays: false  # Set according to your preference
+  drop_merge_tag: false  # Set according to your preference
+  pad_line_comments: 1  # Set to 1 to ensure a space after '#' in comments

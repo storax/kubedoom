@@ -1,0 +1,5 @@
+# Ignore Artifacts
+build
+# Ignore YAML files
+**/*.yaml
+**/*.yml
