@@ -1,0 +1,92 @@
+# pre-commit is a tool to perform a predefined set of tasks manually and/or
+# automatically before git commits are made.
+#
+# Config reference: https://pre-commit.com/#pre-commit-configyaml---top-level
+#
+# Common tasks
+#
+# - Run on all files:   pre-commit run --all-files
+# - Register git hooks: pre-commit install --install-hooks
+#
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# See https://pre-commit.com for more information
+# spell-checker: disable
+# See https://pre-commit.com for more information
+repos:
+  - repo: local
+    hooks:
+      - id: kics
+        name: Kics scan
+        language: docker_image
+        entry: checkmarx/kics:latest scan -p /src --ci --log-level WARN
+        verbose: true
+        stages:
+          - push
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.11.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies:
+          - "@commitlint/cli"
+          - "@commitlint/config-conventional"
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.12.1
+    hooks:
+      - id: markdownlint-cli2
+  - repo: https://github.com/sirosen/texthooks
+    rev: 0.6.3
+    hooks:
+      - id: fix-spaces
+      - id: alphabetize-codeowners
+      - id: fix-ligatures
+      - id: fix-smartquotes
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: fix-byte-order-marker
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: check-executables-have-shebangs
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: check-merge-conflict
+      - id: detect-aws-credentials
+        args:
+          - "--allow-missing-credentials"
+      - id: detect-private-key
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.10.0
+    hooks:
+      - id: yamlfmt
+        language: system
+  - repo: https://github.com/google/go-jsonnet
+    rev: v0.20.0
+    hooks:
+      - id: jsonnet-format
+      - id: jsonnet-lint
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        args: ["--no-error-on-unmatched-pattern"]
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.4
+    hooks:
+      - id: remove-crlf
+      - id: remove-tabs
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.18.1
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/terrastruct/d2
+    rev: v0.6.3
+    hooks:
+      - id: d2-fmt
+        name: d2 fmt
+        description: Format d2 diagram files
+        entry: d2 fmt
+        language: system
+        files: \.d2$
