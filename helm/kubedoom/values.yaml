@@ -5,7 +5,6 @@
 replicaCount: 1
 
 image:
-  # repository: ghcr.io/storax/kubedoom
   repository: docker.io/nlsaw/doom
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
