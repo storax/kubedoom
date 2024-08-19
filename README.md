@@ -1,4 +1,4 @@
-# Kube DOOM
+# Kube DOOM -Helm Powered!
 ## Kill Kubernetes pods using Id's Doom!
 
 The next level of chaos engineering is here! Kill pods inside your Kubernetes
