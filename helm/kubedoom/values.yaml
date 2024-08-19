@@ -5,10 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/storax/kubedoom
+  # repository: ghcr.io/storax/kubedoom
+  repository: docker.io/nlsaw/doom
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -26,7 +27,7 @@ serviceAccount:
 # mode arg - What to kill: pods|namespaces (default "pods")
 arguments:
 - -mode
-- namespaces
+- pods
 
 # uncomment and set to kill pods in a specific namespace
 #usenamespace: ""
