@@ -1,12 +1,12 @@
-FROM golang:1.17-alpine AS build-kubedoom
+FROM docker.io/golang:1.23-alpine AS build-kubedoom
 WORKDIR /go/src/kubedoom
 ADD go.mod .
 ADD kubedoom.go .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o kubedoom .
 
-FROM ubuntu:21.10 AS build-essentials
+FROM docker.io/debian:12 AS build-essentials
 ARG TARGETARCH
-ARG KUBECTL_VERSION=1.23.2
+ARG KUBECTL_VERSION=1.31.3
 RUN apt-get update && apt-get install -y \
   -o APT::Install-Suggests=0 \
   --no-install-recommends \
@@ -14,10 +14,11 @@ RUN apt-get update && apt-get install -y \
 RUN wget http://distro.ibiblio.org/pub/linux/distributions/slitaz/sources/packages/d/doom1.wad
 RUN echo "TARGETARCH is $TARGETARCH"
 RUN echo "KUBECTL_VERSION is $KUBECTL_VERSION"
-RUN wget -O /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/${TARGETARCH}/kubectl" \
-  && chmod +x /usr/bin/kubectl
+RUN wget "https://dl.k8s.io/v${KUBECTL_VERSION}/kubernetes-client-linux-${TARGETARCH}.tar.gz"
+RUN tar --strip-components=3 -xvf kubernetes-client-linux-amd64.tar.gz kubernetes/client/bin/kubectl
+RUN mv kubectl /usr/bin/kubectl && chmod +x /usr/bin/kubectl
 
-FROM ubuntu:21.10 AS build-doom
+FROM docker.io/debian:12 AS build-doom
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
   -o APT::Install-Suggests=0 \
@@ -30,7 +31,7 @@ ADD /dockerdoom /dockerdoom
 WORKDIR /dockerdoom/trunk
 RUN ./configure && make && make install
 
-FROM ubuntu:21.10 as build-converge
+FROM docker.io/debian:12 AS build-converge
 WORKDIR /build
 RUN mkdir -p \
   /build/root \
@@ -41,7 +42,7 @@ COPY --from=build-essentials /usr/bin/kubectl /build/usr/bin
 COPY --from=build-kubedoom /go/src/kubedoom/kubedoom /build/usr/bin
 COPY --from=build-doom /usr/local/games/psdoom /build/usr/local/games
 
-FROM ubuntu:21.10
+FROM docker.io/debian:12
 ARG VNCPASSWORD=idbehold
 RUN apt-get update && apt-get install -y \
   -o APT::Install-Suggests=0 \
